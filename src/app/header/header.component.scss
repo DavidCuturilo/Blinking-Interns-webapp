@@ -1,0 +1,19 @@
+.toolbar {
+    margin: 0;
+    padding: 0 10;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;    
+    background-color: var(--blinking-background);
+    color: var(--blinking-text);
+   
+
+    .spacer {
+        flex: 1 1 auto;
+      }
+}
+
+
+
+
