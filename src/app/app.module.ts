@@ -6,16 +6,26 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+import { LoginFormComponent } from './login-form/login-form.component'
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

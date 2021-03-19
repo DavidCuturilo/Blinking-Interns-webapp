@@ -1,0 +1,137 @@
+.container {
+    height: 100vh;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        background-color: var(--blinking-primary);
+        border: black;
+        border-style: groove;
+        border-radius: 10px;
+
+        width: 500px;
+        height: 400px;
+
+        margin: auto;
+
+        .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+            stroke: var(--blinking-background);
+            size: 200px;
+        }
+
+    
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            .change-text {
+                // display: flex;
+                
+
+                .remove-button {
+                    border: none;
+                    outline: none;
+                    background-color: var(--blinking-primary);
+                    color: var(--blinking-background);
+                    font-size: x-large;
+                    font-weight: bolder;
+
+                    width: 20px;
+                    position: relative;
+                    right: 20px;
+                    // margin-right: 20px;
+                    // padding: 0 20px 0 0;
+                }
+            }
+
+            .login-paragraph {
+                font-size: xx-large;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bolder;
+                margin: auto;
+                margin-top: 10px;
+                margin-bottom: 30px;
+
+                
+            } 
+
+            .form-control {
+                margin: 8px 0;
+                padding: 12px 15px;
+                width: 300px;
+
+                background-color: var(--blinking-primary) !important;
+                border: none;
+                border-bottom: 2px solid black;
+                outline: none;
+
+                color: black !important;
+                font-size: medium;
+                
+             }
+
+             .ng-invalid.ng-touched {
+                border-bottom: 1px solid red;
+            }
+
+            .span-email {
+                color: red;
+                font-size: medium;
+                margin: 5px;
+            }
+
+            .span-password {
+                color: red;
+                font-size: medium;
+                margin: 5px;
+            }
+
+             .password {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bold;
+                margin: 20px 0 10px 0;
+            
+            }
+
+            .email {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bold;
+            }
+
+             .login-button {
+                margin: auto;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                padding: 5px 20px;
+   
+                width: 100px;
+                height: 40px;
+                background-color: var(--blinking-background);
+                color: var(--blinking-text);
+                font-size: large;
+   
+                border-style: none;
+                outline: none;
+                border-radius: 15px;
+                cursor: pointer;
+
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+           }
+        }
+
+        
+
+    }
+}
+
