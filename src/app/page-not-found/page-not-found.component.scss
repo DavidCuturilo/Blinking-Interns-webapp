@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    margin-left: 300px;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60vh;
+
+    .section {
+        width: 550px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        border-style: groove;
+        outline: none;
+        background-color: var(--blinking-primary);
+
+        h1 {
+            color: black;
+        }
+
+        .return-button {
+            padding: 5px 15px;
+            border-radius: 15px;
+            height: 35px;
+        
+
+            font-size: medium;
+            color: var(--blinking-text);
+            background-color: var(--blinking-background);
+
+            cursor: pointer;
+        }
+    }
+}
+
+   
+

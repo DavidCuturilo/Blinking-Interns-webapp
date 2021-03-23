@@ -12,11 +12,16 @@ import { LoginFormComponent } from './login-form/login-form.component'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

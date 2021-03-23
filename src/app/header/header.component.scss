@@ -8,7 +8,15 @@
     background-color: var(--blinking-background);
     color: var(--blinking-text);
    
+    img {
+      height: 44px;
+    }
 
+    .header-components a{
+      text-decoration: none;
+      color: var(--blinking-text);
+      margin: 0 20px 0 0;
+    }
     .spacer {
         flex: 1 1 auto;
       }
