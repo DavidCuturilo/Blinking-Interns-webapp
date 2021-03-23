@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="login-container">
+
+        <div class="spinner" *ngIf='showSpinner'>
+            <mat-spinner class="mat-spinner" color="--blinking-background"></mat-spinner>
+        </div>
+    
+        <form class="login-form" [formGroup]="signupForm" (ngSubmit)="onSubmit(internRadio)" *ngIf="!showSpinner">
+
+            <p class="login-paragraph">Register</p>
+
+            <label for="fullName" class="fullName">Full name</label>
+            <div class="change-text">
+                <input type="text" class="form-control" id="fullName" formControlName="fullName" #fullName>
+                <button class="remove-button" type="button" (click)="onClick(fullName)" *ngIf="!(fullName.value==='')">x</button>
+            </div>
+            <span class="span-fullName" *ngIf="isValid('fullName')">This field is required!</span>
+
+
+            <label for="email" class="email">Email</label>
+            <div class="change-text">
+                <input type="text" class="form-control" id="email" formControlName="email" #email>
+                <button class="remove-button" type="button" (click)="onClick(email)" *ngIf="!(email.value==='')">x</button>
+            </div>
+            <span class="span-email" *ngIf="isValid('email')">Please enter a valid email!</span>
+
+
+            <label for="password" class="password">Password</label>
+            <div class="change-text">
+                <input type="password" class="form-control" id="password" formControlName="password" #password>
+                <button class="remove-button" type="button" (click)="onClick(password)" *ngIf="!(password.value==='')">x</button>
+            </div>
+            <span class="span-password" *ngIf="isValid('password')">Password requires at least 8 caracters</span>
+    
+            <div class="radio-container">
+                <input type="radio" name="userType" id="intern" #internRadio checked>
+                <label for="intern">Intern</label>
+                <input type="radio" name="userType" id="mentor"> 
+                <label for="mentor">Mentor</label>
+            </div>
+
+
+            <button class="login-button" [disabled]="!signupForm.get('password').valid || !signupForm.get('email').valid || email.value==='' || password.value==='' || !signupForm.get('fullName').valid || fullName.value===''">Register</button>
+       
+         
+       
+        </form>
+    
+    </div>
+</div>
+

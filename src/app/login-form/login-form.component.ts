@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginFormComponent implements OnInit {
   showSpinner = false;
   
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -35,5 +36,6 @@ export class LoginFormComponent implements OnInit {
   onClick(input){
     input.value = '';
   }
+
 
 }

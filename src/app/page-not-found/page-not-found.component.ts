@@ -14,6 +14,7 @@ export class PageNotFoundComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {  
+    // this.pageNotFound = document.referrer;
   }
   
   onLoadPage() {

@@ -16,7 +16,7 @@
         border-radius: 10px;
 
         width: 500px;
-        height: 400px;
+        height: 600px;
 
         margin: auto;
 
@@ -65,12 +65,14 @@
                 margin: auto;
                 margin-top: 10px;
                 margin-bottom: 30px;
-                
+                outline: none;
+                border: none;
+                background-color: var(--blinking-primary);
                 
             } 
 
             .form-control {
-                margin: 8px 0;
+                // margin: 3px 0;
                 padding: 12px 15px;
                 width: 300px;
 
@@ -82,10 +84,16 @@
                 color: black !important;
                 font-size: medium;
                 
-             }
+            }
 
-             .ng-invalid.ng-touched {
+            .ng-invalid.ng-touched {
                 border-bottom: 1px solid red;
+            }
+
+            .span-fullName {
+                color: red;
+                font-size: medium;
+                margin: 5px;
             }
 
             .span-email {
@@ -100,16 +108,27 @@
                 margin: 5px;
             }
 
+            .fullName {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bold;
+                margin-top: 10px;
+            }
+
              .password {
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 font-weight: bold;
-                margin: 20px 0 10px 0;
-            
+                margin-top: 10px;
+                padding-top: 10px;
             }
 
             .email {
+                margin-top: 10px;
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 font-weight: bold;
+            }
+
+            .radio {
+                margin: 10px 0;
             }
 
              .login-button {
@@ -134,9 +153,7 @@
                     cursor: not-allowed;
                 }
            }
-        }
-
-        
+        }        
 
     }
 }

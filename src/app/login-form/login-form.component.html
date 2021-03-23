@@ -7,7 +7,9 @@
     
         <form class="login-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()" *ngIf="!showSpinner">
 
-            <p class="login-paragraph">Log in</p>
+            <p class="login-paragraph">Log in</p>         
+            
+           
             <label for="email" class="email">Email</label>
             <div class="change-text">
                 <input type="text" class="form-control" id="email" formControlName="email" #email>

@@ -13,8 +13,10 @@
         justify-content: space-evenly;
         align-items: center;
 
+        border: black;
         border-style: groove;
-        outline: none;
+        border-radius: 10px;
+        // outline: none;
         background-color: var(--blinking-primary);
 
         h1 {
