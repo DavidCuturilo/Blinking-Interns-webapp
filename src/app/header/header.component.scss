@@ -1,25 +1,41 @@
 .toolbar {
-    margin: 0;
-    padding: 0 10;
-    top: 0;
-    left: 0;
-    position: fixed;
-    display: flex;    
     background-color: var(--blinking-background);
     color: var(--blinking-text);
-   
+    display: flex;
+    overflow: hidden;
+    padding: 0;
+
     img {
       height: 44px;
     }
 
-    .header-components a{
-      text-decoration: none;
-      color: var(--blinking-text);
-      margin: 0 20px 0 0;
-    }
-    .spacer {
-        flex: 1 1 auto;
+    nav{
+      margin-left:auto;
+      height: 100%;
+      width: 20%;
+      display: flex;
+
+      align-self: flex-end;
+      .nav-links{
+        color: var(--blinking-text);
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        background-color: inherit;
+        padding: 15px;
+        transition: background-color 0.3s;
+
+        &:hover{
+          background-color: black;
+        }
       }
+
+      .nav-link-active{
+        background-color: rgb(24, 79, 116);
+      }
+    }
+
+
 }
 
 

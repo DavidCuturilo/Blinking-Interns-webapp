@@ -1,3 +1,4 @@
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
   { path: 'not-found', component: PageNotFoundComponent },
+  { path: 'user-profile', component: UserProfileComponent},
   { path: '**', redirectTo: '/not-found', pathMatch: 'full'}
 ];
 

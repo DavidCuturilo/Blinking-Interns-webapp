@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+
 import { MatFormFieldModule } from  '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -18,7 +19,12 @@ import { LoginFormComponent } from './login-form/login-form.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 import { RegisterFormComponent } from './register-form/register-form.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+
 
 
 
@@ -29,6 +35,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     LoginFormComponent,
     PageNotFoundComponent,
     RegisterFormComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

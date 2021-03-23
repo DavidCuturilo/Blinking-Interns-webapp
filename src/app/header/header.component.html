@@ -1,8 +1,11 @@
 <mat-toolbar class="toolbar">
         <img src="../../assets/pictures/blinking.png" alt="">
-        <p class="header-components"><a routerLink='/'>Blinking Interns</a></p>
-        <span class="spacer"></span>
-        <p class="header-components"><a routerLink='/register'>Register</a></p>
-        <p class="header-components"><a routerLink='/login'>Login</a></p>
-        <p class="header-components">Menu</p>
+        <p class="header-title" routerLink='/'>Blinking Intern
+
+        <nav>
+          <div class="nav-links" routerLink='/register' routerLinkActive='nav-link-active'>Register</div>
+          <div class="nav-links" routerLink='/login' routerLinkActive='nav-link-active'>Login</div>
+          <div class="nav-links" routerLinkActive='nav-link-active'>Menu</div>
+        </nav>
+
 </mat-toolbar>
