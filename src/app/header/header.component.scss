@@ -9,6 +9,21 @@
       height: 44px;
     }
 
+    .home-link {
+      cursor: pointer;
+      background-color: inherit;
+      padding: 15px;
+      transition: background-color 0.3s;
+
+      &:hover{
+        background-color: black;
+      }
+
+      .nav-link-active{
+        background-color: rgb(24, 79, 116);
+      }
+    }
+
     nav{
       margin-left:auto;
       height: 100%;

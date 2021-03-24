@@ -8,7 +8,7 @@
                     <h3>{{ task.title }}</h3>
                     <mat-progress-bar mode="determinate" value="{{ task.progress }}"></mat-progress-bar>
                     <label for="">{{ task.progress }}% Complete</label>
-                    <button class="button-details">More details</button>
+                    <button class="button-details" (click)='showDetails(task)'>More details</button>
                 </mat-card>
             </div>
         </div>

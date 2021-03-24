@@ -1,4 +1,3 @@
-import { stripSummaryForJitNameSuffix } from '@angular/compiler/src/aot/util';
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../shared/models/task.model';
 
@@ -33,7 +32,10 @@ export class HomePageComponent implements OnInit {
 
       default: imageUrl += 'Angular.png';
     }
-    // console.log(imageUrl);
     return imageUrl;
+  }
+
+  showDetails(task){
+    console.log(task);
   }
 }
