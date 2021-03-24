@@ -24,6 +24,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -35,7 +36,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     LoginFormComponent,
     PageNotFoundComponent,
     RegisterFormComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
