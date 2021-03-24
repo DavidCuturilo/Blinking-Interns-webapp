@@ -13,4 +13,18 @@
             </div>
         </div>
     </div>
+
+    <div class="modal" *ngIf="this.modalActive">
+      <div class="modal-inner">
+        <div>{{this.modalData.status}}</div>
+        <div>{{this.modalData.text}}</div>
+        <div>{{this.modalData.title}}</div>
+        <div>{{this.modalData.status}}</div>
+        <div>{{this.modalData.status}}</div>
+
+        <div class="close-modal" (click)="closeModal()">X</div>
+      </div>
+
+
+    </div>
 </div>

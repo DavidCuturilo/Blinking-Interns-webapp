@@ -9,16 +9,19 @@ import { TaskType } from '../shared/models/task.model';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  tasks: Task[] = [{title: 'Task1', text: 'vise informacija', status: true, type: TaskType.BACK_END, progress: 30}, 
-                   {title: 'Task2', text: 'vise informacija', status: false, type: TaskType.FRONT_END, progress: 15}, 
+  tasks: Task[] = [{title: 'Task1', text: 'vise informacija', status: true, type: TaskType.BACK_END, progress: 30},
+                   {title: 'Task2', text: 'vise informacija', status: false, type: TaskType.FRONT_END, progress: 15},
                    {title: 'Task3', text: 'vise informacija', status: true, type: TaskType.FULL_STACK, progress: 60},
                    {title: 'Task3', text: 'vise informacija', status: true, type: TaskType.FULL_STACK, progress: 80}];
 
   constructor() { }
 
   ngOnInit(): void {
-    
+    this.modalActive=false;
   }
+
+  public modalData: Task;
+  public modalActive:boolean;
 
   getImageUrl(taskType: TaskType){
     let imageUrl = '../../assets/pictures/';
@@ -35,7 +38,12 @@ export class HomePageComponent implements OnInit {
     return imageUrl;
   }
 
-  showDetails(task){
-    console.log(task);
+  showDetails(task:Task){
+    this.modalActive=true;
+    this.modalData=task;
+  }
+
+  closeModal(){
+    this.modalActive=false;
   }
 }
