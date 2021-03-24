@@ -1,3 +1,4 @@
+import { HttpService } from './../services/http.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
@@ -15,11 +16,10 @@ export class RegisterFormComponent implements OnInit {
 
   isSelected = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpService) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      'userType' : new FormControl (null, [Validators.required]),
       'fullName': new FormControl(null, [Validators.required]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(8)])
@@ -28,15 +28,31 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit(internRadio: HTMLInputElement){
     console.log(this.signupForm);
-    
+
     this.showSpinner = true;
-    setTimeout (() => {
-      this.showSpinner = false;
-    }, 1000);
-    
+
+    let internOrMentor: "intern"|"mentor"='mentor';
     if(internRadio.checked){
-      
+      internOrMentor="intern"
     }
+
+    this.http.register(
+      this.signupForm.get('fullName').value,
+      this.signupForm.get('email').value,
+      this.signupForm.get('password').value,
+      internOrMentor
+    ).subscribe(data=>{
+      //Success
+      // console.log("uspesno",data)
+      this.showSpinner = false;
+      this.router.navigate(['user-profile']);
+    }, error =>{
+      //Fail
+      // console.log("greska",error.error);
+      this.showSpinner = false;
+    })
+
+
     this.signupForm.reset();
 
   }
