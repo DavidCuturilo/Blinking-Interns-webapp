@@ -1,3 +1,4 @@
+import { AppComponent } from './app.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,7 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RegisterFormComponent } from './register-form/register-form.component';
 
 const routes: Routes = [
-  { path: '', component: HeaderComponent },
+  { path: '', children: [] },
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
   { path: 'not-found', component: PageNotFoundComponent },

@@ -16,4 +16,15 @@ export class HttpService {
     const payload = {email: email, password: password};
     return this.http.post<{email:string, password: string}>(`http://${this.host}:${this.port}/intern/login`,payload);
   }
+
+  register(full_name:string, email:string, password:string, usertype: "intern" | "mentor"){
+    const payload = {intern:{full_name:full_name, email:email, password: password}};
+    let url = `http://${this.host}:${this.port}/`;
+    if(usertype==="intern"){
+      url+="intern"
+    }else{
+      url+="mentor"
+    }
+    return this.http.post<{full_name:string, email:string, password:string}>(url,payload);
+  }
 }
