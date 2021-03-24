@@ -1,0 +1,115 @@
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+   
+
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        // border-style: groove;
+
+        width: 100%;
+        height: 90%;
+
+        h1 {
+            margin: 0 0 20px 0;
+        }
+
+        
+
+        .task-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-grow: 1;
+            height: 100%;
+            width: 100%;
+
+            .task {
+                width: 30%;
+                display: flex;
+               
+                flex-direction: column;
+                align-items: center;
+                flex-grow: 1;
+                margin: 20px;
+                font-size: large;
+
+                // border: lightcoral;
+                // border-style: ridge;
+              
+                border-radius: 10px;
+
+               
+
+                mat-card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+
+                    h3{
+                        font-size: x-large;
+                    }
+
+                    .image {
+                        height: 150px;
+                        width: 400px;
+                    }
+                   
+                    .progress-bar {
+                        
+                        width: 75%;
+                        height: 5px;
+                        border-style: initial;
+                        background-color: rgba(211, 211, 211, 0.466);
+                        border-radius: 15px;
+
+                        .bar {
+                            height: 100%;
+                            margin: 0;
+                            padding: 0;
+                            
+                            border-radius: 15px;
+                            background-color: lightgreen;
+                        }
+
+                       
+                    }
+
+                    label {
+                        position: relative;
+                        right: 140px;
+                        font-size: small;
+                    }
+
+                    .button-details {
+                        position: relative;
+                        top: 25px;
+                        left: 130px;
+
+                        padding: 5px 15px;
+                        margin: 5px 0 20px 0;
+    
+                        background-color: white;
+                        border-radius: 20px;
+                        outline: none;
+
+
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.644);
+                            color: whitesmoke;
+                        }
+                    }
+                }
+
+               
+            }
+        }
+    }
+}

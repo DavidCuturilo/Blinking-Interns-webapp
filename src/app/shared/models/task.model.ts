@@ -6,4 +6,12 @@ export  interface Task{
     text: string;
     status: boolean;
     mentor_id?: Mentor[];
+    type: TaskType;
+    progress: number;
+}
+
+export enum TaskType {
+    FRONT_END = 'Front_end',
+    BACK_END = 'Back_end',
+    FULL_STACK = 'Full_stack'
 }

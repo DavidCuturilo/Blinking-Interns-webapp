@@ -11,6 +11,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from  '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
@@ -50,7 +52,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
