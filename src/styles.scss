@@ -1,10 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --blinking-primary: #dddddd;
-    --blinking-secondary: hsl(0, 1%, 53%);
+    --blinking-secondary: hsl(0, 96%, 45%);
     --blinking-background: #146fa3;
-    --blinking-text: #e0ffff;
+    --blinking-text: #d1faff;
+    --blinking-black: #000000;
 
 }
+
+mat-dialog-container {
+    padding: 0px !important;
+}
+
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

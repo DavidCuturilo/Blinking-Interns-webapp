@@ -1,0 +1,197 @@
+.container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+
+    .personal-info-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .image {
+            height: 100%;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            .image-user {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 30px;
+                margin: 5px 0 10px 0;
+            }
+
+            .image-frame {
+                height: 80%;
+                width: 400px;
+                // width: 80%;
+                border: rgba(0, 0, 0, 0.37);
+                border-style: groove;
+                
+            }
+        }
+
+        .vertical-line {
+            height: 100%;
+            width: 2px;
+            
+            background-color: rgba(0, 0, 0, 0.37);
+        }
+
+        .user-info {
+            height: 100%;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            .header {
+                margin: 15px 0 10px 0;
+                align-self: center;
+                font-size: 30px;
+                font-weight: 500;
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            .window-information {
+                width: 90%;
+                display: flex;
+                justify-content: space-around;
+
+                .information {
+                    font-family: 'Courier New', Courier, monospace;
+                    height: 100px;
+                    width: 500px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    margin: 40px;
+    
+                    .email {
+                        margin: 10px;
+                    }
+    
+                    mat-divider {
+                        margin: 5px 0 5px 10px;
+                        color: black;
+                        border-top-style: solid;
+                        border-top-width: 2px; 
+                        width: 350px;
+                    }
+    
+                    .password {
+                        margin: 10px;
+                    }
+                }
+
+                .settings {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    margin: 40px;
+
+                    .settings-icon {
+                        display: flex;
+                        align-items: center;
+
+                        .label-settings {
+                            font-family: 'Courier New', Courier, monospace;
+                            margin: 10px;
+                        }
+                    }
+
+                    .change-password {
+                        font-family: 'Courier New', Courier, monospace;
+                    }
+                   
+                }
+
+            }
+
+            .user-status {
+                margin: 20px 0 10px 80px;
+                height: 100px;
+                width: 80%;
+
+                .status-label {
+                    font-family: 'Courier New', Courier, monospace;
+                    margin: 10px;
+                }
+                
+                .status {
+                    width: 400px;
+
+                    .status-input {
+                        margin: 10px;
+                        width: 300px;
+                        height: 40px;
+                    }
+
+                }
+               
+            }
+            
+        }
+
+    }
+
+    hr {
+        margin: 0;
+        width: 100%;
+        height: 1px;
+    }
+
+    .tasks-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .task-section {
+            margin: 10px;
+            padding: 10px;
+            height: 90%;
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            // border: var(--blinking-background);       
+            // border-style: solid;
+
+            .image-section {
+                width: 33%;
+                height: 100%;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+
+            }
+
+            .task-info-section {
+                height: 100%;
+                width: 33%;
+            }
+
+            .download-section {
+                height: 100%;
+                width: 33%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+        }
+
+    }
+}

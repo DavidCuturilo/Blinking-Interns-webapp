@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TaskInfoModalComponent } from '../shared/modals/task-info-modal/task-info-modal.component';
 import { Task } from '../shared/models/task.model';
 
 import { TaskType } from '../shared/models/task.model';
@@ -9,12 +11,18 @@ import { TaskType } from '../shared/models/task.model';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  tasks: Task[] = [{title: 'Task1', text: 'vise informacija', status: true, type: TaskType.BACK_END, progress: 30},
-                   {title: 'Task2', text: 'vise informacija', status: false, type: TaskType.FRONT_END, progress: 15},
-                   {title: 'Task3', text: 'vise informacija', status: true, type: TaskType.FULL_STACK, progress: 60},
-                   {title: 'Task3', text: 'vise informacija', status: true, type: TaskType.FULL_STACK, progress: 80}];
+  tasks: Task[] = [{title: 'Node js', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis iusto non vero assumenda deserunt facere, esse quam autem, nihil tempora repudiandae? Ut quasi incidunt quas pariatur, labore consequuntur sapiente optio est totam iure magnam fugit commodi. Similique iste itaque totam?', status: false, type: TaskType.BACK_END, progress: 30},
+                   {title: 'Angular App', text: 'vise informacija', status: false, type: TaskType.FRONT_END, progress: 15},
+                   {title: 'Full service', text: 'vise informacija', status: true, type: TaskType.FULL_STACK, progress: 60},
+                   {title: 'Full service', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 60},
+                   {title: 'Full service', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 60},
+                   {title: 'Full service', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 60},
+                   {title: 'Full service', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 60},
+                   {title: 'Full service', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 60},
 
-  constructor() { }
+                   {title: 'Task3', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 80}];
+
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.modalActive=false;
@@ -23,7 +31,7 @@ export class HomePageComponent implements OnInit {
   public modalData: Task;
   public modalActive:boolean;
 
-  getImageUrl(taskType: TaskType){
+  getImageUrl(taskType: TaskType) {
     let imageUrl = '../../assets/pictures/';
     switch(taskType){
       case TaskType.BACK_END: imageUrl += 'back.jpg'
@@ -38,12 +46,10 @@ export class HomePageComponent implements OnInit {
     return imageUrl;
   }
 
-  showDetails(task:Task){
-    this.modalActive=true;
+  showDetails(task:Task) {
+
+    this.dialog.open(TaskInfoModalComponent,{data: {...task}});
     this.modalData=task;
   }
 
-  closeModal(){
-    this.modalActive=false;
-  }
 }

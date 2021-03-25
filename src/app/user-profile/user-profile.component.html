@@ -1,1 +1,76 @@
-<p>user-profile works!</p>
+<div class="container">
+    <div class="personal-info-container">
+        <div class="image">
+            <div class="image-user">
+                User
+            </div>
+            <div class="image-frame">
+
+            </div>
+        </div>
+        <div class="vertical-line">
+
+        </div>
+        <div class="user-info">
+
+            <div class="header">
+                Personal Information
+            </div>
+            
+            <div class="window-information">
+                <div class="information">
+                    <div class="email">
+                        <label for="email">Email: </label>
+                        bane.stojanovic00@gmail.com
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="password">
+                        <label for="password">Password: </label>
+                        ******
+                    </div>
+                </div>
+                <div class="settings">
+                    <div class="settings-icon">
+                        <mat-icon>settings</mat-icon>
+                        <label class="label-settings">Settings</label>
+                    </div>
+                    
+                    
+                    <button mat-raised-button class="change-password">Change Password</button>
+                </div>
+            </div>
+               
+
+            <div class="user-status">
+                <label for="" class="status-label">Status</label>
+                <mat-icon>edit</mat-icon>
+                <div class="status">
+                    <input type="text" name="status" id="status" class="status-input">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+    <div class="tasks-container">
+        <div class="task-section" *ngFor="let task of tasks">
+            <div class="image-section">
+                <img src="{{getImageUrl(task.type)}}" alt="">
+            </div>
+            <div class="task-info-section">
+                    <div class="title">{{ task.title }}</div>
+                    <div class="text">{{ task.text }}</div>
+                    <div class="status">{{ task.status }}</div>            
+            </div>
+            <div class="download-section">
+                <button mat-fab
+                        color="primary"
+                        matTooltip='Download'
+                        matTooltipPosition = 'above'
+                        class="button-download">
+                    <mat-icon>download</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

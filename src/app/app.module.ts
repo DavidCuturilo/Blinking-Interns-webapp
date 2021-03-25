@@ -1,32 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-
-import { MatFormFieldModule } from  '@angular/material/form-field'
-import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatCardModule } from '@angular/material/card';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-
-
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
-import { LoginFormComponent } from './login-form/login-form.component'
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-import { RegisterFormComponent } from './register-form/register-form.component';
-
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
+import { LoginFormComponent } from './login-form/login-form.component'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { TaskInfoModalComponent } from './shared/modals/task-info-modal/task-info-modal.component';
+import { MaterialModule } from './material';
 
 
 
@@ -43,20 +30,16 @@ import { HomePageComponent } from './home-page/home-page.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    MatToolbarModule,
-    MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatRadioModule,
     HttpClientModule,
-    MatCardModule,
-    MatProgressBarModule
+    SharedModule,
+    MaterialModule
   ],
   providers: [],
+  entryComponents: [TaskInfoModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
