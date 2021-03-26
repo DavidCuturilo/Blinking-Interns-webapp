@@ -2,20 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskInfoModalComponent } from './modals/task-info-modal/task-info-modal.component';
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { MaterialModule } from '../material';
+import { ChangePasswordModalComponent } from './modals/change-password-modal/change-password-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [TaskInfoModalComponent],
+  declarations: [TaskInfoModalComponent, ChangePasswordModalComponent],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports: [
-    TaskInfoModalComponent
+    TaskInfoModalComponent,
+    ChangePasswordModalComponent
   ]
 })
 export class SharedModule { }

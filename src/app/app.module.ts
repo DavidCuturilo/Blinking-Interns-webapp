@@ -14,6 +14,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { TaskInfoModalComponent } from './shared/modals/task-info-modal/task-info-modal.component';
 import { MaterialModule } from './material';
+import { ChangePasswordModalComponent } from './shared/modals/change-password-modal/change-password-modal.component';
 
 
 
@@ -39,7 +40,7 @@ import { MaterialModule } from './material';
     MaterialModule
   ],
   providers: [],
-  entryComponents: [TaskInfoModalComponent],
+  entryComponents: [TaskInfoModalComponent,ChangePasswordModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -31,17 +31,23 @@
                 height: 80%;
                 width: 400px;
                 // width: 80%;
-                border: rgba(0, 0, 0, 0.37);
+                border: silver;
                 border-style: groove;
                 
+                img {
+                    margin-top: 10px;
+                    height: 100%;
+                    width: 100%;
+                }
             }
         }
 
         .vertical-line {
-            height: 100%;
+            margin-top: 10px;
+            height: 95%;
             width: 2px;
             
-            background-color: rgba(0, 0, 0, 0.37);
+            background-color: silver;
         }
 
         .user-info {
@@ -118,7 +124,7 @@
             }
 
             .user-status {
-                margin: 20px 0 10px 80px;
+                margin: 20px 0 10px 60px;
                 height: 100px;
                 width: 80%;
 
@@ -145,9 +151,11 @@
     }
 
     hr {
-        margin: 0;
-        width: 100%;
+        margin: 20px 0 20px 0;
+        width: 95%;
         height: 1px;
+        color: silver;
+        box-shadow: 7px 5px 13px -0.5px rgba(0, 0, 0, 0.37);
     }
 
     .tasks-container {
@@ -157,41 +165,86 @@
         flex-direction: column;
         align-items: center;
 
-        .task-section {
+        mat-card {
             margin: 10px;
-            padding: 10px;
-            height: 90%;
-            width: 95%;
+            margin-top: 20px;
+            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.66);
+            width: 80%;
             display: flex;
-            justify-content: center;
-            // border: var(--blinking-background);       
-            // border-style: solid;
+            justify-items: center;
+            // padding: 10px;
+          
 
-            .image-section {
-                width: 33%;
-                height: 100%;
-
-                img {
-                    height: 100%;
-                    width: 100%;
-                }
-
-            }
-
-            .task-info-section {
-                height: 100%;
-                width: 33%;
-            }
-
-            .download-section {
-                height: 100%;
-                width: 33%;
+            .task-section {
+                margin: 10px;
+                padding: 10px;
+                height: 90%;
+                width: 100%;
                 display: flex;
                 justify-content: center;
-                align-items: center;
-            }
+               
+    
+                .image-section {
+                    width: 34%;
+                    height: 100%;
+                  
+    
+                    img {
+                        height: 100%;
+                        width: 90%;
+                        margin-left: 10px;
+                        // justify-self: center;
+                    }
+    
+                }
+    
+                .task-info-section {
+                    height: 100%;
+                    width: 33%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-between;
+    
+                    .title {
+                        align-self: center;
+                        margin: 10px;
+                        font-size: 35px;
+                    }
+    
+                    .text {
+                        font-size: 20px;
+                        margin: 10px 0 10px 10px;
+    
+                    }
+    
+                }
+    
+                .download-section {
+                    height: 100%;
+                    width: 33%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
+                    button {
+                        width: 80px;
+                        height: 80px;
+                        display: flex;
+                        justify-items: center;
+                        align-items: center;
+
+                        mat-icon {
+                            // padding: 0 !important;
+                            width: 80px;
+                            font-size: 30px;
+                        }
+                    }
+                }
+    
+            }
         }
+        
 
     }
 }

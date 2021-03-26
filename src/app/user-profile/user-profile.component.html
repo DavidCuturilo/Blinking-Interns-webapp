@@ -5,7 +5,7 @@
                 User
             </div>
             <div class="image-frame">
-
+                <img src="../../assets/pictures/user-image.png" alt="">
             </div>
         </div>
         <div class="vertical-line">
@@ -36,7 +36,7 @@
                     </div>
                     
                     
-                    <button mat-raised-button class="change-password">Change Password</button>
+                    <button mat-raised-button class="change-password" (click)='changePassword(tasks[0])'>Change Password</button>
                 </div>
             </div>
                
@@ -53,6 +53,7 @@
     </div>
     <hr>
     <div class="tasks-container">
+        <mat-card>
         <div class="task-section" *ngFor="let task of tasks">
             <div class="image-section">
                 <img src="{{getImageUrl(task.type)}}" alt="">
@@ -60,7 +61,6 @@
             <div class="task-info-section">
                     <div class="title">{{ task.title }}</div>
                     <div class="text">{{ task.text }}</div>
-                    <div class="status">{{ task.status }}</div>            
             </div>
             <div class="download-section">
                 <button mat-fab
@@ -72,5 +72,6 @@
                 </button>
             </div>
         </div>
+    </mat-card>
     </div>
 </div>

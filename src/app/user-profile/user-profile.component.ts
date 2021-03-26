@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangePasswordModalComponent } from '../shared/modals/change-password-modal/change-password-modal.component';
 import { Task, TaskType } from '../shared/models/task.model';
 
 @Component({
@@ -13,7 +15,9 @@ export class UserProfileComponent implements OnInit {
                   ];
 
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
+
+  public modalData: Task;
 
   ngOnInit(): void {
   }
@@ -31,6 +35,11 @@ export class UserProfileComponent implements OnInit {
       default: imageUrl += 'Angular.png';
     }
     return imageUrl;
+  }
+
+  changePassword(task: Task) {
+    this.dialog.open(ChangePasswordModalComponent,{data: {...task}});
+    this.modalData=task;
   }
 
 }
