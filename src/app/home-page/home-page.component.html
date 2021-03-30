@@ -3,7 +3,7 @@
         <h1>All tasks</h1>
         <div class="task-container">
             <div class="task" *ngFor="let task of tasks">
-                <mat-card>
+                <mat-card class="individual-task">
                     <img mat-card-image class='image' src='{{ this.helperMethodService.getImageUrl(task.type)}}' alt="">
                     <h3>{{ task.title }}</h3>
                     <mat-progress-bar mode="determinate" value="{{ task.progress }}"></mat-progress-bar>

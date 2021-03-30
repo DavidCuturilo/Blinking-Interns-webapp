@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { kMaxLength } from 'buffer';
 import { Task } from '../../models/task.model';
 
@@ -11,7 +12,8 @@ import { Task } from '../../models/task.model';
 })
 export class ChangePasswordModalComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Task, public dialogRef: MatDialogRef<ChangePasswordModalComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Task, public dialogRef: MatDialogRef<ChangePasswordModalComponent>,
+              private _snackBar: MatSnackBar) { }
 
   changeForm: FormGroup;
   hide = true;
@@ -46,6 +48,8 @@ export class ChangePasswordModalComponent implements OnInit {
     const newPassword = this.changeForm.get('newPassword');
     const confirmNew = this.changeForm.get('confirmNew');
 
+    if(!newPassword.touched || !confirmNew.touched) return true;
+
     if(newPassword.value!=='' && confirmNew.value!=='') {
       return newPassword.value === confirmNew.value;
     }
@@ -60,12 +64,12 @@ export class ChangePasswordModalComponent implements OnInit {
     const oldPassword = this.changeForm.get('oldPassword');
     const newPassword = this.changeForm.get('newPassword');
 
-    if(newPassword.value!=='' && oldPassword.value!=='') {
+    if(!newPassword.touched || !oldPassword.touched) return false;
+
+    if(newPassword.value !=='' && oldPassword.value!=='') {
       return newPassword.value === oldPassword.value;
     }
-
     return false;
-    
   }
 
   isValid() {
@@ -75,4 +79,14 @@ export class ChangePasswordModalComponent implements OnInit {
     return true;
   }
 
+  submitChange() {
+
+    this._snackBar.open('Successfully changed password!', 'Close',{
+      duration: 2000,
+    });
+    this.changeForm.reset();
+  }
+  onClose(){
+    this.dialogRef.close();
+  }
 }
