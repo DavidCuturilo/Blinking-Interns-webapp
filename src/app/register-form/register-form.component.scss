@@ -153,6 +153,14 @@
                     cursor: not-allowed;
                 }
            }
+
+           .radio-container {
+               margin-top: 15px;
+
+               .radio-label{
+                   font-weight: 500;
+               }
+           }
         }        
 
     }
