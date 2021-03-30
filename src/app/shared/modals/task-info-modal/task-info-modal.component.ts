@@ -1,3 +1,4 @@
+import { TaskStatus } from './../../models/task.model';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HelperMethodService } from 'src/app/services/helperMethod.service';
@@ -11,10 +12,16 @@ import { Task, TaskType } from '../../models/task.model';
 })
 export class TaskInfoModalComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Task, public dialogRef: MatDialogRef<TaskInfoModalComponent>,
+  statusColor = "red"
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<TaskInfoModalComponent>,
               public helperMethodService: HelperMethodService) { }
 
   ngOnInit(): void {
+
+    if(this.data.task_status === "Active") this.statusColor="blue"
+    else if(this.data.task_status === "Completed") this.statusColor="green"
+    else this.statusColor="red"
+
   }
 
   closeModal() {

@@ -5,11 +5,11 @@
             <mat-spinner class="mat-spinner" color="--blinking-background"></mat-spinner>
         </div>
 
-        <form class="login-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()" *ngIf="!showSpinner">
+        <form class="login-form" [formGroup]="signupForm" (ngSubmit)="onSubmit(internRadio)" *ngIf="!showSpinner">
 
-            <p class="login-paragraph">Log in</p>         
-            
-           
+            <p class="login-paragraph">Log in</p>
+
+
             <label for="email" class="email">Email</label>
             <div class="change-text">
                 <input type="text" class="form-control" id="email" formControlName="email" #email>
@@ -23,6 +23,13 @@
                 <button class="remove-button" type="button" (click)="onClick(password)" *ngIf="!(password.value==='')">x</button>
             </div>
             <span class="span-password" *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched || password.value===''">{{passwordError}}</span>
+
+            <div class="radio-container">
+              <input type="radio" name="userType" id="intern" #internRadio checked>
+              <label for="intern">Intern</label>
+              <input type="radio" name="userType" id="mentor">
+              <label for="mentor">Mentor</label>
+            </div>
 
             <button class="login-button" [disabled]="!signupForm.get('password').valid || !signupForm.get('email').valid || email.value==='' || password.value===''">Log in</button>
         </form>

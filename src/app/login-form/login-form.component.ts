@@ -1,4 +1,4 @@
-import { HttpService } from './../services/http.service';
+import { LoginRegisterService } from './../services/login-register.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class LoginFormComponent implements OnInit {
   passwordError = 'Invalid password';
 
 
-  constructor(private httpService: HttpService, private router: Router) { }
+  constructor(private router: Router, private LoginRegisterService: LoginRegisterService) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -30,15 +30,29 @@ export class LoginFormComponent implements OnInit {
 
   }
 
-  onSubmit(){
+  onSubmit(internRadio: HTMLInputElement){
 
     this.showSpinner = true;
 
-    this.httpService.loginIntern(this.signupForm.get('email').value,this.signupForm.get('password').value)
-    .subscribe(data=>{
+    let internOrMentor: "intern"|"mentor"='mentor';
+    if(internRadio.checked){
+      internOrMentor="intern"
+    }
+
+    const email = this.signupForm.get('email').value;
+    const password = this.signupForm.get('password').value;
+    this.LoginRegisterService.loginIntern(email , password, internOrMentor)
+    .subscribe(data =>{
       //Success
       this.showSpinner = false;
-      this.router.navigate(['user-profile']);
+
+      const accessToken = data.payload.accessToken;
+      const refreshToken = data.payload.refreshToken;
+
+      document.cookie = `accessToken=${accessToken}`
+      document.cookie = `refreshToken=${refreshToken}`
+
+      this.router.navigate(['/']);
     }, error =>{
       //Fail
       if(error.error.statusCode === 10004){
@@ -57,6 +71,4 @@ export class LoginFormComponent implements OnInit {
   onClick(input){
     input.value = '';
   }
-
-
 }

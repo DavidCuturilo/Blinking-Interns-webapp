@@ -2,13 +2,13 @@
     <div class="card-container">
         <h1>All tasks</h1>
         <div class="task-container">
-            <div class="task" *ngFor="let task of tasks">
+            <div class="task" *ngFor="let assignment of assignments">
                 <mat-card>
-                    <img mat-card-image class='image' src='{{ this.helperMethodService.getImageUrl(task.type)}}' alt="">
-                    <h3>{{ task.title }}</h3>
-                    <mat-progress-bar mode="determinate" value="{{ task.progress }}"></mat-progress-bar>
-                    <label for="">{{ task.progress }}% Complete</label>
-                    <button class="button-details" (click)='showDetails(task)'>More details</button>
+                    <img mat-card-image class='image' src='{{ this.helperMethodService.getImageUrl(assignment.task.task_type)}}' alt="">
+                    <h3>{{ assignment.task.title }}</h3>
+                    <mat-progress-bar mode="determinate" value="{{ assignment.progress }}"></mat-progress-bar>
+                    <label for="">{{ assignment.progress }}% Complete</label>
+                    <button class="button-details" (click)='showDetails(assignment)'>More details</button>
                 </mat-card>
             </div>
         </div>

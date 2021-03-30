@@ -1,3 +1,5 @@
+import { TaskStatus } from './../shared/models/task.model';
+import { DataFromServerService } from './../services/data-from-server.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HelperMethodService } from '../services/helperMethod.service';
@@ -13,21 +15,34 @@ import { TaskType } from '../shared/models/task.model';
   providers: [HelperMethodService]
 })
 export class HomePageComponent implements OnInit {
-  tasks: Task[] = [{title: 'Node js', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis iusto non vero assumenda deserunt facere, esse quam autem, nihil tempora repudiandae? Ut quasi incidunt quas pariatur, labore consequuntur sapiente optio est totam iure magnam fugit commodi. Similique iste itaque totam?', status: false, type: TaskType.BACK_END, progress: 30},
-                   {title: 'Angular App', text: 'vise informacija', status: false, type: TaskType.FRONT_END, progress: 15},
-                   {title: 'Full service', text: 'vise informacija', status: true, type: TaskType.FULL_STACK, progress: 60},
-                   {title: 'Full service', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 60},
-                   {title: 'Full service', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 60},
-                   {title: 'Full service', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 60},
-                   {title: 'Full service', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 60},
-                   {title: 'Full service', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 60},
 
-                   {title: 'Task3', text: 'vise informacija', status: false, type: TaskType.FULL_STACK, progress: 80}];
+  assignments:{
+    date:string,
+    deadline:string,
+    progress:number,
+    task_status: TaskStatus,
+
+    mentor:{
+      full_name:string,
+      email:string
+    }
+
+    task:{
+      title:string,
+      text:string,
+      task_type:TaskType
+    }
+  }[] = []
 
   constructor(public dialog: MatDialog,
-              public helperMethodService: HelperMethodService) { }
+              public helperMethodService: HelperMethodService,
+              private dataFromServer: DataFromServerService) { }
 
   ngOnInit(): void {
+    this.dataFromServer.getAssignments().subscribe(data => {
+      this.assignments = data.payload;
+      console.log(this.assignments)
+    }, err => console.log("Error: ",err))
     this.modalActive=false;
   }
 
@@ -35,10 +50,10 @@ export class HomePageComponent implements OnInit {
   public modalActive:boolean;
 
 
-  showDetails(task:Task) {
+  showDetails(assignment:Task) {
 
-    this.dialog.open(TaskInfoModalComponent,{data: {...task}});
-    this.modalData=task;
+    this.dialog.open(TaskInfoModalComponent,{data: {...assignment}});
+    this.modalData=assignment;
   }
 
 }

@@ -1,4 +1,4 @@
-import { HttpService } from './../services/http.service';
+import { LoginRegisterService } from './../services/login-register.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
@@ -16,7 +16,7 @@ export class RegisterFormComponent implements OnInit {
 
   isSelected = false;
 
-  constructor(private router: Router, private http: HttpService) { }
+  constructor(private router: Router, private http: LoginRegisterService) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -45,7 +45,7 @@ export class RegisterFormComponent implements OnInit {
       //Success
       // console.log("uspesno",data)
       this.showSpinner = false;
-      this.router.navigate(['user-profile']);
+      this.router.navigate(['home-page']);
     }, error =>{
       //Fail
       // console.log("greska",error.error);

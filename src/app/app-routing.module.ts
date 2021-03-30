@@ -8,7 +8,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   // { path: '', children: [] },
-  { path: 'dashBoard', component: HomePageComponent },
+  { path: '', component: HomePageComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
   { path: 'not-found', component: PageNotFoundComponent },

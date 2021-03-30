@@ -1,4 +1,4 @@
-import { Mentor } from './mentor.model'; 
+import { Mentor } from './mentor.model';
 
 export  interface Task{
     task_id?: number;
@@ -14,4 +14,10 @@ export enum TaskType {
     FRONT_END = 'Front_end',
     BACK_END = 'Back_end',
     FULL_STACK = 'Full_stack'
+}
+
+export enum TaskStatus{
+  ACTIVE='Active',
+  COMPLETED='Completed',
+  OVERDUE='Overdue'
 }

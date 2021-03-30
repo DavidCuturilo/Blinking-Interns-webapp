@@ -1,43 +1,42 @@
 <div class="modal">
     <div class="modal-inner">
-      
+
         <div class="task-title">
           <h1 mat-dialog-title>
-            {{this.data.title}}       
+            {{this.data.task.title}}
           </h1>
         </div>
-        
-    
+
+
         <div class="position">
 
             <div class="task-text">
-                <img src="{{ this.helperMethodService.getImageUrl(this.data.type) }}" alt="">
+                <img src="{{ this.helperMethodService.getImageUrl(this.data.task.task_type) }}" alt="">
                 <div class="text">
-                    {{this.data.text}}
+                    {{this.data.task.text}}
                 </div>
-               
+
             </div>
-            
+
             <div class="inside-container">
 
                 <div class="status-progress">
-                    <div class="task-status-red" [ngClass]="{'task-status-green': data.status}">
-                        <label for="task-status" *ngIf="this.data.status">Completed</label>
-                        <label for="task-status" *ngIf="!this.data.status">Uncompleted</label>
+                    <div class="task-status {{statusColor}}" >
+                        <label for="task-status">{{this.data.task_status}}</label>
                     </div>
-    
+
                     <div class="task-progress">
                         <label for="task-progress">Progress: </label>
                         {{this.data.progress}}%
                     </div>
                 </div>
-              
-                
+
+
                 <div class="download">
                     <button mat-fab
                             matTooltip="Download"
                             matTooltipPosition = 'left'
-                            
+
                             class="download-button">
                     <mat-icon>download</mat-icon>
                     </button>
