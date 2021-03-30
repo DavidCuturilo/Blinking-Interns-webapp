@@ -11,7 +11,7 @@
         <div class="position">
 
             <div class="task-text">
-                <img src="{{ getImageUrl(this.data.type) }}" alt="">
+                <img src="{{ this.helperMethodService.getImageUrl(this.data.type) }}" alt="">
                 <div class="text">
                     {{this.data.text}}
                 </div>
@@ -24,7 +24,6 @@
                     <div class="task-status-red" [ngClass]="{'task-status-green': data.status}">
                         <label for="task-status" *ngIf="this.data.status">Completed</label>
                         <label for="task-status" *ngIf="!this.data.status">Uncompleted</label>
-                        <!-- {{this.data.status}} -->
                     </div>
     
                     <div class="task-progress">

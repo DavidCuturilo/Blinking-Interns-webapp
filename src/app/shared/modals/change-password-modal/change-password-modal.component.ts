@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { kMaxLength } from 'buffer';
 import { Task } from '../../models/task.model';
 
 @Component({
@@ -23,8 +24,8 @@ export class ChangePasswordModalComponent implements OnInit {
   ngOnInit(): void {
     this.changeForm = new FormGroup({
       'oldPassword': new FormControl(null,[Validators.required,Validators.minLength(8)]), 
-      'confirmOld' : new FormControl(null,[Validators.required,Validators.minLength(9)]),
       'newPassword' : new FormControl(null,[Validators.required,Validators.minLength(8)]),
+      'confirmNew' : new FormControl(null,[Validators.required,Validators.minLength(8)]),
     });
   }
 
@@ -32,18 +33,39 @@ export class ChangePasswordModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  getErrorMessage(control: string, compare, compareTo) {
+
+
+  getErrorMessage(control: string) {
     if(this.changeForm.get(control).hasError('required')){
       return 'You must enter a value';
     }
-
-    if(control === 'confirmOld'){
-      if(compare.value !==  compareTo.value){
-        return 'Password must match old password';
-      }
-      return;
-    }
     return 'Password must contain at least 8 characters';
+  }
+
+  doesTheNewPasswordMatch() {
+    const newPassword = this.changeForm.get('newPassword');
+    const confirmNew = this.changeForm.get('confirmNew');
+
+    if(newPassword.value!=='' && confirmNew.value!=='') {
+      return newPassword.value === confirmNew.value;
+    }
+
+    return true;
+  }
+
+  isTheNewPasswordSameAsOld() {
+
+    // if(this.modalData.superAdmin) return false;
+
+    const oldPassword = this.changeForm.get('oldPassword');
+    const newPassword = this.changeForm.get('newPassword');
+
+    if(newPassword.value!=='' && oldPassword.value!=='') {
+      return newPassword.value === oldPassword.value;
+    }
+
+    return false;
+    
   }
 
   isValid() {

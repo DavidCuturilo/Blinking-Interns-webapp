@@ -56,7 +56,7 @@
         <mat-card>
         <div class="task-section" *ngFor="let task of tasks">
             <div class="image-section">
-                <img src="{{getImageUrl(task.type)}}" alt="">
+                <img src="{{ this.helperMethodService.getImageUrl(task.type)}}" alt="">
             </div>
             <div class="task-info-section">
                     <div class="title">{{ task.title }}</div>
