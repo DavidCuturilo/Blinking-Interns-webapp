@@ -1,7 +1,6 @@
 .container {
     height: 100vh;
     display: flex;
-    // justify-content: center;
     align-items: center;
 
     .login-container {
@@ -16,7 +15,7 @@
         border-radius: 10px;
 
         width: 500px;
-        height: 400px;
+        height: 500px;
 
         margin: auto;
 
@@ -33,7 +32,6 @@
             align-items: flex-start;
 
             .change-text {
-                // display: flex;
                 
 
                 .remove-button {
@@ -63,8 +61,8 @@
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 font-weight: bolder;
                 margin: auto;
-                margin-top: 10px;
-                margin-bottom: 30px;
+                margin-top: 20px;
+                margin-bottom: 20px;
                 
                 
             } 
@@ -114,7 +112,7 @@
 
              .login-button {
                 margin: auto;
-                margin-top: 20px;
+                margin-top: 30px;
                 margin-bottom: 20px;
                 padding: 5px 20px;
    
@@ -133,11 +131,17 @@
                     opacity: 0.5;
                     cursor: not-allowed;
                 }
+            }
+
+           .radio-container {
+               margin-top: 5px;
+
+               .radio-label {
+                   font-size: medium;
+                   font-weight: 500;
+               }
            }
         }
-
-        
-
     }
 }
 
