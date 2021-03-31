@@ -2,16 +2,18 @@ import { HttpClient, HttpErrorResponse, HttpHandler, HttpInterceptor, HttpReques
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators'
+import { HelperMethodService } from './helper-method.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor(private router: Router, private http:HttpClient) { }
+  constructor(private router: Router, private http:HttpClient,
+              public helperMethod: HelperMethodService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler){
-    const accessToken = this.getCookie('accessToken');//get access token from cookie
+    const accessToken = this.helperMethod.getCookie('accessToken');//get access token from cookie
     const modifiedRequest = req.clone({ headers: req.headers.append('Authorization', accessToken)});
 
     return next.handle(modifiedRequest).pipe( tap( (event) => {},
@@ -20,7 +22,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         if(err.status === 401){
           //Get new access token
 
-          this.http.post<any>('http://localhost:8081/token',{refreshToken: this.getCookie("refreshToken")}).subscribe( data =>{
+          this.http.post<any>('http://localhost:8081/token',{refreshToken: this.helperMethod.getCookie("refreshToken")}).subscribe( data =>{
             document.cookie=`accessToken=${data.payload.accessToken}`
           }
           )
@@ -32,19 +34,5 @@ export class AuthInterceptorService implements HttpInterceptor {
     }))
   }
 
-  getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
+
 }
