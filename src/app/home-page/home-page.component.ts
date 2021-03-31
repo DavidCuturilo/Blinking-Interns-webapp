@@ -16,33 +16,12 @@ import { TaskType } from '../shared/models/task.model';
 })
 export class HomePageComponent implements OnInit {
 
-  assignments:{
-    date:string,
-    deadline:string,
-    progress:number,
-    task_status: TaskStatus,
-
-    mentor:{
-      full_name:string,
-      email:string
-    }
-
-    task:{
-      title:string,
-      text:string,
-      task_type:TaskType
-    }
-  }[] = []
-
   constructor(public dialog: MatDialog,
               public helperMethodService: HelperMethodService,
-              private dataFromServer: DataFromServerService) { }
+              public dataFromServer: DataFromServerService) { }
 
   ngOnInit(): void {
-    this.dataFromServer.getAssignments().subscribe(data => {
-      this.assignments = data.payload;
-      console.log(this.assignments)
-    }, err => console.log("Error: ",err))
+    this.dataFromServer.getAssignments();
     this.modalActive=false;
   }
 

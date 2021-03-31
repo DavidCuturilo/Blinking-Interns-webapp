@@ -2,7 +2,7 @@
     <div class="card-container">
         <h1>All tasks</h1>
         <div class="task-container">
-            <div class="task" *ngFor="let assignment of assignments">
+            <div class="task" *ngFor="let assignment of dataFromServer.assignments">
                 <mat-card class="individual-task">
                     <img mat-card-image class='image' src='{{ this.helperMethodService.getImageUrl(assignment.task.task_type)}}' alt="">
                     <h3>{{ assignment.task.title }}</h3>
