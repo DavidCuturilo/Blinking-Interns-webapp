@@ -15,19 +15,23 @@
     </div>
     <div  class="mentor-container"  *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'mentor'">
         <h1 class="mentor-h1">All interns</h1>
-        <div class="interns-container">
-            <mat-card class="interns">
-                <div class="image-div">
-                    <img mat-card-image class="image" src="../../assets/pictures/user-image.png" alt="">
-                </div>
-                <div class="intern-information">
-                    <h3>Intern name</h3>
-                    <h4>Intern email</h4>
-                    <h4>Nubmer of completed tasks: </h4>
-                </div>
-                <div class="more-information">
-                    <button mat-fab>See more information</button>
-                </div>
+        <div class='interns-container'>
+            <mat-card class="interns" *ngFor="let intern of dataFromServer.interns">
+                    <div class="image-div">
+                        <img mat-card-image class="image-intern" src="../../assets/pictures/user-image.png" alt="">
+                    </div>
+                    <div class="intern-information">
+                        <p class="name">{{ intern.full_name }}</p>
+                        <div class="email">
+                            <label >Email:</label>
+                            <p>{{ intern.email }}</p>
+                        </div>
+                        
+                        <p>Nubmer of completed tasks</p>
+                    </div>
+                    <div class="more-information">
+                        <button mat-raised-button class="see-more">See more</button>
+                    </div>
             </mat-card>
         </div>
     </div>
