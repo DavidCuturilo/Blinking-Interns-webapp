@@ -26,7 +26,7 @@ export class DataFromServerService {
     }
   }[] = []
 
-  private host:string = "localhost";
+  private host:string = "10.241.107.138";
   private port:number = 8080;//port for data server
 
   private numberOfTries = 0;

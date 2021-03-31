@@ -141,4 +141,37 @@
             }
         }
     }
+
+    .mentor-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        
+        width: 100%;
+        height: 90%;
+
+        .mentor-h1 {
+            justify-self: flex-start;
+        }
+
+        .interns-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+
+
+            .interns {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .image-div {
+                    height: 100px;
+                    width: 100px;
+                }
+            }
+        }
+    }
 }
