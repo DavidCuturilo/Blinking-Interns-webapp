@@ -1,7 +1,14 @@
 import { TaskType } from '../shared/models/task.model';
 
+interface AccessToken {
+  email:string,
+  id:number,
+  type:string,
+  iat:number,
+  exp: number
+}
 export class HelperMethodService {
-    
+
     getImageUrl(taskType: TaskType) {
         let imageUrl = '../../assets/pictures/';
         switch(taskType){
@@ -11,7 +18,7 @@ export class HelperMethodService {
           break;
           case TaskType.FULL_STACK: imageUrl += 'full.jpeg'
           break;
-    
+
           default: imageUrl += 'Angular.png';
         }
         return imageUrl;
@@ -33,9 +40,9 @@ export class HelperMethodService {
         return "";
       }
 
-      getDataFromAccesToken() {
+      getDataFromAccesToken(): AccessToken {
         const accessToken = this.getCookie("accessToken");
         return JSON.parse(atob(accessToken.split('.')[1]));
       }
-    
+
 }

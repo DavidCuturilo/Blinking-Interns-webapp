@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
@@ -8,10 +9,17 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   logOut(){
-    this.authService.loggedIn = false;
+    this.delete_cookie("accessToken");
+    this.delete_cookie("refreshToken");
+    this.router.navigate(['login']);
+    this.authService.loggedIn=false;
+  }
+
+  delete_cookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 
   ngOnInit(): void {

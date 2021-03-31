@@ -16,7 +16,7 @@
             <div class="header">
                 Personal Information
             </div>
-            
+
             <div class="window-information">
                 <div class="information">
                     <div class="email">
@@ -26,7 +26,6 @@
                     <mat-divider></mat-divider>
                     <div class="password">
                         <label for="password">Full name: </label>
-                        {{ this.helperMethodService.getDataFromAccesToken().name }}
                     </div>
                 </div>
                 <div class="settings">
@@ -34,12 +33,12 @@
                         <mat-icon (click)='changePassword(tasks[0])'>settings</mat-icon>
                         <label class="label-settings">Settings</label>
                     </div>
-                    
-                    
+
+
                     <button mat-raised-button class="change-password" (click)='changePassword(tasks[0])'>Change Password</button>
                 </div>
             </div>
-               
+
 
             <div class="user-status">
                 <label for="" class="status-label">Status</label>
@@ -48,14 +47,14 @@
                     <input type="text" name="status" id="status" class="status-input" [disabled]='!edit'>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <hr>
     <div class="tasks-container">
         <div class="group-tasks">
             <div class="task-section" *ngFor="let task of tasks">
-                
+
                 <mat-card class="individual-task">
                     <div class="image-section">
                         <img src="{{ this.helperMethodService.getImageUrl(task.type)}}" alt="">
