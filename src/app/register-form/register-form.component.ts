@@ -1,4 +1,4 @@
-import { LoginRegisterService } from './../services/login-register.service';
+import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
@@ -16,7 +16,7 @@ export class RegisterFormComponent implements OnInit {
 
   isSelected = false;
 
-  constructor(private router: Router, private http: LoginRegisterService) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -36,19 +36,20 @@ export class RegisterFormComponent implements OnInit {
       internOrMentor="intern"
     }
 
-    this.http.register(
+    this.authService.register(
       this.signupForm.get('fullName').value,
       this.signupForm.get('email').value,
       this.signupForm.get('password').value,
       internOrMentor
     ).subscribe(data=>{
       //Success
-      // console.log("uspesno",data)
+      this.authService.loggedIn = true;
+
       this.showSpinner = false;
       this.router.navigate(['home-page']);
     }, error =>{
       //Fail
-      // console.log("greska",error.error);
+      this.authService.loggedIn = false;
       this.showSpinner = false;
     })
 

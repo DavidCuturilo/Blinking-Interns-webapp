@@ -14,22 +14,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     const accessToken = this.getCookie('accessToken');//get access token from cookie
     const modifiedRequest = req.clone({ headers: req.headers.append('Authorization', accessToken)});
 
-    return next.handle(modifiedRequest).pipe( tap( (event) => {},
-    (err:any)=>{
-      if(err instanceof HttpErrorResponse){
-        if(err.status === 401){
-          //Get new access token
-
-          this.http.post<any>('http://localhost:8081/token',{refreshToken: this.getCookie("refreshToken")}).subscribe( data =>{
-            document.cookie=`accessToken=${data.payload.accessToken}`
-          }
-          )
-
-        }else if (err.status === 403){
-          this.router.navigate(['/login'])
-        }
-      }
-    }))
+    return next.handle(modifiedRequest).pipe();
   }
 
   getCookie(cname) {

@@ -1,4 +1,4 @@
-import { LoginRegisterService } from './../services/login-register.service';
+import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class LoginFormComponent implements OnInit {
   passwordError = 'Invalid password';
 
 
-  constructor(private router: Router, private LoginRegisterService: LoginRegisterService) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -32,7 +32,6 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(internRadio: HTMLInputElement){
 
-    this.showSpinner = true;
 
     let internOrMentor: "intern"|"mentor"='mentor';
     if(internRadio.checked){
@@ -41,10 +40,10 @@ export class LoginFormComponent implements OnInit {
 
     const email = this.signupForm.get('email').value;
     const password = this.signupForm.get('password').value;
-    this.LoginRegisterService.loginIntern(email , password, internOrMentor)
+    this.authService.loginIntern(email , password, internOrMentor)
     .subscribe(data =>{
       //Success
-      this.showSpinner = false;
+      this.authService.loggedIn = true;
 
       const accessToken = data.payload.accessToken;
       const refreshToken = data.payload.refreshToken;
@@ -55,6 +54,8 @@ export class LoginFormComponent implements OnInit {
       this.router.navigate(['/']);
     }, error =>{
       //Fail
+      this.authService.loggedIn = false;
+
       if(error.error.statusCode === 10004){
         this.emailError=error.error.message;
         this.passwordError='';
@@ -62,7 +63,6 @@ export class LoginFormComponent implements OnInit {
         this.passwordError=error.error.message;
         this.emailError='';
       }
-      this.showSpinner = false;
     })
 
     this.signupForm.reset();
