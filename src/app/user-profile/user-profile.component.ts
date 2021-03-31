@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { HelperMethodService } from '../services/helperMethod.service';
+import { HelperMethodService } from '../services/helper-method.service';
 import { ChangePasswordModalComponent } from '../shared/modals/change-password-modal/change-password-modal.component';
 import { Task, TaskType } from '../shared/models/task.model';
 

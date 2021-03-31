@@ -7,13 +7,15 @@
     img {
       height: 44px;
       cursor: pointer;
+      outline: none;
     }
 
     .home-link {
       cursor: pointer;
-      background-color: inherit;
+      // background-color: inherit;
+      outline: none;
       padding: 15px;
-      transition: background-color 0.3s;
+      // transition: background-color 0.3s;
 
       &:hover{
         background-color: black;

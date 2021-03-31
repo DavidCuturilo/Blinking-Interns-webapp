@@ -16,6 +16,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { TaskInfoModalComponent } from './shared/modals/task-info-modal/task-info-modal.component';
 import { MaterialModule } from './material';
 import { ChangePasswordModalComponent } from './shared/modals/change-password-modal/change-password-modal.component';
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -42,9 +44,9 @@ import { ChangePasswordModalComponent } from './shared/modals/change-password-mo
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptorService,
+    useClass: AuthInterceptorService, 
     multi:true
-  }],
+  }, AuthGuard, AuthService],
   entryComponents: [TaskInfoModalComponent,ChangePasswordModalComponent],
   bootstrap: [AppComponent]
 })

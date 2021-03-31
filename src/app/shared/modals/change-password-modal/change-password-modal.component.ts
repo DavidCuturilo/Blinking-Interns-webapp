@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { kMaxLength } from 'buffer';
 import { Task } from '../../models/task.model';
 
 @Component({
@@ -59,7 +58,6 @@ export class ChangePasswordModalComponent implements OnInit {
 
   isTheNewPasswordSameAsOld() {
 
-    // if(this.modalData.superAdmin) return false;
 
     const oldPassword = this.changeForm.get('oldPassword');
     const newPassword = this.changeForm.get('newPassword');

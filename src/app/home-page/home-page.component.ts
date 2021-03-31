@@ -2,7 +2,7 @@ import { TaskStatus } from './../shared/models/task.model';
 import { DataFromServerService } from './../services/data-from-server.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { HelperMethodService } from '../services/helperMethod.service';
+import { HelperMethodService } from '../services/helper-method.service';
 import { TaskInfoModalComponent } from '../shared/modals/task-info-modal/task-info-modal.component';
 import { Task } from '../shared/models/task.model';
 

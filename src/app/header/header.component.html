@@ -1,14 +1,14 @@
 <mat-toolbar class="toolbar">
-        <img src="../../assets/pictures/blinking.png" alt="" routerLink='/'>
+        <img src="../../assets/pictures/blinking.png" alt="" routerLink='/home'>
         <!-- <p class="header-title" routerLink='/'>Blinking Intern -->
-        <div class="home-link" routerLink='/' routerLinkActive='nav-link-active'>Blinking Interns</div>
+        <div class="home-link" routerLink='/home'>Blinking Interns</div>
 
         <nav>
           
-          <div class="nav-links" routerLink='/register' routerLinkActive='nav-link-active'>Register</div>
-          <div class="nav-links" routerLink='/login' routerLinkActive='nav-link-active'>Login</div>
-          <div class="nav-links" routerLink='/user-profile' routerLinkActive='nav-link-active'>Profile</div>
-          <div class="nav-links" routerLinkActive='nav-link-active'>Menu</div>
+          <div class="nav-links" routerLink='/register' routerLinkActive='nav-link-active' *ngIf="!this.authService.loggedIn">Register</div>
+          <div class="nav-links" routerLink='/login' routerLinkActive='nav-link-active' *ngIf="!this.authService.loggedIn">Login</div>
+          <div class="nav-links" routerLink='/user-profile' routerLinkActive='nav-link-active'*ngIf="this.authService.loggedIn">Profile</div>
+          <div class="nav-links" routerLink='/home' routerLinkActive='nav-link-active' *ngIf="this.authService.loggedIn">Home</div>
         </nav>
 
 </mat-toolbar>

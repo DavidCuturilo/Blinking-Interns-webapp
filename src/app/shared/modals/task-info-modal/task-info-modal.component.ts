@@ -1,8 +1,6 @@
-import { TaskStatus } from './../../models/task.model';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { HelperMethodService } from 'src/app/services/helperMethod.service';
-import { Task, TaskType } from '../../models/task.model';
+import { HelperMethodService } from 'src/app/services/helper-method.service';
 
 @Component({
   selector: 'app-task-info-modal',
