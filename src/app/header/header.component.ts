@@ -23,6 +23,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.isAuthenticated().then( response =>{
+      this.authService.loggedIn=true;
+    }, errorResponse =>{
+      this.authService.loggedIn=false;
+    });
   }
 
 }
