@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthInterceptorService } from '../services/auth-interceptor.service';
 import { HelperMethodService } from '../services/helper-method.service';
 import { ChangePasswordModalComponent } from '../shared/modals/change-password-modal/change-password-modal.component';
 import { Task, TaskType } from '../shared/models/task.model';
@@ -8,7 +9,7 @@ import { Task, TaskType } from '../shared/models/task.model';
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
-  providers: [HelperMethodService]
+  providers: [HelperMethodService,AuthInterceptorService]
 })
 export class UserProfileComponent implements OnInit {
   tasks: Task[] = [{title: 'Node js', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis iusto non vero assumenda deserunt facere, esse quam autem, nihil tempora repudiandae? Ut quasi incidunt quas pariatur, labore consequuntur sapiente optio est totam iure magnam fugit commodi. Similique iste itaque totam?', status: true, type: TaskType.BACK_END, progress: 30},

@@ -40,7 +40,7 @@ export class LoginFormComponent implements OnInit {
 
     const email = this.signupForm.get('email').value;
     const password = this.signupForm.get('password').value;
-    this.authService.loginIntern(email , password, internOrMentor)
+    this.authService.login(email , password, internOrMentor)
     .subscribe(data =>{
       //Success
       this.authService.loggedIn = true;

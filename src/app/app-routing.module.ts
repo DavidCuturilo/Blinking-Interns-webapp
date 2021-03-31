@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'not-found', component: PageNotFoundComponent },
   { path: 'user-profile', canActivate: [AuthGuard], component: UserProfileComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: '**', redirectTo: 'not-found', pathMatch: 'full'}
+  { path: '**', redirectTo: 'not-found', pathMatch: 'full'} 
 ];
 
 @NgModule({

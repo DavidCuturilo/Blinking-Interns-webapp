@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   loggedIn = false;
-
   private host:string = "localhost";
   private portAuth:number = 8081;//port for auth server
 
@@ -16,7 +15,7 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
 
-  loginIntern(email:string, password:string, usertype: "intern" | "mentor"): Observable<any>{
+  login(email:string, password:string, usertype: "intern" | "mentor"): Observable<any>{
     const payload = {email: email, password: password};
     let url = `http://${this.host}:${this.portAuth}/login/`
     url+= usertype === "intern" ? "intern" : "mentor"
@@ -30,7 +29,7 @@ export class AuthService {
     return this.http.post<any>(url,payload);
   }
 
-  async isAuthenticated() {
+  isAuthenticated() {
     let url = `http://${this.host}:${this.portData}/`
     //Sends empty GET request, but auth-interceptor sets accessToken in Authorization header
     return this.http.get<any>(url).toPromise()

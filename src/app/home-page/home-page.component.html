@@ -1,5 +1,5 @@
 <div class="main-container">
-    <div class="card-container">
+    <div class="card-container" *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'intern'">
         <h1>All tasks</h1>
         <div class="task-container">
             <div class="task" *ngFor="let assignment of dataFromServer.assignments">
@@ -12,5 +12,8 @@
                 </mat-card>
             </div>
         </div>
+    </div>
+    <div *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'mentor'">
+      MENTOR
     </div>
 </div>

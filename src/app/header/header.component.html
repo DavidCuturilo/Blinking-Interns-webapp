@@ -5,10 +5,11 @@
 
         <nav>
           
-          <div class="nav-links" routerLink='/register' routerLinkActive='nav-link-active' *ngIf="!this.authService.loggedIn">Register</div>
           <div class="nav-links" routerLink='/login' routerLinkActive='nav-link-active' *ngIf="!this.authService.loggedIn">Login</div>
+          <div class="nav-links" routerLink='/register' routerLinkActive='nav-link-active' *ngIf="!this.authService.loggedIn">Register</div>
           <div class="nav-links" routerLink='/user-profile' routerLinkActive='nav-link-active'*ngIf="this.authService.loggedIn">Profile</div>
           <div class="nav-links" routerLink='/home' routerLinkActive='nav-link-active' *ngIf="this.authService.loggedIn">Home</div>
+          <div class="nav-links" routerLink='/login' routerLinkActive='nav-link-active' *ngIf="this.authService.loggedIn" (click)= 'logOut()'>Log out</div>
         </nav>
 
 </mat-toolbar>

@@ -1,3 +1,4 @@
+import { HelperMethodService } from 'src/app/services/helper-method.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -44,9 +45,9 @@ import { AuthService } from './services/auth.service';
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptorService, 
+    useClass: AuthInterceptorService,
     multi:true
-  }, AuthGuard, AuthService],
+  }, AuthGuard, AuthService, HelperMethodService],
   entryComponents: [TaskInfoModalComponent,ChangePasswordModalComponent],
   bootstrap: [AppComponent]
 })

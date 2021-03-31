@@ -49,4 +49,8 @@ export class DataFromServerService {
       return this.assignments
     })
   }
+
+  getAllInterns(){
+
+  }
 }
