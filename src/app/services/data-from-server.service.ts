@@ -25,10 +25,10 @@ export class DataFromServerService {
     }
   }[] = []
 
+  private host:string = "10.241.107.138";
 
   interns = []
 
-  private host:string = "localhost";
   private port:number = 8080;//port for data server
 
   private numberOfTries = 0;
@@ -56,6 +56,7 @@ export class DataFromServerService {
   getInternsById(){
     let url = `http://${this.host}:${this.port}/intern`
     return this.http.get<any>(url).subscribe((response)=>{
+      console.log(response.payload);
       this.interns = response.payload;
     });
   }
