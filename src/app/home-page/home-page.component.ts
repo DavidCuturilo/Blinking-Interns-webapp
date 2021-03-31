@@ -26,7 +26,7 @@ export class HomePageComponent implements OnInit {
     if(type === "intern"){
       this.dataFromServer.getAssignments();
     }else if( type === "mentor"){
-      this.dataFromServer.getAllInterns();
+      this.dataFromServer.getInternsById();
     }
     this.modalActive=false;
   }
