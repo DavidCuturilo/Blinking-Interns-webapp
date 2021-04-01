@@ -39,8 +39,8 @@ export class HomePageComponent implements OnInit {
   public modalData: Task;
   public modalActive:boolean;
 
-  addTaskModal(){
-    const dialogRef = this.addTaskDialog.open(AddTaskModalComponent);
+  addTaskModal(interns){
+    const dialogRef = this.addTaskDialog.open(AddTaskModalComponent,{data:interns});
   }
 
   showDetails(assignment:Task) {
@@ -48,6 +48,7 @@ export class HomePageComponent implements OnInit {
     this.dialog.open(TaskInfoModalComponent,{data: {...assignment}});
     this.modalData=assignment;
   }
+
   seeMore(intern: Intern) {
     localStorage.setItem("intern",JSON.stringify(intern))
     this.router.navigate(['/user-profile']);

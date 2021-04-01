@@ -8,8 +8,8 @@
 
 
   [mat-dialog-title]{
+    padding: 25px 0;
     text-align: center;
-    padding: 20px 0;
     font-size: 2rem;
     background-color: var(--blinking-background);
     color:white;
@@ -17,48 +17,24 @@
 
 
   [mat-dialog-content]{
-
+    width: 100%;
+    overflow-x: hidden;
     .mat-dialog-content-inner{
-      padding: 0 25px;
-
-      .form-group{
-        display:flex;
+      max-height: 100%;
+      width: 100%;
+      padding: 0 40px;
+      form{
+        display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
 
-        margin: 5% 0;
-
-        label{
-          font-size: 1.4rem;
-        }
-
-        input{
-          outline:none;
-          border:none;
-          border-bottom: 1px solid black;
-          width: 50%;
-          min-width: 200px;
-
-          &:focus{
-            border-bottom: 3px solid black;
-            color:red;
-            font-size: 1.4rem;
-          }
-        }
-
-        textarea{
-          width: 50%;
-          min-width: 200px;
-          resize: none;
-
-          &:focus{
-            border: 2px solid black;
-            color:red;
-          }
+        .form-group{
+          display:flex;
+          flex-direction: column;
+          width: 40%;
+          margin: 3% 0;
         }
       }
     }
-
   }
-
-
 }
