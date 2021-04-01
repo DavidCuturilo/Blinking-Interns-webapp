@@ -66,4 +66,8 @@ export class DataFromServerService {
     let url = `http://${this.host}:${this.port}/assigned/${intern.id}`; //example url http://localhost:8080/assignment/9
     return this.http.get<any>(url);
   }
+
+  changePassword(newPassword:string){
+    console.log("SLANJE ZAHTEVA ZA PROMENOM SIFRE:",newPassword);
+  }
 }

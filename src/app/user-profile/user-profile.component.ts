@@ -24,6 +24,8 @@ export class UserProfileComponent implements OnInit {
   intern:Intern;
   assignments;
 
+  load: boolean =  false;
+
   edit = false;
   constructor(public dialog: MatDialog,
               public helperMethodService: HelperMethodService,
@@ -49,15 +51,23 @@ export class UserProfileComponent implements OnInit {
   }
 
   statusActive(filter: string,btn: HTMLButtonElement){
+
+    this.load= !this.load;
     if(this.activeFilters.includes(filter)){
       btn.classList.remove('statusActive');
-      this.activeFilters = this.activeFilters.filter(el => el !== filter);
     }
     else{
       btn.classList.add('statusActive');
-      this.activeFilters.push(filter);
     }
-
+    setTimeout(() => {
+      this.load= !this.load;
+      if(this.activeFilters.includes(filter)){
+        this.activeFilters = this.activeFilters.filter(el => el !== filter);
+      }
+      else{
+        this.activeFilters.push(filter);
+      }
+    },300);
   }
 
 }
