@@ -55,7 +55,7 @@
             width: 60%;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
 
             .header {
@@ -69,7 +69,9 @@
             .window-information {
                 width: 90%;
                 display: flex;
-                justify-content: space-around;
+                justify-content: flex-start;
+                align-items: center;
+                margin-left: 40px;
 
                 .information {
                     font-family: 'Courier New', Courier, monospace;
@@ -79,8 +81,8 @@
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    margin: 40px;
-    
+                    padding-left: 10px;
+
                     .email {
                         margin: 10px;
                     }
@@ -103,7 +105,8 @@
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    margin: 40px;
+                    height: 100px;
+                    margin-left: 20px;
 
                     .settings-icon {
                         display: flex;
@@ -125,7 +128,9 @@
             }
 
             .user-status {
-                margin: 20px 0 10px 60px;
+                margin-left: 40px;
+                padding-left: 10px;
+
                 height: 100px;
                 width: 80%;
 
@@ -170,11 +175,82 @@
         flex-direction: column;
         align-items: center;
         
+        .filters  {
+            width: 60%;
+            height: 20%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 20px;
+
+            .completed {
+                width: 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .completed-button {
+                    margin-left: 5px;
+                    padding: 10px;
+                    outline: none;
+                    border-width: 1px; 
+                    border-style: solid;
+                    border-radius: 15px;
+                    background-color: white;
+                }
+
+                .statusActive {
+                    background-color: green;
+                }
+            }
+
+            .active {
+                width: 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .active-button {
+                    margin-left: 5px;
+                    padding: 10px;
+                    outline: none;
+                    border-width: 1px; 
+                    border-style: solid;
+                    border-radius: 15px;
+                    background-color: white;
+                }
+
+                .statusActive {
+                    background-color: blue;
+                }
+            }
+
+            .overdue {
+                width: 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .overdue-button {
+                    margin-left: 5px;
+                    padding: 10px;
+                    outline: none;
+                    border-width: 1px; 
+                    border-style: solid;
+                    
+                    border-radius: 15px;
+                    background-color: white;
+                }
+
+                .statusActive {
+                    background-color: red;
+                }
+            }
+        }
 
         .group-tasks {
             margin: 20px 10px;
             padding: 0;
-            // box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.66);
             outline: none;
             width: 80%;
             display: flex;

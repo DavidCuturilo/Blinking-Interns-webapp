@@ -25,12 +25,13 @@
                         <div class="email">
                             <label >Email:</label>
                             <p>{{ intern.email }}</p>
+                            <p>Nubmer of completed tasks</p>
                         </div>
                         
-                        <p>Nubmer of completed tasks</p>
+                       
                     </div>
                     <div class="more-information">
-                        <button mat-raised-button class="see-more">See more</button>
+                        <button mat-raised-button class="see-more" (click)='seeMore()'>See more</button>
                     </div>
             </mat-card>
         </div>

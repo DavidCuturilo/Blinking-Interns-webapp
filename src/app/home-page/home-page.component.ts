@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HelperMethodService } from '../services/helper-method.service';
 import { TaskInfoModalComponent } from '../shared/modals/task-info-modal/task-info-modal.component';
 import { Task } from '../shared/models/task.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class HomePageComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               public helperMethodService: HelperMethodService,
-              public dataFromServer: DataFromServerService,) { }
+              public dataFromServer: DataFromServerService,
+              private router: Router) { }
 
   ngOnInit(): void {
     const { type } = this.helperMethodService.getDataFromAccesToken();
@@ -39,6 +41,10 @@ export class HomePageComponent implements OnInit {
 
     this.dialog.open(TaskInfoModalComponent,{data: {...assignment}});
     this.modalData=assignment;
+  }
+
+  seeMore() {
+    this.router.navigate(['/user-profile']);
   }
 
 }

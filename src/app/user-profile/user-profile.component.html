@@ -28,7 +28,7 @@
                         <label for="password">Full name: </label>
                     </div>
                 </div>
-                <div class="settings">
+                    <div class="settings" *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'intern'">
                     <div class="settings-icon">
                         <mat-icon (click)='changePassword(tasks[0])'>settings</mat-icon>
                         <label class="label-settings">Settings</label>
@@ -42,7 +42,7 @@
 
             <div class="user-status">
                 <label for="" class="status-label">Status</label>
-                <mat-icon class="edit-icon" (click)='editStatus()'>edit</mat-icon>
+                <mat-icon class="edit-icon" (click)='editStatus()' *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'intern'">edit</mat-icon>
                 <div class="status">
                     <input type="text" name="status" id="status" class="status-input" [disabled]='!edit'>
                 </div>
@@ -52,10 +52,24 @@
     </div>
     <hr>
     <div class="tasks-container">
+        <div class="filters">
+            <div class="completed">
+                <label for="completed-button">Completed</label>
+                <button class="completed-button" (click)='statusActive("Completed",btnC)' #btnC></button>
+            </div>
+            <div class="active">
+                <label for="active-button">Active</label>
+                <button class="active-button" (click)='statusActive("Active",btnA)' #btnA></button>
+            </div>
+            <div class="overdue">
+                <label for="overdue-button">Overdue</label>
+                <button class="overdue-button" (click)='statusActive("Overdue",btnU)' #btnU></button>
+            </div>
+       </div>
         <div class="group-tasks">
             <div class="task-section" *ngFor="let task of tasks">
 
-                <mat-card class="individual-task">
+                <mat-card class="individual-task" *ngIf="this.activeFilters.includes(task.status)">
                     <div class="image-section">
                         <img src="{{ this.helperMethodService.getImageUrl(task.type)}}" alt="">
                     </div>

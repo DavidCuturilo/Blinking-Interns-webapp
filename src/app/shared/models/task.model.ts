@@ -4,7 +4,7 @@ export  interface Task{
     task_id?: number;
     title: string;
     text: string;
-    status: boolean;
+    status: TaskStatus;
     mentor_id?: Mentor[];
     type: TaskType;
     progress: number;
