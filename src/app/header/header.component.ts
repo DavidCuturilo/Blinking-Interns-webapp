@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { HelperMethodService } from '../services/helper-method.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router,
+              public helperMethodService: HelperMethodService) { }
 
   logOut(){
     this.delete_cookie("accessToken");

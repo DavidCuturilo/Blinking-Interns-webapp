@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Intern } from '../shared/models/intern.model';
 import { TaskStatus, TaskType } from '../shared/models/task.model';
 
 @Injectable({
@@ -59,5 +60,10 @@ export class DataFromServerService {
       console.log(response.payload);
       this.interns = response.payload;
     });
+  }
+
+  getInternAssignments(intern: Intern){
+    let url = `http://${this.host}:${this.port}/assigned/${intern.id}`; //example url http://localhost:8080/assignment/9
+    return this.http.get<any>(url);
   }
 }
