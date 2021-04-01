@@ -35,7 +35,7 @@
         </div>
     </div>
 </div>
-<div>
+<div *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'mentor'">
   <span class="add-task-btn">
     <svg (click) = "addTaskModal(dataFromServer.interns)"
     matTooltip="Add new task"

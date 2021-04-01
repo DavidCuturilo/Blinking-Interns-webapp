@@ -26,7 +26,7 @@ export class DataFromServerService {
     }
   }[] = []
 
-  private host:string = "localhost";
+  private host:string = "10.241.107.138";
 
   interns = []
 
@@ -67,7 +67,8 @@ export class DataFromServerService {
     return this.http.get<any>(url);
   }
 
-  changePassword(newPassword:string){
+  changePassword(oldPassword: string, newPassword: string){
+    console.log("STARA SIFRA: ",oldPassword);
     console.log("SLANJE ZAHTEVA ZA PROMENOM SIFRE:",newPassword);
   }
 }

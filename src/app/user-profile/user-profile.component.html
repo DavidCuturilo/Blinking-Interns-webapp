@@ -30,12 +30,12 @@
                 </div>
                     <div class="settings" *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'intern'">
                     <div class="settings-icon">
-                        <mat-icon (click)='changePassword(tasks[0])'>settings</mat-icon>
+                        <mat-icon (click)='changePassword(this.intern)'>settings</mat-icon>
                         <label class="label-settings">Settings</label>
                     </div>
 
 
-                    <button mat-raised-button class="change-password" (click)='changePassword(tasks[0])'>Change Password</button>
+                    <button mat-raised-button class="change-password" (click)='changePassword(this.intern)'>Change Password</button>
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
                 <mat-spinner></mat-spinner>
             </div>
 
-                <mat-card class="individual-task" *ngIf="this.activeFilters.includes(assignment.task_status) && !this.load">
+                <mat-card class="individual-task" *ngIf="(this.activeFilters.includes(assignment.task_status) || this.helperMethodService.getDataFromAccesToken().type === 'intern') && !this.load">
                     <div class="image-section">
                         <img src="{{ this.helperMethodService.getImageUrl(assignment.task.type)}}" alt="">
                     </div>
