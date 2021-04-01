@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TaskStatus, TaskType } from '../shared/models/task.model';
 
@@ -25,7 +25,7 @@ export class DataFromServerService {
     }
   }[] = []
 
-  private host:string = "10.241.107.138";
+  private host:string = "localhost";
 
   interns = []
 

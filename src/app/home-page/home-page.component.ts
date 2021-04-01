@@ -1,3 +1,4 @@
+import { AddTaskModalComponent } from './../shared/modals/add-task-modal/add-task-modal.component';
 import { DataFromServerService } from './../services/data-from-server.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,7 +17,8 @@ export class HomePageComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               public helperMethodService: HelperMethodService,
-              public dataFromServer: DataFromServerService,) { }
+              public dataFromServer: DataFromServerService,
+              public addTaskDialog: MatDialog) { }
 
   ngOnInit(): void {
     const { type } = this.helperMethodService.getDataFromAccesToken();
@@ -34,11 +36,15 @@ export class HomePageComponent implements OnInit {
   public modalData: Task;
   public modalActive:boolean;
 
+  addTaskModal(){
+    const dialogRef = this.addTaskDialog.open(AddTaskModalComponent);
+  }
 
   showDetails(assignment:Task) {
 
     this.dialog.open(TaskInfoModalComponent,{data: {...assignment}});
     this.modalData=assignment;
   }
+
 
 }

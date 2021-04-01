@@ -5,10 +5,11 @@ import { TaskInfoModalComponent } from './modals/task-info-modal/task-info-modal
 import { MaterialModule } from '../material';
 import { ChangePasswordModalComponent } from './modals/change-password-modal/change-password-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddTaskModalComponent } from './modals/add-task-modal/add-task-modal.component';
 
 
 @NgModule({
-  declarations: [TaskInfoModalComponent, ChangePasswordModalComponent],
+  declarations: [TaskInfoModalComponent, ChangePasswordModalComponent, AddTaskModalComponent],
   imports: [
     CommonModule,
     MaterialModule,

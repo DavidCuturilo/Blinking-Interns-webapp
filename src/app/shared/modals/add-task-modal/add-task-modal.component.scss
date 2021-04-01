@@ -1,0 +1,63 @@
+.dialog-container{
+  width: 80vw;
+  height: 90vh;
+  min-width: 300px;
+  min-height: 400px;
+
+  overflow-x: hidden;
+
+
+  [mat-dialog-title]{
+    text-align: center;
+    padding: 20px 0;
+    font-size: 2rem;
+    background-color: var(--blinking-background);
+    color:white;
+  }
+
+
+  [mat-dialog-content]{
+
+    .mat-dialog-content-inner{
+      padding: 0 25px;
+
+      .form-group{
+        display:flex;
+        flex-direction: column;
+
+        margin: 5% 0;
+
+        label{
+          font-size: 1.4rem;
+        }
+
+        input{
+          outline:none;
+          border:none;
+          border-bottom: 1px solid black;
+          width: 50%;
+          min-width: 200px;
+
+          &:focus{
+            border-bottom: 3px solid black;
+            color:red;
+          }
+        }
+
+        textarea{
+          width: 50%;
+          min-width: 200px;
+          resize: none;
+
+          &:focus{
+            border: 2px solid black;
+            color:red;
+          }
+        }
+      }
+    }
+
+  }
+
+
+}
