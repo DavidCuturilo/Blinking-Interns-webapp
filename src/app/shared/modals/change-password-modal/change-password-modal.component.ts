@@ -2,17 +2,20 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataFromServerService } from 'src/app/services/data-from-server.service';
 import { Task } from '../../models/task.model';
 
 @Component({
   selector: 'app-change-password-modal',
   templateUrl: './change-password-modal.component.html',
-  styleUrls: ['./change-password-modal.component.scss']
+  styleUrls: ['./change-password-modal.component.scss'],
+  providers: [DataFromServerService]
 })
 export class ChangePasswordModalComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Task, public dialogRef: MatDialogRef<ChangePasswordModalComponent>,
-              private _snackBar: MatSnackBar) { }
+              private _snackBar: MatSnackBar,
+              private dataService: DataFromServerService) { }
 
   changeForm: FormGroup;
   hide = true;
@@ -78,10 +81,10 @@ export class ChangePasswordModalComponent implements OnInit {
   }
 
   submitChange() {
-
     this._snackBar.open('Successfully changed password!', 'Close',{
       duration: 2000,
     });
+    this.dataService.changePassword(this.changeForm.get('oldPassword').value,this.changeForm.get('newPassword').value);
     this.changeForm.reset();
   }
   onClose(){

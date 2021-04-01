@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
 import { HelperMethodService } from '../services/helper-method.service';
 import { ChangePasswordModalComponent } from '../shared/modals/change-password-modal/change-password-modal.component';
-import { Task, TaskStatus, TaskType } from '../shared/models/task.model';
 import { Intern } from '../shared/models/intern.model';
 
 @Component({
@@ -14,11 +13,6 @@ import { Intern } from '../shared/models/intern.model';
   providers: [HelperMethodService,AuthInterceptorService]
 })
 export class UserProfileComponent implements OnInit {
-  tasks: Task[] = [{title: 'Node js', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis iusto non vero assumenda deserunt facere, esse quam autem, nihil tempora repudiandae? Ut quasi incidunt quas pariatur, labore consequuntur sapiente optio est totam iure magnam fugit commodi. Similique iste itaque totam?', status: TaskStatus.COMPLETED, type: TaskType.BACK_END, progress: 30},
-                   {title: 'Angular App', text: 'vise informacija', status: TaskStatus.ACTIVE, type: TaskType.FRONT_END, progress: 15},
-                   {title: 'Full service', text: 'vise informacija', status: TaskStatus.OVERDUE, type: TaskType.FULL_STACK, progress: 60},
-                  ];
-
   activeFilters: string[];
 
   intern:Intern;
@@ -31,7 +25,7 @@ export class UserProfileComponent implements OnInit {
               public helperMethodService: HelperMethodService,
               public dataFromServerService: DataFromServerService) { }
 
-  public modalData: Task;
+  // public modalData: Intern;
 
   ngOnInit(): void {
     this.intern = JSON.parse(localStorage.getItem("intern"));
@@ -45,9 +39,9 @@ export class UserProfileComponent implements OnInit {
     this.edit = !this.edit;
   }
 
-  changePassword(task: Task) {
-    this.dialog.open(ChangePasswordModalComponent,{data: {...task}});
-    this.modalData=task;
+  changePassword(intern: Intern) {
+    this.dialog.open(ChangePasswordModalComponent,{data: {...intern}});
+    // this.modalData=intern;
   }
 
   statusActive(filter: string,btn: HTMLButtonElement){
