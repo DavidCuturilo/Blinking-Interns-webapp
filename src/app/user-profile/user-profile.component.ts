@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
@@ -18,6 +19,7 @@ export class UserProfileComponent implements OnInit {
                   ];
   
   activeFilters: string[];
+  load: boolean =  false;
                 
   edit = false;
   constructor(public dialog: MatDialog,
@@ -39,14 +41,23 @@ export class UserProfileComponent implements OnInit {
   }
 
   statusActive(filter: string,btn: HTMLButtonElement){
-    if(this.activeFilters.includes(filter)){
-      btn.classList.remove('statusActive');
-      this.activeFilters = this.activeFilters.filter(el => el !== filter);
-    }
-    else{
-      btn.classList.add('statusActive');
-      this.activeFilters.push(filter);
-    }
+
+    this.load= !this.load;
+    setTimeout(() => {
+      this.load= !this.load;
+      if(this.activeFilters.includes(filter)){
+        btn.classList.remove('statusActive');
+        this.activeFilters = this.activeFilters.filter(el => el !== filter);
+      }
+      else{
+        btn.classList.add('statusActive');
+        this.activeFilters.push(filter);
+      }
+    },500);
+     
+    
+    
+  
     
   }
 

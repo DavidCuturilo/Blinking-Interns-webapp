@@ -52,7 +52,7 @@
     </div>
     <hr>
     <div class="tasks-container">
-        <div class="filters">
+        <div class="filters" *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'mentor'" >
             <div class="completed">
                 <label for="completed-button">Completed</label>
                 <button class="completed-button" (click)='statusActive("Completed",btnC)' #btnC></button>
@@ -67,9 +67,12 @@
             </div>
        </div>
         <div class="group-tasks">
-            <div class="task-section" *ngFor="let task of tasks">
+            <div class="spinner" *ngIf="this.load">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div class="task-section" *ngFor="let task of tasks" >
 
-                <mat-card class="individual-task" *ngIf="this.activeFilters.includes(task.status)">
+                <mat-card class="individual-task" *ngIf="this.activeFilters.includes(task.status) && !this.load">
                     <div class="image-section">
                         <img src="{{ this.helperMethodService.getImageUrl(task.type)}}" alt="">
                     </div>
