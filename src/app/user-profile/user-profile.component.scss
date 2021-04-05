@@ -197,6 +197,7 @@
                     border-style: solid;
                     border-radius: 15px;
                     background-color: white;
+                    cursor: pointer;
                 }
 
                 .statusActive {
@@ -218,6 +219,7 @@
                     border-style: solid;
                     border-radius: 15px;
                     background-color: white;
+                    cursor: pointer;
                 }
 
                 .statusActive {
@@ -240,11 +242,15 @@
                     
                     border-radius: 15px;
                     background-color: white;
+                    cursor: pointer;
                 }
 
                 .statusActive {
                     background-color: red;
                 }
+            }
+            label {
+                cursor: pointer;
             }
         }
 
@@ -312,11 +318,12 @@
         
                         .text {
                             font-size: 20px;
-                            margin: 10px 0 10px 10px;
-        
+                            margin: 10px 0 20px 10px;
+                            
                         }
         
                     }
+                    
 
                     .download-section {
                         height: 100%;

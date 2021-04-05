@@ -54,25 +54,26 @@
     <div class="tasks-container">
         <div class="filters" *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'mentor'" >
             <div class="completed">
-                <label for="completed-button">Completed</label>
+                <label (click)='statusActive("Completed",btnC)'>Completed</label>
                 <button class="completed-button statusActive" (click)='statusActive("Completed",btnC)' #btnC></button>
             </div>
             <div class="active">
-                <label for="active-button">Active</label>
+                <label (click)='statusActive("Active",btnA)'>Active</label>
                 <button class="active-button" (click)='statusActive("Active",btnA)' #btnA></button>
             </div>
             <div class="overdue">
-                <label for="overdue-button">Overdue</label>
+                <label (click)='statusActive("Overdue",btnU)'>Overdue</label>
                 <button class="overdue-button" (click)='statusActive("Overdue",btnU)' #btnU></button>
             </div>
        </div>
         <div class="group-tasks">
-            <div class="task-section" *ngFor="let assignment of assignments">
 
             <div class="spinner" *ngIf="this.load">
                 <mat-spinner></mat-spinner>
             </div>
 
+
+            <div class="task-section" *ngFor="let assignment of assignments">
                 <mat-card class="individual-task" *ngIf="(this.activeFilters.includes(assignment.task_status) || this.helperMethodService.getDataFromAccesToken().type === 'intern') && !this.load">
                     <div class="image-section">
                         <img src="{{ this.helperMethodService.getImageUrl(assignment.task.type)}}" alt="">
