@@ -1,28 +1,49 @@
 <div class="dialog-container">
   <h1 mat-dialog-title>Add new task dialog</h1>
   <div mat-dialog-content>
-    <form [formGroup]="taskForm">
+    <form [formGroup]="taskForm" (ngSubmit)="submitNewTask()">
 
-      <div class="form-group">
-        <mat-form-field >
-          <mat-label>Set deadline</mat-label>
-          <input matInput [matDatepicker]="picker">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+
+        <mat-form-field class="form-group">
+
+          <mat-label>Title</mat-label>
+          <input type="text" matInput required formControlName="title">
+          <mat-error *ngIf="taskForm.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
-      </div>
 
-      <div class="form-group">
-        <mat-label>Title</mat-label>
-        <input type="text" matInput [formControl]="taskForm" placeholder="Ex. pat@example.com">
-      </div>
-
-      <div class="interns-container form-group">
-        <div *ngFor="let intern of interns">
-          <div>{{intern.full_name}}</div>
+        <div class="form-group">
+          <mat-label>Text</mat-label>
+          <textarea cols="30" rows="10" required formControlName="text" placeholder="Task description"></textarea>
+          <input type="text" matInput  >
         </div>
-      </div>
 
+        <div class="form-group deadline-file">
+          <mat-form-field>
+            <mat-label>Set deadline</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Set deadline</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="interns-container form-group">
+          <div *ngFor="let intern of interns">
+            <div>{{intern.full_name}}</div>
+          </div>
+        </div>
+
+      <button mat-raised-button type="submit">Submit new Task</button>
     </form>
   </div>
   <!-- <div mat-dialog-actions>

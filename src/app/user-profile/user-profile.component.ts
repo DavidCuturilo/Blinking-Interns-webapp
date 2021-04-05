@@ -48,7 +48,6 @@ export class UserProfileComponent implements OnInit {
   statusActive(filter: string,btn: HTMLButtonElement){
 
     this.load= !this.load;
-    console.log(this.load)
 
     if(this.activeFilters.includes(filter)){
       btn.classList.remove('statusActive');
@@ -59,7 +58,6 @@ export class UserProfileComponent implements OnInit {
 
     setTimeout(() => {
       this.load= !this.load;
-      console.log(this.load)
       if(this.activeFilters.includes(filter)){
         this.activeFilters = this.activeFilters.filter(el => el !== filter);
       }
