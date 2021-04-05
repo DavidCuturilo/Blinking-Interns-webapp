@@ -1,55 +1,29 @@
 <div class="dialog-container">
   <h1 mat-dialog-title>Add new task dialog</h1>
   <div mat-dialog-content>
-    <div class="mat-dialog-content-inner">
-      <form [formGroup]="taskForm">
-        <div class="form-group">
-          <label for="title">Task title:</label>
-          <input
-            type="text"
-            id="title"
-            formControlName="title">
-        </div>
-        <div class="form-group">
-          <label for="title">Task text:</label>
-          <textarea
-            name=""
-            formControlName="title"
-            id="text"
-            cols="30" rows="10"
-            >
+    <form [formGroup]="taskForm">
 
-          </textarea>
-        </div>
-        <div class="form-group">
-          <label for="title">Task type:</label>
-          <select
-          name=""
-          id="type"
-          formControlName="type">
-            <option value="Front_end">Front end</option>
-            <option value="Back_end">Back end</option>
-            <option value="Full_stack" selected="selected">Full stack</option>
-        </select>
-        </div>
+      <div class="form-group">
+        <mat-form-field >
+          <mat-label>Set deadline</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
 
-        <div class="form-group">
-          <mat-form-field >
-            <mat-label>Set deadline</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>
+      <div class="form-group">
+        <mat-label>Title</mat-label>
+        <input type="text" matInput [formControl]="taskForm" placeholder="Ex. pat@example.com">
+      </div>
 
-        <div class="interns-container form-group">
-          <div *ngFor="let intern of interns">
-            <div>{{intern.full_name}}</div>
-          </div>
+      <div class="interns-container form-group">
+        <div *ngFor="let intern of interns">
+          <div>{{intern.full_name}}</div>
         </div>
+      </div>
 
-      </form>
-    </div>
+    </form>
   </div>
   <!-- <div mat-dialog-actions>
     <button mat-button (click)="closeDialog()">No Thanks</button>

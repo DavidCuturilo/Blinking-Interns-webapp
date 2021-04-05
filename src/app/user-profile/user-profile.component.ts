@@ -6,6 +6,7 @@ import { HelperMethodService } from '../services/helper-method.service';
 import { ChangePasswordModalComponent } from '../shared/modals/change-password-modal/change-password-modal.component';
 import { Intern } from '../shared/models/intern.model';
 
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -47,14 +48,18 @@ export class UserProfileComponent implements OnInit {
   statusActive(filter: string,btn: HTMLButtonElement){
 
     this.load= !this.load;
+    console.log(this.load)
+
     if(this.activeFilters.includes(filter)){
       btn.classList.remove('statusActive');
     }
     else{
       btn.classList.add('statusActive');
     }
+
     setTimeout(() => {
       this.load= !this.load;
+      console.log(this.load)
       if(this.activeFilters.includes(filter)){
         this.activeFilters = this.activeFilters.filter(el => el !== filter);
       }

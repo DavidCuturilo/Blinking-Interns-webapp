@@ -13,28 +13,16 @@
     font-size: 2rem;
     background-color: var(--blinking-background);
     color:white;
+    margin:0;
   }
 
 
   [mat-dialog-content]{
-    width: 100%;
-    overflow-x: hidden;
-    .mat-dialog-content-inner{
-      max-height: 100%;
-      width: 100%;
-      padding: 0 40px;
-      form{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
+    height: 100%;
+    max-height: initial !important;
 
-        .form-group{
-          display:flex;
-          flex-direction: column;
-          width: 40%;
-          margin: 3% 0;
-        }
-      }
+    form{
+      height: 100%;
     }
   }
 }
