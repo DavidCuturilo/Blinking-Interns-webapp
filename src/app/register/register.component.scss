@@ -1,0 +1,64 @@
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .register-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: var(--blinking-primary);
+        border-radius: 10px;
+        border-style: solid;
+
+        padding: 10px;
+        height: 550px;
+        width: 450px;
+
+        .header {
+            font-size: 35px;
+            font-weight: 500;
+        }
+
+        .user-information {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .fullName {
+                margin-bottom: 15px;
+            }
+
+            .email {
+                margin-bottom: 15px;
+            }
+
+            .password {
+                margin-bottom: 15px;
+            }
+        }
+
+        .mat-radio-button ~ .mat-radio-button {
+            margin-left: 16px;
+        }
+
+        .register-button {
+            border-radius: 15px;
+            padding: 3px 25px;
+            background-color: var(--blinking-background);
+            outline: none;
+            color: var(--blinking-text);
+            margin-top: 20px;
+
+            font-size: 20px;
+
+            &:disabled {
+                background-color: #146fa394;
+                cursor: not-allowed;
+            }
+        }
+    }
+}

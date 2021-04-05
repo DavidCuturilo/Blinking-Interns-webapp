@@ -1,0 +1,31 @@
+<div class="container">
+    <form class="register-form" [formGroup]='signupForm'>
+        <p class="header">Register</p>
+
+        <div class="user-information">
+            <mat-form-field class="fullName">
+                <mat-label>Full name</mat-label>
+                <input type="text" matInput formControlName='fullName'>
+
+            </mat-form-field>
+
+            <mat-form-field class="email">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName='email'>
+            </mat-form-field>
+
+            <mat-form-field class="password">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName='password'>
+            </mat-form-field>
+        </div>
+
+        <mat-radio-group class="radio-group"> 
+            <mat-radio-button value="intern" id="intern" #internRadio checked>Intern</mat-radio-button>
+            <mat-radio-button value="mentor">Mentor</mat-radio-button>
+        </mat-radio-group>
+
+        <button class="register-button" [disabled]="!signupForm.valid">Register</button>
+
+    </form>
+</div>

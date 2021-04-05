@@ -6,12 +6,18 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   // { path: '', children: [] },
   { path: 'home', canActivate: [AuthGuard], component: HomePageComponent },
-  { path: 'login',  canActivate: [AuthGuard], component: LoginFormComponent },
-  { path: 'register', canActivate: [AuthGuard],  component: RegisterFormComponent },
+  // { path: 'login',  canActivate: [AuthGuard], component: LoginFormComponent },
+  { path: 'login',  canActivate: [AuthGuard], component: RegisterFormComponent },
+
+  // { path: 'register', canActivate: [AuthGuard],  component: RegisterFormComponent },
+  { path: 'register', canActivate: [AuthGuard],  component: RegisterComponent },
+
   { path: 'not-found', component: PageNotFoundComponent },
   { path: 'user-profile', canActivate: [AuthGuard], component: UserProfileComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full'},

@@ -1,0 +1,78 @@
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        background-color: var(--blinking-primary);
+        border-radius: 10px;
+        border-style: solid;
+
+        padding: 10px;
+        height: 500px;
+        width: 450px;
+
+        .header {
+            font-size: 35px;
+            font-weight: 500;
+        }
+
+        .user-information {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+
+            .email-container {
+                .email-form {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .password-container {
+                .password-form {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .remove-button {
+                border: none;
+                outline: none;
+                background-color: var(--blinking-primary);
+                color: black;
+                font-size: x-large;
+                font-weight: bolder;
+
+                width: 20px;
+                position: relative;
+                right: 20px;
+            }
+        }
+
+        .mat-radio-button ~ .mat-radio-button {
+            margin-left: 16px;
+        }
+        
+        .login-button {
+            border-radius: 15px;
+            padding: 3px 25px;
+            background-color: var(--blinking-background);
+            outline: none;
+            color: var(--blinking-text);
+
+            font-size: 20px;
+
+            &:disabled {
+                background-color: #146fa394;
+                cursor: not-allowed;
+            }
+        }
+    }
+}

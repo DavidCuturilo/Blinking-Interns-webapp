@@ -20,6 +20,8 @@ import { MaterialModule } from './material';
 import { ChangePasswordModalComponent } from './shared/modals/change-password-modal/change-password-modal.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -33,6 +35,8 @@ import { AuthService } from './services/auth.service';
     RegisterFormComponent,
     UserProfileComponent,
     HomePageComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
