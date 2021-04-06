@@ -3,21 +3,48 @@
         <p class="header">Register</p>
 
         <div class="user-information">
-            <mat-form-field class="fullName">
-                <mat-label>Full name</mat-label>
-                <input type="text" matInput formControlName='fullName'>
 
-            </mat-form-field>
+            <div class="fullName-container">
+                <mat-form-field class="fullName">
+                    <mat-label>Full name</mat-label>
+                    <input type="text" matInput formControlName='fullName' #fullName>
+                    <mat-error *ngIf="signupForm.get('fullName').hasError('required')">
+                        Full name is <strong>required!</strong>
+                    </mat-error>
+                </mat-form-field>
+               <button class="remove-button" type="button" (click)="onClick('fullName')" *ngIf="!(fullName.value==='')">x</button>
+            </div>
+           
 
-            <mat-form-field class="email">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput formControlName='email'>
-            </mat-form-field>
+            <div class="email-container">
+                <mat-form-field class="email">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName='email' #email>
+                    <mat-error *ngIf="signupForm.get('email').hasError('email') && !signupForm.get('email').hasError('required')">
+                        Please enter a valid email adress
+                    </mat-error>
+                    <mat-error *ngIf="signupForm.get('email').hasError('required')"> 
+                       Email is <strong>required</strong>
+                 </mat-error>
+                </mat-form-field>
+               <button class="remove-button" type="button" (click)="onClick('email')" *ngIf="!(email.value==='')">x</button>
+            </div>
+            
 
-            <mat-form-field class="password">
-                <mat-label>Password</mat-label>
-                <input type="password" matInput formControlName='password'>
-            </mat-form-field>
+            <div class="password-container">
+                <mat-form-field class="password">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName='password' #password>
+                    <mat-error *ngIf="!signupForm.get('password').hasError('required') && signupForm.get('password').invalid">
+                        Password must contain 6 characters
+                    </mat-error>
+                    <mat-error *ngIf="signupForm.get('password').hasError('required')">
+                      Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+               <button class="remove-button" type="button" (click)="onClick('password')" *ngIf="!(password.value==='')">x</button>
+            </div>
+            
         </div>
 
         <mat-radio-group class="radio-group"> 
@@ -25,7 +52,7 @@
             <mat-radio-button value="mentor">Mentor</mat-radio-button>
         </mat-radio-group>
 
-        <button class="register-button" [disabled]="!signupForm.valid">Register</button>
+        <button class="register-button" [disabled]="!signupForm.valid" (click)='onSubmit(internRadio)'>Register</button>
 
     </form>
 </div>

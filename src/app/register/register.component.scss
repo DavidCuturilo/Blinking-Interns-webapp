@@ -14,8 +14,8 @@
         border-style: solid;
 
         padding: 10px;
-        height: 550px;
-        width: 450px;
+        height: 580px;
+        width: 480px;
 
         .header {
             font-size: 35px;
@@ -39,6 +39,19 @@
             .password {
                 margin-bottom: 15px;
             }
+
+            .remove-button {
+                border: none;
+                outline: none;
+                background-color: var(--blinking-primary);
+                color: black;
+                font-size: x-large;
+                font-weight: bolder;
+
+                width: 20px;
+                position: relative;
+                right: 20px;
+            }
         }
 
         .mat-radio-button ~ .mat-radio-button {
@@ -51,7 +64,7 @@
             background-color: var(--blinking-background);
             outline: none;
             color: var(--blinking-text);
-            margin-top: 20px;
+            margin: 15px 0;
 
             font-size: 20px;
 

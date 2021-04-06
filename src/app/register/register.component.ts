@@ -19,9 +19,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      'fullName': new FormControl(null, [Validators.required]),
+      'fullName': new FormControl(null, [Validators.required,Validators.minLength(5)]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(8)])
+      'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
   }
 
@@ -57,8 +57,8 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  onClick(input){
-    input.value ='';
+  onClick(key: string){
+    this.signupForm.get(key).reset();
   }
 
   isValid(variable: string) {

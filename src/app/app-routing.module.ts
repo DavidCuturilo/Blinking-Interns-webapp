@@ -12,10 +12,7 @@ import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   // { path: '', children: [] },
   { path: 'home', canActivate: [AuthGuard], component: HomePageComponent },
-  // { path: 'login',  canActivate: [AuthGuard], component: LoginFormComponent },
-  { path: 'login',  canActivate: [AuthGuard], component: RegisterFormComponent },
-
-  // { path: 'register', canActivate: [AuthGuard],  component: RegisterFormComponent },
+  { path: 'login',  canActivate: [AuthGuard], component: LoginComponent },
   { path: 'register', canActivate: [AuthGuard],  component: RegisterComponent },
 
   { path: 'not-found', component: PageNotFoundComponent },
