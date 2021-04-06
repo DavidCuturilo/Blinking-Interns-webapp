@@ -12,7 +12,10 @@
 
         background-color: var(--blinking-primary);
         border-radius: 10px;
-        border-style: solid;
+
+        box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.75);
 
         padding: 10px;
         height: 500px;
@@ -53,13 +56,17 @@
                 width: 20px;
                 position: relative;
                 right: 20px;
+
+                &.btn-hidden{
+                  visibility: hidden;
+                }
             }
         }
 
         .mat-radio-button ~ .mat-radio-button {
             margin-left: 16px;
         }
-        
+
         .login-button {
             border-radius: 15px;
             padding: 3px 25px;

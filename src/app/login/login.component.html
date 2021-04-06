@@ -8,22 +8,22 @@
             <div class="email-container">
                 <mat-form-field class="email-form">
                     <mat-label>Email</mat-label>
-                   <input matInput type="email" formControlName="email" class="email" #email> 
+                   <input matInput type="email" formControlName="email" class="email" #email>
                    <mat-error *ngIf="signupForm.get('email').hasError('email') && !signupForm.get('email').hasError('required')">
                        Please enter a valid email adress
                    </mat-error>
-                   <mat-error *ngIf="signupForm.get('email').hasError('required')"> 
-                      Email is <strong>required</strong>
-                </mat-error>
-               </mat-form-field>
-               <button class="remove-button" type="button" (click)="onClick('email')" *ngIf="!(email.value==='')">x</button>
+                   <mat-error *ngIf="signupForm.get('email').hasError('required')">
+                     Email is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <button class="remove-button" type="button" (click)="onClick('email')" [ngClass]="{'btn-hidden': email.value==='' }">x</button>
 
             </div>
 
             <div class="password-container">
                 <mat-form-field class="password-form">
                     <mat-label>Password</mat-label>
-                   <input matInput type="password" formControlName="password" #password> 
+                   <input matInput type="password" formControlName="password" #password>
                    <mat-error *ngIf="!signupForm.get('password').hasError('required') && signupForm.get('password').invalid">
                        Password must contain 6 characters
                    </mat-error>
@@ -31,12 +31,12 @@
                      Password is <strong>required</strong>
                    </mat-error>
                </mat-form-field>
-               <button class="remove-button" type="button" (click)="onClick('password')" *ngIf="!(password.value==='')">x</button>
+               <button class="remove-button" type="button" (click)="onClick('password')" [ngClass]="{'btn-hidden': password.value==='' }">x</button>
             </div>
-          
+
         </div>
 
-        <mat-radio-group class="radio-group"> 
+        <mat-radio-group class="radio-group">
             <mat-radio-button value="intern" id="intern" #internRadio checked>Intern</mat-radio-button>
             <mat-radio-button value="mentor">Mentor</mat-radio-button>
         </mat-radio-group>

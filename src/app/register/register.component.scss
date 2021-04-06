@@ -11,7 +11,10 @@
         align-items: center;
         background-color: var(--blinking-primary);
         border-radius: 10px;
-        border-style: solid;
+
+        box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.75);
 
         padding: 10px;
         height: 580px;
@@ -51,6 +54,10 @@
                 width: 20px;
                 position: relative;
                 right: 20px;
+
+                &.btn-hidden{
+                  visibility: hidden;
+                }
             }
         }
 
