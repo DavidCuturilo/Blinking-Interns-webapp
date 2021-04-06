@@ -19,16 +19,18 @@
 
             <div class="window-information">
                 <div class="information">
-                    <div class="email">
+                    <div class="email" >
                         <label for="email">Email: </label>
                         {{ intern.email }}
                     </div>
                     <mat-divider></mat-divider>
-                    <div class="password">
-                        <label for="password">Full name: </label>
+                    <div class="password" >
+                        <label *ngIf="intern.full_name!==''">Full name: {{ intern.full_name }}</label>
+                        <label *ngIf="intern.full_name===''">Full name: /</label>
+
                     </div>
                 </div>
-                    <div class="settings" *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'intern'">
+                    <div class="settings" *ngIf="this.userType === 'intern'">
                     <div class="settings-icon">
                         <mat-icon (click)='changePassword(this.intern)'>settings</mat-icon>
                         <label class="label-settings">Settings</label>
@@ -42,7 +44,7 @@
 
             <div class="user-status">
                 <label for="" class="status-label">Status</label>
-                <mat-icon class="edit-icon" (click)='editStatus()' *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'intern'">edit</mat-icon>
+                <mat-icon class="edit-icon" (click)='editStatus()' *ngIf="this.userType === 'intern'">edit</mat-icon>
                 <div class="status">
                     <input type="text" name="status" id="status" class="status-input" [disabled]='!edit'>
                 </div>
@@ -52,18 +54,18 @@
     </div>
     <hr>
     <div class="tasks-container">
-        <div class="filters" *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'mentor'" >
+        <div class="filters" *ngIf="this.userType === 'mentor'" >
             <div class="completed">
-                <label (click)='statusActive("Completed",btnC)'>Completed</label>
-                <button class="completed-button statusActive" (click)='statusActive("Completed",btnC)' #btnC></button>
+                <label for="btnC">Completed</label>
+                <button class="completed-button statusActive" id="btnC" (click)='statusActive("Completed",btnC)' #btnC></button>
             </div>
             <div class="active">
-                <label (click)='statusActive("Active",btnA)'>Active</label>
-                <button class="active-button" (click)='statusActive("Active",btnA)' #btnA></button>
+                <label for="btnA">Active</label>
+                <button class="active-button" id="btnA" (click)='statusActive("Active",btnA)' #btnA></button>
             </div>
             <div class="overdue">
-                <label (click)='statusActive("Overdue",btnU)'>Overdue</label>
-                <button class="overdue-button" (click)='statusActive("Overdue",btnU)' #btnU></button>
+                <label for="btnU">Overdue</label>
+                <button class="overdue-button" id="btnU" (click)='statusActive("Overdue",btnU)' #btnU></button>
             </div>
        </div>
         <div class="group-tasks">
@@ -72,9 +74,9 @@
                 <mat-spinner></mat-spinner>
             </div>
 
-
+            
             <div class="task-section" *ngFor="let assignment of assignments">
-                <mat-card class="individual-task" *ngIf="(this.activeFilters.includes(assignment.task_status) || this.helperMethodService.getDataFromAccesToken().type === 'intern') && !this.load">
+                <mat-card class="individual-task" *ngIf="(this.activeFilters.includes(assignment.task_status) || this.userType === 'intern') && !this.load">
                     <div class="image-section">
                         <img src="{{ this.helperMethodService.getImageUrl(assignment.task.type)}}" alt="">
                     </div>
