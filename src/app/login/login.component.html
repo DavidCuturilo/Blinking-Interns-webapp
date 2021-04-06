@@ -6,30 +6,42 @@
         <div class="user-information">
 
             <div class="email-container">
-                <mat-form-field class="email-form">
-                    <mat-label>Email</mat-label>
+                <mat-form-field class="email-form" appearance="fill">
+                   <mat-label>Email</mat-label>
                    <input matInput type="email" formControlName="email" class="email" #email>
+                   <mat-error>
+
+                   </mat-error>
                    <mat-error *ngIf="signupForm.get('email').hasError('email') && !signupForm.get('email').hasError('required')">
-                       Please enter a valid email adress
+                    Please enter a valid email adress
                    </mat-error>
                    <mat-error *ngIf="signupForm.get('email').hasError('required')">
-                     Email is <strong>required</strong>
-                    </mat-error>
+                    Email is <strong>required</strong>
+                   </mat-error>
+
+                   <mat-error *ngIf="signupForm.get('email').hasError('doesNotExists')">
+                    User with given email does not exists
+                   </mat-error>
+
                   </mat-form-field>
-                  <button class="remove-button" type="button" (click)="onClick('email')" [ngClass]="{'btn-hidden': email.value==='' }">x</button>
+                <button class="remove-button" type="button" (click)="onClick('email')" [ngClass]="{'btn-hidden': email.value==='' }">x</button>
 
             </div>
 
             <div class="password-container">
-                <mat-form-field class="password-form">
+                <mat-form-field class="password-form" appearance="fill">
                     <mat-label>Password</mat-label>
                    <input matInput type="password" formControlName="password" #password>
-                   <mat-error *ngIf="!signupForm.get('password').hasError('required') && signupForm.get('password').invalid">
+                   <mat-error *ngIf="!signupForm.get('password').hasError('required') && signupForm.get('password').hasError('minlength')">
                        Password must contain 6 characters
                    </mat-error>
                    <mat-error *ngIf="signupForm.get('password').hasError('required')">
                      Password is <strong>required</strong>
                    </mat-error>
+                   <mat-error *ngIf="signupForm.get('password').hasError('invalidPassword')">
+                    Invalid password
+                   </mat-error>
+
                </mat-form-field>
                <button class="remove-button" type="button" (click)="onClick('password')" [ngClass]="{'btn-hidden': password.value==='' }">x</button>
             </div>

@@ -57,15 +57,18 @@ export class LoginComponent implements OnInit {
       this.authService.loggedIn = false;
 
       if(error.error.statusCode === 10004){
+
+        this.signupForm.get('email').setErrors({doesNotExists:true});
+
         this.emailError=error.error.message;
         this.passwordError='';
       }else if(error.error.statusCode === 10005){
+
+        this.signupForm.get('password').setErrors({invalidPassword:true});
         this.passwordError=error.error.message;
         this.emailError='';
       }
     })
-
-    this.signupForm.reset();
   }
 
   onClick(key: string){

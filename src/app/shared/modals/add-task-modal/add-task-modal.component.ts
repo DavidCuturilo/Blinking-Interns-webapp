@@ -15,14 +15,16 @@ export class AddTaskModalComponent implements OnInit {
 
   taskForm: FormGroup;
   interns: Intern[];
+
+  taskTypeList: string[] = ['Front end', 'Back end', 'Full stack'];
   ngOnInit(): void {
     this.interns = this.data;
     this.taskForm = new FormGroup({
       title: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      text: new FormControl(null),
-      task_type:new FormControl(null),
-      deadline: new FormControl(null),
-
+      text: new FormControl(null, [Validators.required]),
+      task_type:new FormControl(null, [Validators.required]),
+      deadline: new FormControl(null, [Validators.required]),
+      interns: new FormControl(null)
     });
   }
 
@@ -31,6 +33,10 @@ export class AddTaskModalComponent implements OnInit {
   }
 
   submitNewTask(){
-    console.warn(this.taskForm.value)
+    console.log(this.taskForm.value)
+  }
+
+  logValue(){
+    console.log(this.taskForm.get('interns').value)
   }
 }
