@@ -16,6 +16,8 @@ import { Intern } from '../shared/models/intern.model';
 export class UserProfileComponent implements OnInit {
   activeFilters: string[];
 
+  userType: string;
+
   intern:Intern;
   assignments;
 
@@ -29,11 +31,18 @@ export class UserProfileComponent implements OnInit {
   // public modalData: Intern;
 
   ngOnInit(): void {
-    this.intern = JSON.parse(localStorage.getItem("intern"));
+    if (this.helperMethodService.getDataFromAccesToken().type === 'intern'){
+     let {email} = this.helperMethodService.getDataFromAccesToken();
+     this.intern = {email,full_name: ''};
+    } else {
+      this.intern = JSON.parse(localStorage.getItem("intern"));
+    }
     this.dataFromServerService.getInternAssignments(this.intern).subscribe(response => {
       this.assignments=response.payload;
     }, error => console.log(error))
     this.activeFilters = ["Completed"];
+
+    this.userType = this.helperMethodService.getDataFromAccesToken().type;
   }
 
   editStatus(){
