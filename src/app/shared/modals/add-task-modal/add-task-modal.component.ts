@@ -36,6 +36,13 @@ export class AddTaskModalComponent implements OnInit {
 
   submitNewTask(){
     const taskData = this.taskForm.value;
+    const currentDate = new Date();
+
+    let chosenDate = this.taskForm.get('deadline').value;
+
+    if(chosenDate.getDate() !== currentDate.getDate() && chosenDate.getTime() <= currentDate.getTime()){
+      this.taskForm.get('deadline').setErrors({invalidDate: true});
+    }
     this.dataFromServerService.addNewTask(taskData).subscribe(data=>{
       this.dialogRef.close()
       alert("Task was assigned successfully")

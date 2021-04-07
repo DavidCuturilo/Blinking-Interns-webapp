@@ -43,6 +43,8 @@ export class UserProfileComponent implements OnInit {
     this.activeFilters = ["Completed"];
 
     this.userType = this.helperMethodService.getDataFromAccesToken().type;
+
+    console.log(this.userType)
   }
 
   editStatus(){
