@@ -71,4 +71,9 @@ export class DataFromServerService {
     console.log("STARA SIFRA: ",oldPassword);
     console.log("SLANJE ZAHTEVA ZA PROMENOM SIFRE:",newPassword);
   }
+
+  addNewTask(taskData){
+    let url = `http://${this.host}:${this.port}/task`
+    return this.http.post<any>(url,taskData)
+  }
 }

@@ -1,3 +1,4 @@
+import { DataFromServerService } from './../../../services/data-from-server.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -11,7 +12,8 @@ import { Intern } from '../../models/intern.model';
 export class AddTaskModalComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<AddTaskModalComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Intern[]) { }
+              @Inject(MAT_DIALOG_DATA) public data: Intern[],
+              private dataFromServerService: DataFromServerService) { }
 
   taskForm: FormGroup;
   interns: Intern[];
@@ -33,7 +35,13 @@ export class AddTaskModalComponent implements OnInit {
   }
 
   submitNewTask(){
-    console.log(this.taskForm.value)
+    const taskData = this.taskForm.value;
+    this.dataFromServerService.addNewTask(taskData).subscribe(data=>{
+      this.dialogRef.close()
+      alert("Task was assigned successfully")
+    },error=>{
+      alert("Error on assigning task...")
+    });
   }
 
   logValue(){
