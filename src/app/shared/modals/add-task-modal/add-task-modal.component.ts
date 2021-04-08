@@ -25,7 +25,7 @@ export class AddTaskModalComponent implements OnInit {
       title: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       text: new FormControl(null, [Validators.required]),
       task_type:new FormControl(null, [Validators.required]),
-      deadline: new FormControl(null, [Validators.required]),
+      deadline: new FormControl(null, [Validators.required, this.dateValidator]),
       interns: new FormControl(null)
     });
   }
@@ -34,9 +34,22 @@ export class AddTaskModalComponent implements OnInit {
     this.dialogRef.close()
   }
 
+  //custom validator for date
+  dateValidator(control: FormControl){
+    const currentDate = new Date();
+
+    let chosenDate = control.value;
+
+    if(chosenDate.getDate() !== currentDate.getDate() || chosenDate.getTime() <= currentDate.getTime()){
+      return {'deadline':true};
+    }
+    return null;
+  }
+
   submitNewTask(){
     const taskData = this.taskForm.value;
     if(this.taskForm.invalid) return;
+
     this.dataFromServerService.addNewTask(taskData).subscribe(data=>{
       this.dialogRef.close()
       alert("Task was assigned successfully")

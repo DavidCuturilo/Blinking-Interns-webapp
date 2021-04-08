@@ -76,7 +76,7 @@
 
             
             <div class="task-section" *ngFor="let assignment of assignments">
-                <mat-card class="individual-task" *ngIf="(this.activeFilters.includes(assignment.task_status) || this.userType === 'intern') && !this.load">
+                <mat-card class="individual-task" *ngIf="(this.userType === 'intern') && !this.load">
                     <div class="image-section">
                         <img src="{{ this.helperMethodService.getImageUrl(assignment.task.type)}}" alt="">
                     </div>

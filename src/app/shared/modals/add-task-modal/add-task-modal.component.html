@@ -22,6 +22,9 @@
             <input matInput [matDatepicker]="picker" formControlName='deadline'>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="taskForm.get('deadline').hasError('invalidDate')">
+              You must choose some date in future!
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
