@@ -1,0 +1,10 @@
+{
+    "header": {
+        "title": "Blinking Interns",
+        "login": "Login",
+        "register": "Register",
+        "profile": "Profile",
+        "home": "Home",
+        "log-out": "Log out"
+    }
+}
