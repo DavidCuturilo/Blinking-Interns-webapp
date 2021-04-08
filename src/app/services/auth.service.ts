@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   loggedIn = false;
-  private host:string = "localhost";
+  private host:string = "10.241.107.138";
   private portAuth:number = 8081;//port for auth server
 
   private portData:number = 8080;

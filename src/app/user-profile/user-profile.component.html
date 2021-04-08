@@ -54,18 +54,19 @@
     </div>
     <hr>
     <div class="tasks-container">
-        <div class="filters" *ngIf="this.userType === 'mentor'" >
+
+        <div class="filters">
             <div class="completed">
                 <label for="btnC">Completed</label>
-                <button class="completed-button statusActive" id="btnC" (click)='statusActive("Completed",btnC)' #btnC></button>
+                <button class="completed-button statusActive" [ngClass]="{'statusActive': activeFilters.includes('Completed')}"  id="btnC" (click)='statusActive("Completed")'></button>
             </div>
             <div class="active">
                 <label for="btnA">Active</label>
-                <button class="active-button" id="btnA" (click)='statusActive("Active",btnA)' #btnA></button>
+                <button class="active-button" id="btnA" [ngClass]="{'statusActive': activeFilters.includes('Active')}"  (click)='statusActive("Active")' ></button>
             </div>
             <div class="overdue">
                 <label for="btnU">Overdue</label>
-                <button class="overdue-button" id="btnU" (click)='statusActive("Overdue",btnU)' #btnU></button>
+                <button class="overdue-button" id="btnU" [ngClass]="{'statusActive': activeFilters.includes('Overdue')}"  (click)='statusActive("Overdue")' ></button>
             </div>
        </div>
         <div class="group-tasks">
@@ -76,7 +77,7 @@
 
 
             <div class="task-section" *ngFor="let assignment of assignments">
-                <mat-card class="individual-task" *ngIf="activeFilters.includes(assignment.status) && !this.load">
+                <mat-card class="individual-task" *ngIf="activeFilters.includes(assignment.task_status) && !this.load">
                     <div class="image-section">
                         <img src="{{ this.helperMethodService.getImageUrl(assignment.task.type)}}" alt="">
                     </div>

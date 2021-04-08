@@ -31,8 +31,9 @@ export class UserProfileComponent implements OnInit {
   // public modalData: Intern;
 
   ngOnInit(): void {
+    const userType = this.helperMethodService.getDataFromAccesToken().type;
 
-    if (this.helperMethodService.getDataFromAccesToken().type === 'intern'){
+    if (userType === 'intern'){
      let {email,id} = this.helperMethodService.getDataFromAccesToken();
      this.intern = {email,full_name: '',id};
     } else {
@@ -41,10 +42,17 @@ export class UserProfileComponent implements OnInit {
 
     this.dataFromServerService.getInternAssignments(this.intern).subscribe(response => {
       this.assignments=response.payload;
+    console.log(this.assignments)
+
     }, error => console.log(error))
 
-    this.activeFilters = ["Completed"];
-    console.log(this.activeFilters)
+    if(userType === 'intern'){
+      this.activeFilters = ["Completed"];
+    } else if (userType === 'mentor'){
+      
+      this.activeFilters = ["Active"];
+    }
+    // console.log(this.activeFilters)
 
     this.userType = this.helperMethodService.getDataFromAccesToken().type;
 
@@ -59,16 +67,16 @@ export class UserProfileComponent implements OnInit {
     // this.modalData=intern;
   }
 
-  statusActive(filter: string,btn: HTMLButtonElement){
+  statusActive(filter: string){
 
     this.load= !this.load;
 
-    if(this.activeFilters.includes(filter)){
-      btn.classList.remove('statusActive');
-    }
-    else{
-      btn.classList.add('statusActive');
-    }
+    // if(this.activeFilters.includes(filter)){
+    //   btn.classList.remove('statusActive');
+    // }
+    // else{
+    //   btn.classList.add('statusActive');
+    // }
 
     setTimeout(() => {
       this.load= !this.load;

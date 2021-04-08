@@ -38,6 +38,9 @@
         justify-content: center;
         align-items: center;
 
+        .intern-h1 {
+            font-family: 'Courier New', Courier, monospace;
+        }
         // border-style: groove;
 
         width: 100%;
@@ -53,25 +56,18 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            flex-grow: 1;
 
             height: 100%;
             width: 100%;
 
             .task {
-                width: 30%;
-                min-width: 33%;
+                min-width: 30%;
                 display: flex;
-
                 flex-direction: column;
                 align-items: center;
-                flex-grow: 1;
+                // flex-grow: 1;
                 margin: 20px;
                 font-size: large;
-                flex-grow: 1;
-
-                // border: lightcoral;
-                // border-style: ridge;
 
                 border-radius: 10px;
 
@@ -181,8 +177,8 @@
                     margin-right: 5px;
 
                     .image-intern {
-                        height: 95%;
-                        width: 85%;
+                        height: 85%;
+                        width: 60%;
                         margin-top: 10px;
                         padding-top: 10px;
                     }
