@@ -74,9 +74,9 @@
                 <mat-spinner></mat-spinner>
             </div>
 
-            
+
             <div class="task-section" *ngFor="let assignment of assignments">
-                <mat-card class="individual-task" *ngIf="(this.userType === 'intern') && !this.load">
+                <mat-card class="individual-task" *ngIf="activeFilters.includes(assignment.status) && !this.load">
                     <div class="image-section">
                         <img src="{{ this.helperMethodService.getImageUrl(assignment.task.type)}}" alt="">
                     </div>
@@ -94,7 +94,6 @@
                         </button>
                     </div>
                 </mat-card>
-
             </div>
          </div>
     </div>

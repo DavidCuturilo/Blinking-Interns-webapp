@@ -31,20 +31,23 @@ export class UserProfileComponent implements OnInit {
   // public modalData: Intern;
 
   ngOnInit(): void {
+
     if (this.helperMethodService.getDataFromAccesToken().type === 'intern'){
-     let {email} = this.helperMethodService.getDataFromAccesToken();
-     this.intern = {email,full_name: ''};
+     let {email,id} = this.helperMethodService.getDataFromAccesToken();
+     this.intern = {email,full_name: '',id};
     } else {
       this.intern = JSON.parse(localStorage.getItem("intern"));
     }
+
     this.dataFromServerService.getInternAssignments(this.intern).subscribe(response => {
       this.assignments=response.payload;
     }, error => console.log(error))
+
     this.activeFilters = ["Completed"];
+    console.log(this.activeFilters)
 
     this.userType = this.helperMethodService.getDataFromAccesToken().type;
 
-    console.log(this.userType)
   }
 
   editStatus(){
@@ -76,6 +79,7 @@ export class UserProfileComponent implements OnInit {
         this.activeFilters.push(filter);
       }
     },300);
+    console.log(this.activeFilters)
   }
 
 }

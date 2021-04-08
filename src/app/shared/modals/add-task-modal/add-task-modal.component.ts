@@ -25,7 +25,7 @@ export class AddTaskModalComponent implements OnInit {
       title: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       text: new FormControl(null, [Validators.required]),
       task_type:new FormControl(null, [Validators.required]),
-      deadline: new FormControl(null, [Validators.required, this.dateValidator]),
+      deadline: new FormControl(null, [Validators.required, this.dateValidator.bind(this)]),
       interns: new FormControl(null)
     });
   }
@@ -35,13 +35,13 @@ export class AddTaskModalComponent implements OnInit {
   }
 
   //custom validator for date
-  dateValidator(control: FormControl){
+  dateValidator(control: FormControl):{[s:string]: boolean }{
     const currentDate = new Date();
 
     let chosenDate = control.value;
 
-    if(chosenDate.getDate() !== currentDate.getDate() || chosenDate.getTime() <= currentDate.getTime()){
-      return {'deadline':true};
+    if(chosenDate && (chosenDate.getDate() !== currentDate.getDate() && chosenDate.getTime() < currentDate.getTime())){
+      return {'invalidDate':true};
     }
     return null;
   }
