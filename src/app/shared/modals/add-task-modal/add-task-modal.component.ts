@@ -36,6 +36,7 @@ export class AddTaskModalComponent implements OnInit {
 
   submitNewTask(){
     const taskData = this.taskForm.value;
+    if(this.taskForm.invalid) return;
     this.dataFromServerService.addNewTask(taskData).subscribe(data=>{
       this.dialogRef.close()
       alert("Task was assigned successfully")
