@@ -79,7 +79,6 @@ export class UserProfileComponent implements OnInit {
         this.activeFilters.push(filter);
       }
     },300);
-    console.log(this.activeFilters)
-  }
 
+  }
 }
