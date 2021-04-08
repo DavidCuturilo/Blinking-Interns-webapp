@@ -10,9 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
-import { LoginFormComponent } from './login-form/login-form.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { TaskInfoModalComponent } from './shared/modals/task-info-modal/task-info-modal.component';
@@ -30,9 +28,7 @@ import { RegisterComponent } from './register/register.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginFormComponent,
     PageNotFoundComponent,
-    RegisterFormComponent,
     UserProfileComponent,
     HomePageComponent,
     LoginComponent,
