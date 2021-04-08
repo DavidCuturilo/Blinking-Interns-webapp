@@ -76,4 +76,10 @@ export class DataFromServerService {
     let url = `http://${this.host}:${this.port}/task`
     return this.http.post<any>(url,taskData)
   }
+
+  getNotifications(){
+    let url = `http://${this.host}:${this.port}/notification`
+    console.log("Saljem zahtev za notifikacijama");
+    return this.http.get<any>(url);
+  }
 }
