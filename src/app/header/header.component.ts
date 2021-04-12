@@ -37,9 +37,9 @@ export class HeaderComponent implements OnInit {
     });
 
 
-    // this.dataFromServerService.getNotifications();
-    this.getNotifications();
-    setInterval(this.getNotifications.bind(this),2000);
+    // // this.dataFromServerService.getNotifications();
+    // this.getNotifications();
+    // setInterval(this.getNotifications.bind(this),2000);
   }
 
   getNotifications(){
