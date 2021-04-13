@@ -33,7 +33,7 @@ export class DataFromServerService {
 
 
 
-  private host:string = "10.241.107.138";
+  private host:string = "localhost";
 
   interns = []
 
