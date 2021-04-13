@@ -40,10 +40,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .mat-menu-content{
-  padding: 0;
+  padding: 0 !important;
   padding-top: 0 !important;
   width: 250px;
   overflow-x: hidden;
+}
+
+.mat-menu-item .mat-icon {
+  margin: 0 !important;
 }
 
 ::ng-deep.mat-menu-panel {

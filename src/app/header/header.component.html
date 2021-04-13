@@ -13,7 +13,7 @@
           <div class="nav-links" routerLink='/register' routerLinkActive='nav-link-active' *ngIf="!this.authService.loggedIn"><div>Register</div></div>
           <div class="nav-links" routerLink='/user-profile' routerLinkActive='nav-link-active'*ngIf="this.authService.loggedIn && this.helperMethodService.getDataFromAccesToken().type === 'intern'"><div>Profile</div></div>
           <div class="nav-links" routerLink='/home' routerLinkActive='nav-link-active' *ngIf="this.authService.loggedIn"><div>Home</div></div>
-          <div class="nav-links" routerLink='/login' routerLinkActive='nav-link-active' *ngIf="this.authService.loggedIn" (click)= 'logOut()'>Log out</div>
+          <div class="nav-links" routerLink='/login' routerLinkActive='nav-link-active' *ngIf="this.authService.loggedIn" (click)= 'logOut()'><span class="material-icons">logout</span></div>
 
           <div class="nav-links" *ngIf="this.authService.loggedIn" [matMenuTriggerFor]="menu" (click)="removeAnimationNotification(menu)">
           <mat-icon  class="notifications-icon" [matBadgeHidden]='dataFromServerService.numberOfUnreadNotifications === 0' matBadge="{{dataFromServerService.numberOfUnreadNotifications}}" matBadgeColor="warn" >notifications</mat-icon>
