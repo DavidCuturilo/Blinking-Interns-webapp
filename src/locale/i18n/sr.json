@@ -1,10 +1,21 @@
 {
     "header": {
         "title": "Blinking Interns",
-        "login": "Login",
-        "register": "Register",
-        "profile": "Profile",
+        "login": "Prijavi se",
+        "register": "Registruj se",
+        "profile": "Profil",
         "home": "Home",
-        "log-out": "Log out"
+        "log-out": "Odjavi se"
+    },
+
+    "home-page": {
+        "intern-title": "Svi zadaci",
+        "task-procent": "Odradjeno",
+        "button-details": "Vise detalja",
+        "mentor-title": "All interns",
+        "email": "email",
+        "completed-tasks": "Broj zavrsenih zadataka",
+        "button-seeMore": "Vidi jos"
     }
+
 }

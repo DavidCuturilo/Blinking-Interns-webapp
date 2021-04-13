@@ -1,3 +1,4 @@
+import { Notification } from './../shared/models/notification.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Intern } from '../shared/models/intern.model';
@@ -26,7 +27,13 @@ export class DataFromServerService {
     }
   }[] = []
 
-  private host:string = "localhost";
+  notifications: Notification[];
+  numberOfUnreadNotifications=0;
+  interval;
+
+
+
+  private host:string = "10.241.107.138";
 
   interns = []
 
@@ -77,9 +84,32 @@ export class DataFromServerService {
     return this.http.post<any>(url,taskData)
   }
 
+  getNotificationsPeriodically(){
+    this.getNotifications();
+    this.interval = setInterval(this.getNotifications.bind(this),10000);
+  }
+
   getNotifications(){
     let url = `http://${this.host}:${this.port}/notification`
-    console.log("Saljem zahtev za notifikacijama");
-    return this.http.get<any>(url);
+    this.http.get<any>(url).subscribe(data=>{
+      this.notifications = data.payload.reverse();
+      this.numberOfUnreadNotifications = this.notifications.filter(notification => notification.seen===false).length
+    }, error => {
+      console.log(error)
+    });
+  }
+
+  markAllNotificationsAsRead(){
+    const payload = {notifications:this.notifications.filter(notification => !notification.seen)};
+    this.notifications.map(notification => notification.seen=true);
+    this.numberOfUnreadNotifications=0;
+    let url = `http://${this.host}:${this.port}/notification/seen`;
+    return this.http.post<any>(url,payload);
+  }
+
+  markNotificationAsRead(notification){
+    const payload = {notifications:[notification]}
+    let url = `http://${this.host}:${this.port}/notification/seen`;
+    return this.http.post<any>(url,payload);
   }
 }

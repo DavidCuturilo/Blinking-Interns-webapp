@@ -1,3 +1,4 @@
+import { DataFromServerService } from 'src/app/services/data-from-server.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   passwordError = 'Invalid password';
 
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private dataFromServerService: DataFromServerService) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -52,6 +53,9 @@ export class LoginComponent implements OnInit {
       document.cookie = `refreshToken=${refreshToken}`
 
       this.router.navigate(['/']);
+
+      clearInterval(this.dataFromServerService.interval);
+      this.dataFromServerService.getNotificationsPeriodically();
     }, error =>{
       //Fail
       this.authService.loggedIn = false;

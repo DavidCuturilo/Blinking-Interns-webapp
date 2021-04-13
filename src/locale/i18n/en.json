@@ -1,0 +1,19 @@
+{
+    "header": {
+        "title": "Blinking Interns",
+        "login": "Login",
+        "register": "Register",
+        "profile": "Profile",
+        "home": "Home",
+        "log-out": "Log out"
+    },
+    "home-page": {
+        "intern-title": "All tasks",
+        "task-procent": "Complete",
+        "button-details": "More details",
+        "mentor-title": "All interns",
+        "email": "email",
+        "completed-tasks": "Nubmer of completed tasks",
+        "button-seeMore": "See more"
+    }
+}

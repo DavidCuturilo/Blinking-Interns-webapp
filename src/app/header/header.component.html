@@ -8,12 +8,34 @@
         <div class="home-link" routerLink='/home'>Blinking Interns</div>
 
         <nav>
-          
-          <div class="nav-links" routerLink='/login' routerLinkActive='nav-link-active' *ngIf="!this.authService.loggedIn">Login</div>
-          <div class="nav-links" routerLink='/register' routerLinkActive='nav-link-active' *ngIf="!this.authService.loggedIn">Register</div>
-          <div class="nav-links" routerLink='/user-profile' routerLinkActive='nav-link-active'*ngIf="this.authService.loggedIn && this.helperMethodService.getDataFromAccesToken().type === 'intern'">Profile</div>
-          <div class="nav-links" routerLink='/home' routerLinkActive='nav-link-active' *ngIf="this.authService.loggedIn">Home</div>
+
+          <div class="nav-links" routerLink='/login' routerLinkActive='nav-link-active' *ngIf="!this.authService.loggedIn"><div>Login</div></div>
+          <div class="nav-links" routerLink='/register' routerLinkActive='nav-link-active' *ngIf="!this.authService.loggedIn"><div>Register</div></div>
+          <div class="nav-links" routerLink='/user-profile' routerLinkActive='nav-link-active'*ngIf="this.authService.loggedIn && this.helperMethodService.getDataFromAccesToken().type === 'intern'"><div>Profile</div></div>
+          <div class="nav-links" routerLink='/home' routerLinkActive='nav-link-active' *ngIf="this.authService.loggedIn"><div>Home</div></div>
           <div class="nav-links" routerLink='/login' routerLinkActive='nav-link-active' *ngIf="this.authService.loggedIn" (click)= 'logOut()'>Log out</div>
+
+          <div class="nav-links" *ngIf="this.authService.loggedIn" [matMenuTriggerFor]="menu" (click)="removeAnimationNotification(menu)">
+          <mat-icon  class="notifications-icon" [matBadgeHidden]='dataFromServerService.numberOfUnreadNotifications === 0' matBadge="{{dataFromServerService.numberOfUnreadNotifications}}" matBadgeColor="warn" >notifications</mat-icon>
+          </div>
+          <mat-menu #menu="matMenu" class="notifications-menu" >
+            <button mat-menu-item class="markAllAsRead" (click)='markAllAsRead()'>
+              <span>Mark all as read</span>
+              <div class="markAllAsReadIcon"><mat-icon class="mat-18 checkboxIcon">check_box</mat-icon></div>
+            </button>
+            <div mat-menu-item matTooltip="Mark as read" matTooltipPosition="left" *ngFor="let notification of dataFromServerService.notifications">
+              <div  #notificationContainer (click)="markAsRead($event, notificationContainer, notification)" class="notification-container" [ngClass]="{'newNotification':notification.seen===false}" >
+                <div class="notification-image"><img src="../../assets/pictures/task.png"></div>
+                <div class="notification-data">
+                  <div class="notification-title">Notification title</div>
+                  <div class="notification-sender">From:{{notification.sender.email}}</div>
+                  <div class="notification-text">{{notification.text}}</div>
+                </div>
+                <div class="notification-seen"><mat-icon class="mat-18">check_circle</mat-icon></div>
+              </div>
+            </div>
+          </mat-menu>
+
         </nav>
 
 </mat-toolbar>
