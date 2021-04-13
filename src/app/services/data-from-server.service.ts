@@ -50,7 +50,8 @@ export class DataFromServerService {
 
       this.numberOfTries=0;
       console.log(this.assignments)
-      return this.assignments
+
+      return this.assignments;
     }, err => {
       if(err.status===401 && this.numberOfTries<3){
         this.numberOfTries++;
