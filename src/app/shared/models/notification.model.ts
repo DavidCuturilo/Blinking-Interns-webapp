@@ -1,3 +1,5 @@
+import { NotificationTypes } from "./notification-enums";
+
 export interface Notification{
   sender:{
     id:number,
@@ -10,5 +12,7 @@ export interface Notification{
     type:"Intern" | "Mentor"
   },
   text:string,
-  seen:boolean
+  seen:boolean,
+  notificationType: NotificationTypes,
+  notificationData: any
 }

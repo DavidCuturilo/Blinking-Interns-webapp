@@ -1,9 +1,14 @@
+import { NotificationTypes } from './../shared/models/notification-enums';
 import { DataFromServerService } from 'src/app/services/data-from-server.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { HelperMethodService } from '../services/helper-method.service';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
+import { TaskInfoModalComponent } from '../shared/modals/task-info-modal/task-info-modal.component';
+import { Task } from '../shared/models/task.model';
+import { Notification } from '../shared/models/notification.model'
 
 @Component({
   selector: 'app-header',
@@ -14,11 +19,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(public authService: AuthService, private router: Router,
               public helperMethodService: HelperMethodService,
-              public dataFromServerService: DataFromServerService) { }
+              public dataFromServerService: DataFromServerService,
+              public dialog: MatDialog) { }
 
   notifications:any[];
   numberOfUnreadNotifications:number;
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+  public modalData: Task;
 
   logOut(){
     this.delete_cookie("accessToken");
@@ -30,11 +37,14 @@ export class HeaderComponent implements OnInit {
     this.authService.loggedIn=false;
   }
 
+
+
   delete_cookie(name) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 
   ngOnInit(): void {
+
     this.authService.isAuthenticated().then( response =>{
       this.authService.loggedIn=true;
 
@@ -80,7 +90,15 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  markAsRead(event:Event, notificationContainer:HTMLDivElement, notification){
+  markAsRead(event:Event, notificationContainer:HTMLDivElement, notification: Notification ){
+    switch(notification.notificationType){
+      case NotificationTypes.TaskAssigned:
+        this.openTaskModal(notification);
+        break;
+      default:
+        break;
+    }
+
     event.stopPropagation();
     if(notification.seen==true)return;
     notificationContainer.classList.add('animate-notification');
@@ -94,5 +112,21 @@ export class HeaderComponent implements OnInit {
     }, error=>{
       console.log('Greska prilikom updatovanja notifikacije:', error)
     });
+  }
+
+  openTaskModal(notification: Notification){
+    try{
+      const taskId = notification.notificationData.id;
+      const assignments = this.dataFromServerService.assignments;
+      for( let i = 0;i < assignments.length; i++){
+        if(taskId == assignments[i].task.task_id){
+          this.dialog.open(TaskInfoModalComponent,{data: {...assignments[i]}});
+          return;
+        }
+      }
+    }catch(error){
+      return;
+    }
+
   }
 }

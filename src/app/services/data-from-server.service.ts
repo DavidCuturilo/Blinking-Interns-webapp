@@ -23,7 +23,8 @@ export class DataFromServerService {
     task:{
       title:string,
       text:string,
-      task_type:TaskType
+      task_type:TaskType,
+      task_id:number
     }
   }[] = []
 
