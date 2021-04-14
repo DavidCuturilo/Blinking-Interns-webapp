@@ -4,6 +4,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { HelperMethodService } from '../services/helper-method.service';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
+import { TaskInfoModalComponent } from '../shared/modals/task-info-modal/task-info-modal.component';
+import { Task } from '../shared/models/task.model';
 
 @Component({
   selector: 'app-header',
@@ -14,11 +17,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(public authService: AuthService, private router: Router,
               public helperMethodService: HelperMethodService,
-              public dataFromServerService: DataFromServerService) { }
+              public dataFromServerService: DataFromServerService,
+              public dialog: MatDialog) { }
 
   notifications:any[];
   numberOfUnreadNotifications:number;
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+  public modalData: Task;
 
   logOut(){
     this.delete_cookie("accessToken");
@@ -30,11 +35,14 @@ export class HeaderComponent implements OnInit {
     this.authService.loggedIn=false;
   }
 
+  
+
   delete_cookie(name) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 
   ngOnInit(): void {
+
     this.authService.isAuthenticated().then( response =>{
       this.authService.loggedIn=true;
 
