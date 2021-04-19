@@ -19,6 +19,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -32,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
     HomePageComponent,
     LoginComponent,
     RegisterComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
