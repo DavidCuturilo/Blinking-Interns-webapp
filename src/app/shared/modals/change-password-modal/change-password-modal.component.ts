@@ -27,9 +27,9 @@ export class ChangePasswordModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.changeForm = new FormGroup({
-      'oldPassword': new FormControl(null,[Validators.required,Validators.minLength(8)]), 
-      'newPassword' : new FormControl(null,[Validators.required,Validators.minLength(8)]),
-      'confirmNew' : new FormControl(null,[Validators.required,Validators.minLength(8)]),
+      'oldPassword': new FormControl(null,[Validators.required,Validators.minLength(6)]),
+      'newPassword' : new FormControl(null,[Validators.required,Validators.minLength(6)]),
+      'confirmNew' : new FormControl(null,[Validators.required,Validators.minLength(6)]),
     });
   }
 
@@ -84,7 +84,13 @@ export class ChangePasswordModalComponent implements OnInit {
     this._snackBar.open('Successfully changed password!', 'Close',{
       duration: 2000,
     });
-    this.dataService.changePassword(this.changeForm.get('oldPassword').value,this.changeForm.get('newPassword').value);
+    this.dataService.changePassword(this.changeForm.get('oldPassword').value, this.changeForm.get('confirmNew').value , this.changeForm.get('newPassword').value)
+    .subscribe(data=>{
+      console.log(data);
+    }, error=>{
+      console.log(error);
+
+    })
     this.changeForm.reset();
   }
   onClose(){
