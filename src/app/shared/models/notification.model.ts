@@ -4,12 +4,12 @@ export interface Notification{
   sender:{
     id:number,
     email:string,
-    type:"Intern" | "Mentor"
+    user_type:"intern" | "mentor"
   },
   receiver:{
     id:number,
     email:string,
-    type:"Intern" | "Mentor"
+    user_type:"intern" | "mentor"
   },
   text:string,
   seen:boolean,
