@@ -49,6 +49,10 @@
             <mat-option (click)='logValue()' *ngFor='let intern of interns' [value]='intern'>{{intern.full_name}}</mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="upload">
+          <label for="chooseFIle">Select a file:</label>
+          <input type="file" id="chooseFIle" class="file-input">
+        </div>
         <button mat-raised-button type="submit">Submit new Task</button>
 
     </form>

@@ -55,6 +55,16 @@
         font-size: 0.75em;
       }
 
+      .upload {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .file-input {
+          background-color: green;
+        }
+      }
+
       button{
         padding: 20px 5px;
         width: 20%;

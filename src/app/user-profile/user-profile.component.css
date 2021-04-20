@@ -1,0 +1,500 @@
+.container {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.container .personal-info-container {
+  height: 50%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding-top: 20px;
+}
+
+.container .personal-info-container .image {
+  height: 80%;
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .personal-info-container .image .image-user {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.container .personal-info-container .image .image-frame {
+  height: 80%;
+  width: 65%;
+  border: silver;
+  border-style: groove;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .personal-info-container .image .image-frame img {
+  padding-top: 8px;
+  height: 100%;
+  width: 90%;
+}
+
+.container .personal-info-container .vertical-line {
+  margin-top: 20px;
+  height: 80%;
+  width: 2px;
+  background-color: silver;
+}
+
+.container .personal-info-container .user-info {
+  height: 80%;
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .personal-info-container .user-info .header {
+  margin: 0;
+  margin-bottom: 10px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 30px;
+  font-weight: 500;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.container .personal-info-container .user-info .window-information {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 40px;
+}
+
+.container .personal-info-container .user-info .window-information .information {
+  font-family: 'Courier New', Courier, monospace;
+  height: 100px;
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-left: 10px;
+}
+
+.container .personal-info-container .user-info .window-information .information .email {
+  margin: 10px;
+}
+
+.container .personal-info-container .user-info .window-information .information mat-divider {
+  margin: 5px 0 5px 10px;
+  color: black;
+  border-top-style: solid;
+  border-top-width: 2px;
+  width: 85%;
+}
+
+.container .personal-info-container .user-info .window-information .information .password {
+  margin: 10px;
+}
+
+.container .personal-info-container .user-info .window-information .settings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  height: 100px;
+  margin-left: 20px;
+}
+
+.container .personal-info-container .user-info .window-information .settings .settings-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.container .personal-info-container .user-info .window-information .settings .settings-icon .label-settings {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 10px;
+}
+
+.container .personal-info-container .user-info .window-information .settings .change-password {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.container .personal-info-container .user-info .user-status {
+  margin-left: 40px;
+  padding-left: 10px;
+  height: 100px;
+  width: 80%;
+}
+
+.container .personal-info-container .user-info .user-status .edit-icon {
+  cursor: pointer;
+}
+
+.container .personal-info-container .user-info .user-status .status-label {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 10px;
+}
+
+.container .personal-info-container .user-info .user-status .status {
+  width: 400px;
+}
+
+.container .personal-info-container .user-info .user-status .status .status-input {
+  margin: 10px;
+  width: 300px;
+  height: 40px;
+}
+
+.container hr {
+  margin: 20px 0 20px 0;
+  width: 95%;
+  height: 1px;
+  color: silver;
+  -webkit-box-shadow: 7px 5px 13px -0.5px rgba(0, 0, 0, 0.37);
+          box-shadow: 7px 5px 13px -0.5px rgba(0, 0, 0, 0.37);
+}
+
+.container .tasks-container {
+  height: 50%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .tasks-container .filters {
+  width: 60%;
+  height: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 20px;
+}
+
+.container .tasks-container .filters .completed {
+  width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .tasks-container .filters .completed .completed-button {
+  margin-left: 5px;
+  padding: 10px;
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.container .tasks-container .filters .completed .statusActive {
+  background-color: green;
+}
+
+.container .tasks-container .filters .active {
+  width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .tasks-container .filters .active .active-button {
+  margin-left: 5px;
+  padding: 10px;
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.container .tasks-container .filters .active .statusActive {
+  background-color: blue;
+}
+
+.container .tasks-container .filters .overdue {
+  width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .tasks-container .filters .overdue .overdue-button {
+  margin-left: 5px;
+  padding: 10px;
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.container .tasks-container .filters .overdue .statusActive {
+  background-color: red;
+}
+
+.container .tasks-container .filters label {
+  cursor: pointer;
+}
+
+.container .tasks-container .group-tasks {
+  margin: 20px 10px;
+  padding: 0;
+  outline: none;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .tasks-container .group-tasks .spinner {
+  margin: 30px;
+}
+
+.container .tasks-container .group-tasks .spinner ::ng-deep .mat-progress-spinner circle, .container .tasks-container .group-tasks .mat-spinner circle {
+  stroke: var(--blinking-background);
+}
+
+.container .tasks-container .group-tasks .task-section {
+  margin: 20px;
+  margin-bottom: 30px;
+  padding: 0;
+  height: 100%;
+  width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task {
+  margin: 0;
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.66);
+          box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.66);
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task .image-section {
+  width: 34%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task .image-section img {
+  height: 300px;
+  width: 85%;
+  border-radius: 10px;
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task .task-info-section {
+  height: 100%;
+  width: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task .task-info-section .title {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 10px;
+  font-size: 35px;
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task .task-info-section .text {
+  font-size: 20px;
+  margin: 10px 0 20px 10px;
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task .download-section {
+  height: 100%;
+  width: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task .download-section .view-document mat-icon {
+  font-size: 34px;
+  height: 34px;
+  width: 34px;
+  cursor: pointer;
+  margin-right: 10px;
+  color: var(--blinking-background);
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task .download-section .button-download {
+  width: 80px;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task .download-section .button-download mat-icon {
+  width: 80px;
+  height: 30px;
+  font-size: 30px;
+}
+
+/*MEDIA Query*/
+/*# sourceMappingURL=user-profile.component.css.map */

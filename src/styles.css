@@ -1,48 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --blinking-primary: #dddddd;
-    --blinking-secondary: hsl(0, 96%, 45%);
-    --blinking-background: #146fa3;
-    --blinking-text: #d1faff;
-    --blinking-black: #000000;
-
+  --blinking-primary: #dddddd;
+  --blinking-secondary: hsl(0, 96%, 45%);
+  --blinking-background: #146fa3;
+  --blinking-text: #d1faff;
+  --blinking-black: #000000;
 }
+
 .mat-progress-bar {
   width: 90% !important;
 }
 
 mat-dialog-container {
-    padding: 0px !important;
+  padding: 0px !important;
 }
+
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   border-color: var(--blinking-background);
 }
+
 .mat-radio-button.mat-accent .mat-radio-inner-circle {
   background-color: var(--blinking-background);
 }
+
 .mat-form-field-infix {
   width: 300px !important;
   font-size: 20px;
 }
 
-.add-task-tooltip{
+.add-task-tooltip {
+  -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  background:black;
+  background: black;
   font-size: 1rem;
 }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-.mat-menu-panel{
-  width: 250px;
-  overflow-x: hidden;
-
+html, body {
+  height: 100%;
 }
 
-.mat-menu-content{
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-menu-panel {
+  width: 250px;
+  overflow-x: hidden;
+}
+
+.mat-menu-content {
   padding: 0 !important;
   padding-top: 0 !important;
   width: 250px;
@@ -57,3 +64,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ::ng-deep.mat-menu-panel {
   max-width: none !important;
 }
+/*# sourceMappingURL=styles.css.map */
