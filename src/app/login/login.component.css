@@ -1,0 +1,101 @@
+.container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--blinking-primary);
+  border-radius: 10px;
+  box-shadow: 3px 6px 14px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 6px 14px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 6px 14px 0px rgba(0, 0, 0, 0.75);
+  padding: 10px;
+  height: 500px;
+  width: 450px;
+}
+
+.container .login-form .header {
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.container .login-form .user-information {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+}
+
+.container .login-form .user-information .email-container .email-form {
+  margin-bottom: 20px;
+}
+
+.container .login-form .user-information .password-container .password-form {
+  margin-bottom: 20px;
+}
+
+.container .login-form .user-information .remove-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: black;
+  font-size: x-large;
+  font-weight: bolder;
+  width: 20px;
+  position: relative;
+  right: 20px;
+}
+
+.container .login-form .user-information .remove-button.btn-hidden {
+  visibility: hidden;
+}
+
+.container .login-form .mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.container .login-form .login-button {
+  border-radius: 15px;
+  padding: 3px 25px;
+  background-color: var(--blinking-background);
+  outline: none;
+  color: var(--blinking-text);
+  font-size: 20px;
+}
+
+.container .login-form .login-button:disabled {
+  background-color: #146fa394;
+  cursor: not-allowed;
+}
+/*# sourceMappingURL=login.component.css.map */

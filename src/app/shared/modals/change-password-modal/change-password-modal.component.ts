@@ -84,7 +84,13 @@ export class ChangePasswordModalComponent implements OnInit {
     this._snackBar.open('Successfully changed password!', 'Close',{
       duration: 2000,
     });
-    this.dataService.changePassword(this.changeForm.get('oldPassword').value,this.changeForm.get('newPassword').value);
+    this.dataService.changePassword(this.changeForm.get('oldPassword').value, this.changeForm.get('confirmNew').value , this.changeForm.get('newPassword').value)
+    .subscribe(data=>{
+      console.log(data);
+    }, error=>{
+      console.log(error);
+
+    })
     this.changeForm.reset();
   }
   onClose(){

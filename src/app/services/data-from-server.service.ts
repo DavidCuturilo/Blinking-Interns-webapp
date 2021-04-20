@@ -76,9 +76,9 @@ export class DataFromServerService {
     return this.http.get<any>(url);
   }
 
-  changePassword(oldPassword: string, newPassword: string){
-    console.log("STARA SIFRA: ",oldPassword);
-    console.log("SLANJE ZAHTEVA ZA PROMENOM SIFRE:",newPassword);
+  changePassword(oldPassword: string, repeatPassword: string,newPassword: string){
+    let url = `http://${this.host}:${this.port}/reset-pass`;
+    return this.http.post(url,{oldPassword, repeatPassword, newPassword})
   }
 
   addNewTask(taskData){

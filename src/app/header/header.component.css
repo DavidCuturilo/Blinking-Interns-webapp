@@ -1,0 +1,269 @@
+.toolbar {
+  background-color: var(--blinking-background);
+  color: var(--blinking-text);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  box-shadow: 3px 6px 14px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 6px 14px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 6px 14px 0px rgba(0, 0, 0, 0.75);
+}
+
+.toolbar img {
+  height: 44px;
+  cursor: pointer;
+  outline: none;
+}
+
+.toolbar .home-link {
+  cursor: pointer;
+  outline: none;
+  padding: 15px;
+}
+
+.toolbar .home-link:hover {
+  background-color: black;
+}
+
+.toolbar .home-link .nav-link-active {
+  background-color: #184f74;
+}
+
+.toolbar nav {
+  margin-left: auto;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.toolbar nav .nav-links {
+  color: var(--blinking-text);
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-color: inherit;
+  padding: 0 15px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  outline: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.toolbar nav .nav-links .person-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 30px;
+}
+
+.toolbar nav .nav-links mat-icon {
+  height: 30px;
+  width: 30px;
+  font-size: 30px;
+}
+
+.toolbar nav .nav-links:hover {
+  background-color: black;
+}
+
+.toolbar nav .nav-links .notifications-icon {
+  font-size: 30px;
+}
+
+.toolbar nav .nav-link-active {
+  background-color: #184f74;
+}
+
+.mat-menu-item {
+  padding: 0 0;
+  height: initial;
+  white-space: initial;
+}
+
+.mat-menu-item .notification-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 6px 5px;
+  white-space: initial;
+}
+
+.mat-menu-item .notification-container.animate-notification {
+  -webkit-animation: notification-animation 2s forwards;
+          animation: notification-animation 2s forwards;
+}
+
+@-webkit-keyframes notification-animation {
+  from {
+    background-color: #00d640;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+@keyframes notification-animation {
+  from {
+    background-color: #00d640;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+.mat-menu-item .notification-container .notification-data {
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+}
+
+.mat-menu-item .notification-container .notification-data .notification-title {
+  color: #535353;
+  font-size: 0.7rem;
+}
+
+.mat-menu-item .notification-container .notification-data .notification-sender {
+  font-size: 0.6rem;
+}
+
+.mat-menu-item .notification-container .notification-data .notification-text {
+  padding: 5px 0;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+}
+
+.mat-menu-item .notification-container .notification-seen {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mat-menu-item .notification-container .notification-image {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-self: flex-start;
+}
+
+.mat-menu-item .notification-container .notification-image img {
+  height: 32px;
+  width: auto;
+}
+
+.mat-menu-item .notification-container > div {
+  line-height: initial;
+}
+
+.mat-menu-item .notification-container.newNotification {
+  background-color: #7d9bd6;
+  margin: 0;
+  color: white;
+  cursor: pointer;
+}
+
+.mat-menu-item .notification-container.newNotification:hover {
+  background-color: #6a8cd1;
+}
+
+.mat-menu-item .notification-container.newNotification mat-icon {
+  color: #c23333;
+}
+
+.mat-menu-item .notification-container.newNotification .notification-container .notification-data .notification-title {
+  color: #3a3a3a;
+  font-size: 0.7rem;
+}
+
+.markAllAsRead {
+  padding: 5px 10px;
+  line-height: initial;
+  background-color: var(--blinking-background);
+  color: white;
+  font-weight: bolder;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.markAllAsRead:hover {
+  color: var(--blinking-background);
+}
+
+.markAllAsRead .checkboxIcon {
+  color: #0e0e68;
+}
+
+.markAllAsRead span {
+  margin-right: 5px;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 600px) {
+  .toolbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .toolbar .home-link {
+    display: none;
+  }
+  .toolbar .nav-bar-links {
+    display: none;
+  }
+}
+/*# sourceMappingURL=header.component.css.map */
