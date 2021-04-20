@@ -89,7 +89,6 @@ export class ChangePasswordModalComponent implements OnInit {
       console.log(data);
     }, error=>{
       console.log(error);
-
     })
     this.changeForm.reset();
   }
