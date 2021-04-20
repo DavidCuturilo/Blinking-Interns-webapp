@@ -17,8 +17,10 @@
         -moz-box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.75);
 
         padding: 10px;
-        height: 580px;
-        width: 480px;
+        // height: 580px;
+        height: 60%;
+        // width: 480px;
+        width: 26%;
 
         .header {
             font-size: 35px;
@@ -30,17 +32,44 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            width: 90%;
 
-            .fullName {
-                margin-bottom: 15px;
+
+            .fullName-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                .fullName {
+                    width: 80%;     
+                    margin-bottom: 15px;
+                }
+                
             }
 
-            .email {
-                margin-bottom: 15px;
+            .email-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .email {
+                    width: 80%;
+                    margin-bottom: 15px;
+                }
             }
 
-            .password {
-                margin-bottom: 15px;
+            .password-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .password {
+                    width: 80%;
+                    margin-bottom: 15px;
+                }
             }
 
             .remove-button {
@@ -53,7 +82,8 @@
 
                 width: 20px;
                 position: relative;
-                right: 20px;
+                right: 25px;
+                bottom: 15px;
 
                 &.btn-hidden{
                   visibility: hidden;
@@ -72,13 +102,26 @@
             outline: none;
             color: var(--blinking-text);
             margin: 15px 0;
-
+            cursor: pointer;
             font-size: 20px;
 
             &:disabled {
                 background-color: #146fa394;
                 cursor: not-allowed;
             }
+        }
+    }
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 600px){
+    .container {
+        min-width: 100%;
+
+        .register-form  {
+            min-width: 70%;
         }
     }
 }

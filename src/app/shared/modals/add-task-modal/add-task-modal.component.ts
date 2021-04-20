@@ -18,6 +18,10 @@ export class AddTaskModalComponent implements OnInit {
   taskForm: FormGroup;
   interns: Intern[];
 
+  fileName: string;
+
+
+
   taskTypeList: string[] = ['Front end', 'Back end', 'Full stack'];
   ngOnInit(): void {
     this.interns = this.data;
@@ -28,6 +32,12 @@ export class AddTaskModalComponent implements OnInit {
       deadline: new FormControl(null, [Validators.required, this.dateValidator.bind(this)]),
       interns: new FormControl(null)
     });
+
+    
+  }
+
+  uploadDocs(ref: HTMLInputElement){
+   this.fileName = ref.files[0].name;
   }
 
   closeDialog(){
@@ -61,4 +71,6 @@ export class AddTaskModalComponent implements OnInit {
   logValue(){
     console.log(this.taskForm.get('interns').value)
   }
+
+ 
 }

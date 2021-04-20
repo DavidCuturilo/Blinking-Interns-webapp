@@ -26,7 +26,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     const { type } = this.helperMethodService.getDataFromAccesToken();
 
-    console.log(type)
+    // console.log(type)
 
     if(type === "intern"){
       this.dataFromServer.getAssignments();

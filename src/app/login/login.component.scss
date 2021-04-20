@@ -20,8 +20,10 @@
         -moz-box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.75);
 
         padding: 10px;
-        height: 500px;
-        width: 450px;
+        // height: 500px;
+        height: 55%;
+        // width: 450px;
+        width: 26%;
 
         .header {
             font-size: 35px;
@@ -36,13 +38,25 @@
             width: 80%;
 
             .email-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
                 .email-form {
+                    width: 100%;
                     margin-bottom: 20px;
                 }
             }
 
             .password-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
                 .password-form {
+                    width: 100%;
                     margin-bottom: 20px;
                 }
             }
@@ -57,7 +71,8 @@
 
                 width: 20px;
                 position: relative;
-                right: 20px;
+                right: 25px;
+                bottom: 15px;
 
                 &.btn-hidden{
                   visibility: hidden;
@@ -75,13 +90,29 @@
             background-color: var(--blinking-background);
             outline: none;
             color: var(--blinking-text);
-
+            margin: 15px 0;
+            cursor: pointer;
             font-size: 20px;
 
             &:disabled {
                 background-color: #146fa394;
                 cursor: not-allowed;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 600px){
+    .container {
+        min-width: 100%;
+
+        .login-form  {
+            min-width: 70%;
+
+
+            .login-button {
+
+            } 
         }
     }
 }

@@ -66,7 +66,7 @@ export class DataFromServerService {
   getInternsById(){
     let url = `http://${this.host}:${this.port}/intern`
     return this.http.get<any>(url).subscribe((response)=>{
-      console.log(response.payload);
+      // console.log(response.payload);
       this.interns = response.payload;
     });
   }
