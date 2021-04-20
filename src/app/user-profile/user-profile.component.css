@@ -469,7 +469,16 @@
           align-items: center;
 }
 
-.container .tasks-container .group-tasks .task-section .individual-task .download-section button {
+.container .tasks-container .group-tasks .task-section .individual-task .download-section .view-document mat-icon {
+  font-size: 34px;
+  height: 34px;
+  width: 34px;
+  cursor: pointer;
+  margin-right: 10px;
+  color: var(--blinking-background);
+}
+
+.container .tasks-container .group-tasks .task-section .individual-task .download-section .button-download {
   width: 80px;
   height: 80px;
   display: -webkit-box;
@@ -481,7 +490,7 @@
           align-items: center;
 }
 
-.container .tasks-container .group-tasks .task-section .individual-task .download-section button mat-icon {
+.container .tasks-container .group-tasks .task-section .individual-task .download-section .button-download mat-icon {
   width: 80px;
   height: 30px;
   font-size: 30px;

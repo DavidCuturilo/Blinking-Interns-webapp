@@ -85,6 +85,9 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .modal .modal-inner .position .inside-container .task-status {
@@ -110,7 +113,27 @@
   color: var(--blinking-black);
 }
 
-.modal .modal-inner .position .inside-container .download {
+.modal .modal-inner .position .inside-container .document {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal .modal-inner .position .inside-container .document .view-document mat-icon {
+  font-size: 30px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  color: var(--blinking-background);
+}
+
+.modal .modal-inner .position .inside-container .document .download {
   margin: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -127,15 +150,15 @@
           justify-content: center;
 }
 
-.modal .modal-inner .position .inside-container .download .download-button {
+.modal .modal-inner .position .inside-container .document .download .download-button {
   outline: none;
   border-style: none;
-  background-color: var(--blinking-black);
+  background-color: var(--blinking-background);
   width: 70px;
   height: 70px;
 }
 
-.modal .modal-inner .position .inside-container .download .download-button mat-icon {
+.modal .modal-inner .position .inside-container .document .download .download-button mat-icon {
   height: 30px;
   width: 30px;
   font-size: 30px;

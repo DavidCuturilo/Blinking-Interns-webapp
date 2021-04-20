@@ -37,6 +37,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding-top: 4%;
 
         .intern-h1 {
             font-family: 'Courier New', Courier, monospace;
@@ -270,17 +271,22 @@
 
 /* MEDIA QUERIES */
 
-@media screen and (max-height: 600px){
+@media screen and (max-width: 600px){
     .main-container {
 
         .card-container {
+            padding-top: 10%;
 
+            .intern-h1 {
+                font-size: 28px;
+                margin-top: 20px;
+            }
             .task-container {
 
                 .task {
 
                     .individual-task {
-                        width: 50%;
+                        // width: 80%;
                     }
                 }
             }

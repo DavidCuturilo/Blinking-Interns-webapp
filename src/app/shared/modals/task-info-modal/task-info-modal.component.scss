@@ -58,6 +58,7 @@
           .inside-container {
             display: flex;
             justify-content: space-between;
+            align-items: center;
 
 
 
@@ -84,28 +85,44 @@
               color: var(--blinking-black);
             }
 
-            .download {
-              margin: 20px;
-
+            .document {
               display: flex;
-              flex-direction: column;
-              align-items: flex-end;
               justify-content: center;
+              align-items: center;
 
-                .download-button {
-                    outline: none;
-                    border-style: none;
-                    background-color: var(--blinking-black);
-                    width: 70px;
-                    height: 70px;
-
-                    mat-icon {
-                      height: 30px;
-                      width: 30px;
-                      font-size: 30px;
-                    }
-
+              .view-document {
+                mat-icon {
+                  font-size: 30px;
+                  height: 30px;
+                  width: 30px;
+                  cursor: pointer;
+                  color: var(--blinking-background);
                 }
+              }
+
+              .download {
+                margin: 20px;
+  
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: center;
+  
+                  .download-button {
+                      outline: none;
+                      border-style: none;
+                      background-color: var(--blinking-background);
+                      width: 70px;
+                      height: 70px;
+  
+                      mat-icon {
+                        height: 30px;
+                        width: 30px;
+                        font-size: 30px;
+                      }
+  
+                  }
+              }
             }
           }
     }
