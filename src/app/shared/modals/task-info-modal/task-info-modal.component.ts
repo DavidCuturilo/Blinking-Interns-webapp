@@ -27,19 +27,25 @@ export class TaskInfoModalComponent implements OnInit {
   }
 
   viewFile(){
-    this.dataFromServerService.getFile(this.data.task.task_id).subscribe(data=>{
-      console.log(data.payload.data);
-      this.download(new Blob(data.payload.data, {type:"application/pdf"}));
+    this.dataFromServerService.getFile(this.data.task.task_id).subscribe(buffer=>{
+      console.log(buffer)
+      this.download(new Blob([new Uint8Array(buffer, 0, buffer.byteLength)], {type:'application/pdf'}));
     }, error=>{
       console.log(error);
     })
   }
 
   downloadFile(){
-
+    this.dataFromServerService.getFile(this.data.task.task_id).subscribe(buffer=>{
+      console.log(buffer)
+      this.download(new Blob([new Uint8Array(buffer, 0, buffer.byteLength)], {type:'application/pdf'}));
+    }, error=>{
+      console.log(error);
+    })
   }
 
   download(data: any) {
+    console.log(data);
     const a = document.createElement('a');
     document.body.appendChild(a);
     const url = window.URL.createObjectURL(data);

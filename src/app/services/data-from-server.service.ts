@@ -117,6 +117,6 @@ export class DataFromServerService {
 
   getFile(taskId:number){
     let url = `http://${this.host}:${this.port}/task/file/${taskId}`;
-    return this.http.get<any>(url);
+    return this.http.get(url, {responseType:'arraybuffer'} );
   }
 }

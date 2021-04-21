@@ -37,6 +37,7 @@ export class UserProfileComponent implements OnInit {
      let {email,id} = this.helperMethodService.getDataFromAccesToken();
      this.intern = {email,full_name: '',id};
     } else {
+
       this.intern = JSON.parse(localStorage.getItem("intern"));
     }
 
@@ -49,13 +50,9 @@ export class UserProfileComponent implements OnInit {
     if(userType === 'intern'){
       this.activeFilters = ["Completed"];
     } else if (userType === 'mentor'){
-      
+
       this.activeFilters = ["Active"];
     }
-    // console.log(this.activeFilters)
-
-    this.userType = this.helperMethodService.getDataFromAccesToken().type;
-
   }
 
   editStatus(){
