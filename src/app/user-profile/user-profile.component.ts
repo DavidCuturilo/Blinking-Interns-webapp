@@ -5,6 +5,8 @@ import { AuthInterceptorService } from '../services/auth-interceptor.service';
 import { HelperMethodService } from '../services/helper-method.service';
 import { ChangePasswordModalComponent } from '../shared/modals/change-password-modal/change-password-modal.component';
 import { Intern } from '../shared/models/intern.model';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Mentor } from '../shared/models/mentor.model';
 
 
 @Component({
@@ -19,43 +21,67 @@ export class UserProfileComponent implements OnInit {
   userType: string;
 
   intern:Intern;
+  mentor: Mentor;
   assignments;
+  allAssignments;
 
   load: boolean =  false;
 
   edit = false;
   constructor(public dialog: MatDialog,
               public helperMethodService: HelperMethodService,
-              public dataFromServerService: DataFromServerService) { }
+              public dataFromServerService: DataFromServerService,
+              public route: ActivatedRoute) { }
 
   // public modalData: Intern;
+  urlType: string;
+
 
   ngOnInit(): void {
-    const userType = this.helperMethodService.getDataFromAccesToken().type;
+    this.userType = this.helperMethodService.getDataFromAccesToken().type;
+    console.log(this.userType);
+    // this.userType = this.helperMethodService.getDataFromAccesToken().type;
 
-    if (userType === 'intern'){
+    if (this.userType === 'intern'){
      let {email,id} = this.helperMethodService.getDataFromAccesToken();
      this.intern = {email,full_name: '',id};
     } else {
+
+      let {email,id} = this.helperMethodService.getDataFromAccesToken();
+      this.mentor = {email,id,full_name:'',password:''};
+      console.log(this.mentor.email)
       this.intern = JSON.parse(localStorage.getItem("intern"));
     }
 
     this.dataFromServerService.getInternAssignments(this.intern).subscribe(response => {
       this.assignments=response.payload;
-    console.log(this.assignments)
+    // console.log(this.assignments)
 
     }, error => console.log(error))
 
-    if(userType === 'intern'){
+
+    this.dataFromServerService.getMentorAssignments(this.mentor).subscribe(response => {
+      this.allAssignments=response.payload;
+      console.log(this.allAssignments)
+    }, error => console.log(error)) 
+
+    if(this.userType === 'intern'){
       this.activeFilters = ["Completed"];
-    } else if (userType === 'mentor'){
+    } else if (this.userType === 'mentor'){
       
       this.activeFilters = ["Active"];
     }
     // console.log(this.activeFilters)
 
-    this.userType = this.helperMethodService.getDataFromAccesToken().type;
+    
 
+    this.route.params.subscribe((params: Params) => {
+      this.urlType = params['type'];
+    }, error =>{
+      console.log(error);
+    })
+
+    console.log(this.urlType);
   }
 
   editStatus(){
@@ -64,19 +90,11 @@ export class UserProfileComponent implements OnInit {
 
   changePassword(intern: Intern) {
     this.dialog.open(ChangePasswordModalComponent,{data: {...intern}});
-    // this.modalData=intern;
   }
 
   statusActive(filter: string){
 
     this.load= !this.load;
-
-    // if(this.activeFilters.includes(filter)){
-    //   btn.classList.remove('statusActive');
-    // }
-    // else{
-    //   btn.classList.add('statusActive');
-    // }
 
     setTimeout(() => {
       this.load= !this.load;

@@ -347,9 +347,14 @@
                             .launch-button {
                                 margin-top: 5px;
                                 background-color: var(--blinking-background);
+
                             }
                         }
 
+                        .actions-menu {
+
+                            
+                        }
         
                     }
                     
@@ -392,6 +397,18 @@
     }
 }
 
+.viewSection {
+
+    &:hover {
+        background-color: rgb(226, 226, 226);
+    }
+} 
+
+.downloadSection {
+    &:hover {
+        background-color: rgb(226, 226, 226);
+    }
+}
 .label-menu { 
     margin-left: 5px;
     cursor: pointer;

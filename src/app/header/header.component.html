@@ -19,7 +19,7 @@
       <div>Home</div>
     </div>
     <div class="nav-links" routerLink='/user-profile' routerLinkActive='nav-link-active'
-      *ngIf="this.authService.loggedIn && this.helperMethodService.getDataFromAccesToken().type === 'intern'"
+      *ngIf="this.authService.loggedIn"
       matTooltip="Profile">
       <div class="person-icon">
         <mat-icon>person</mat-icon>

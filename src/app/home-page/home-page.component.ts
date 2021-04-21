@@ -51,6 +51,6 @@ export class HomePageComponent implements OnInit {
 
   seeMore(intern: Intern) {
     localStorage.setItem("intern",JSON.stringify(intern))
-    this.router.navigate(['/user-profile']);
+    //this.router.navigate(['/user-profile']);
   }
 }

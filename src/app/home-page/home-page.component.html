@@ -29,7 +29,9 @@
                         </div>
                     </div>
                     <div class="more-information">
-                        <button mat-raised-button class="see-more" (click)='seeMore(intern)'>See more</button>
+                        <button mat-raised-button class="see-more" 
+                         [routerLink]="['/user-profile', 'intern']"
+                        (click)='seeMore(intern)'>See more</button>
                     </div>
             </mat-card>
         </div>
