@@ -1,169 +1,225 @@
 <div class="container">
-    <div class="personal-info-container">
-        <div class="image">
-            <div class="image-user">
-                User
-            </div>
-            <div class="image-frame">
-                <img src="../../assets/pictures/user-image.png" alt="">
-            </div>
-        </div>
-        <div class="vertical-line">
-
-        </div>
-        <div class="user-info">
-
-            <div class="header">
-                Personal Information
-            </div>
-
-            <div class="window-information">
-                <div class="information" *ngIf="this.userType === 'intern'">
-                    <div class="email">
-                        <label for="email">Email: </label>
-                        {{ intern.email }}
-                    </div>
-                    <mat-divider></mat-divider>
-                    <div class="password">
-                        <label *ngIf="intern.full_name!==''">Full name: {{ intern.full_name }}</label>
-                        <label *ngIf="intern.full_name===''">Full name: /</label>
-
-                    </div>
-                </div>
-                <div class="information" *ngIf="this.userType === 'mentor'">
-                    <div class="email">
-                        <label for="email">Email: </label>
-                        {{ mentor.email }}
-                    </div>
-                    <mat-divider></mat-divider>
-                    <div class="password">
-                        <label *ngIf="intern.full_name!==''">Full name: {{ mentor.full_name}}</label>
-                        <label *ngIf="intern.full_name===''">Full name: /</label>
-
-                    </div>
-                </div>
-                <div class="settings">
-                    <div class="settings-icon" *ngIf="this.userType === 'intern'">
-                        <mat-icon (click)='changePassword(this.intern)'>settings</mat-icon>
-                        <label class="label-settings">Settings</label>
-                    </div>
-                    <div class="settings-icon" *ngIf="this.userType === 'mentor'">
-                        <mat-icon (click)='changePassword(this.mentor)'>settings</mat-icon>
-                        <label class="label-settings">Settings</label>
-                    </div>
-
-
-                    <button mat-raised-button class="change-password" (click)='changePassword(this.intern)'>
-                        Change Password</button>
-                </div>
-            </div>
-
-
-            <div class="user-status">
-                <label for="" class="status-label">Status</label>
-                <mat-icon class="edit-icon" (click)='editStatus()' *ngIf="this.userType === 'intern'">edit</mat-icon>
-                <div class="status">
-                    <input type="text" name="status" id="status" class="status-input" [disabled]='!edit'>
-                </div>
-            </div>
-
-        </div>
+  <div class="personal-info-container">
+    <div class="image">
+      <div class="image-user">User</div>
+      <div class="image-frame">
+        <img src="../../assets/pictures/user-image.png" alt="" />
+      </div>
     </div>
-    <hr>
-    <div class="tasks-container">
+    <div class="vertical-line"></div>
+    <div class="user-info">
+      <div class="header">Personal Information</div>
 
-        <div class="filters">
-            <div class="completed">
-                <label for="btnC">Completed</label>
-                <button class="completed-button statusActive"
-                    [ngClass]="{'statusActive': activeFilters.includes('Completed')}" id="btnC"
-                    (click)='statusActive("Completed")'></button>
-            </div>
-            <div class="active">
-                <label for="btnA">Active</label>
-                <button class="active-button" id="btnA" [ngClass]="{'statusActive': activeFilters.includes('Active')}"
-                    (click)='statusActive("Active")'></button>
-            </div>
-            <div class="overdue">
-                <label for="btnU">Overdue</label>
-                <button class="overdue-button" id="btnU" [ngClass]="{'statusActive': activeFilters.includes('Overdue')}"
-                    (click)='statusActive("Overdue")'></button>
-            </div>
+      <div class="window-information">
+        <div class="information" *ngIf="this.userType === 'intern'">
+          <div class="email">
+            <label for="email">Email: </label>
+            {{ intern.email }}
+          </div>
+          <mat-divider></mat-divider>
+          <div class="password">
+            <label *ngIf="intern.full_name !== ''"
+              >Full name: {{ intern.full_name }}</label
+            >
+            <label *ngIf="intern.full_name === ''">Full name: /</label>
+          </div>
         </div>
-
-        <div class="allAssignedAssignments" *ngIf="this.urlType===''">
-            <div class="spinner" *ngIf="this.load">
-                <mat-spinner></mat-spinner>
-            </div>
-
-            <div class="task-section" *ngFor="let assignment of allAssignments">
-                <mat-card class="individual-task" *ngIf="activeFilters.includes(assignment.task_status) && !this.load">
-                    <div class="image-section">
-                        <img src="{{ this.helperMethodService.getImageUrl(assignment.task.task_type)}}" alt="">
-                    </div>
-
-                    <div class="task-info-section">
-                        <div class="title">{{ assignment.task.title }}</div>
-                        <div class="text">{{ assignment.task.text }}</div>
-
-                        <div class="actions" [matMenuTriggerFor]="menu">
-                            <button mat-fab class="launch-button" matTooltip='Actions' matTooltipPosition="above">
-                                <mat-icon>launch</mat-icon>
-                            </button>
-                        </div>
-
-                        <mat-menu #menu="matMenu" class="actions-menu" yPosition="above">
-                            <div class="viewSection" mat-menu-item (click)='viewDocument($event)'>
-                                <mat-icon (click)='viewDocument()'>remove_red_eye</mat-icon>
-                                <label class="label-menu">View document</label>
-                            </div>
-                            <div class="downloadSection" mat-menu-item (click)='downloadDocument($event)'> 
-                                <mat-icon>download</mat-icon>
-                                <label class="label-menu">Download document</label>
-                            </div>
-                        </mat-menu>
-                    </div>
-                   
-                </mat-card>
-            </div>
+        <div class="information" *ngIf="this.userType === 'mentor'">
+          <div class="email">
+            <label for="email">Email: </label>
+            {{ mentor.email }}
+          </div>
+          <mat-divider></mat-divider>
+          <div class="password">
+            <label *ngIf="mentor.full_name !== ''"
+              >Full name: {{ mentor.full_name }}</label
+            >
+            <label *ngIf="mentor.full_name === ''">Full name: /</label>
+          </div>
         </div>
-        <div class="group-tasks" *ngIf="this.urlType==='intern'">
+        <div class="settings">
+          <div class="settings-icon" *ngIf="this.userType === 'intern'">
+            <mat-icon (click)="changePassword(this.intern)">settings</mat-icon>
+            <label class="label-settings">Settings</label>
+          </div>
+          <div class="settings-icon" *ngIf="this.userType === 'mentor'">
+            <mat-icon (click)="changePassword(this.mentor)">settings</mat-icon>
+            <label class="label-settings">Settings</label>
+          </div>
 
-            <div class="spinner" *ngIf="this.load">
-                <mat-spinner></mat-spinner>
-            </div>
-
-
-            <div class="task-section" *ngFor="let assignment of assignments">
-                <mat-card class="individual-task" *ngIf="activeFilters.includes(assignment.task_status) && !this.load">
-                    <div class="image-section">
-                        <img src="{{ this.helperMethodService.getImageUrl(assignment.task.task_type)}}" alt="">
-                    </div>
-
-                    <div class="task-info-section">
-                        <div class="title">{{ assignment.task.title }}</div>
-                        <div class="text">{{ assignment.task.text }}</div>
-
-                        <div class="actions" [matMenuTriggerFor]="menu">
-                            <button mat-fab class="launch-button" matTooltip='Actions' matTooltipPosition="above">
-                                <mat-icon>launch</mat-icon>
-                            </button>
-                        </div>
-
-                        <mat-menu #menu="matMenu" class="actions-menu" yPosition="above">
-                            <div class="viewSection" mat-menu-item (click)='viewDocument($event)'>
-                                <mat-icon (click)='viewDocument()'>remove_red_eye</mat-icon>
-                                <label class="label-menu">View document</label>
-                            </div>
-                            <div class="downloadSection" mat-menu-item (click)='downloadDocument($event)'> 
-                                <mat-icon>download</mat-icon>
-                                <label class="label-menu">Download document</label>
-                            </div>
-                        </mat-menu>
-                    </div>
-                   
-                </mat-card>
-            </div>
+          <button
+            mat-raised-button
+            class="change-password"
+            (click)="changePassword(this.intern)"
+          >
+            Change Password
+          </button>
         </div>
+      </div>
+
+      <div class="user-status">
+        <label for="" class="status-label">Status</label>
+        <mat-icon
+          class="edit-icon"
+          (click)="editStatus()"
+          *ngIf="this.userType === 'intern'"
+          >edit</mat-icon
+        >
+        <div class="status">
+          <input
+            type="text"
+            name="status"
+            id="status"
+            class="status-input"
+            [disabled]="!edit"
+          />
+        </div>
+      </div>
     </div>
+  </div>
+  <hr />
+  <div class="tasks-container">
+    <div class="filters">
+      <div class="completed">
+        <label for="btnC">Completed</label>
+        <button
+          class="completed-button statusActive"
+          [ngClass]="{ statusActive: activeFilters.includes('Completed') }"
+          id="btnC"
+          (click)="statusActive('Completed')"
+        ></button>
+      </div>
+      <div class="active">
+        <label for="btnA">Active</label>
+        <button
+          class="active-button"
+          id="btnA"
+          [ngClass]="{ statusActive: activeFilters.includes('Active') }"
+          (click)="statusActive('Active')"
+        ></button>
+      </div>
+      <div class="overdue">
+        <label for="btnU">Overdue</label>
+        <button
+          class="overdue-button"
+          id="btnU"
+          [ngClass]="{ statusActive: activeFilters.includes('Overdue') }"
+          (click)="statusActive('Overdue')"
+        ></button>
+      </div>
+    </div>
+
+    <div class="allAssignedAssignments" *ngIf="!this.urlType">
+      <div class="spinner" *ngIf="this.load">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <div class="task-section" *ngFor="let assignment of allAssignments">
+        <mat-card
+          class="individual-task"
+          *ngIf="!this.load"
+        >
+          <div class="image-section">
+            <img
+              src="{{
+                this.helperMethodService.getImageUrl(assignment.task_type)
+              }}"
+              alt=""
+            />
+          </div>
+
+          <div class="task-info-section">
+            <div class="title">{{ assignment.title }}</div>
+            <div class="text">{{ assignment.text }}</div>
+
+            <div class="actions" [matMenuTriggerFor]="menu">
+              <button
+                mat-fab
+                class="launch-button"
+                matTooltip="Actions"
+                matTooltipPosition="above"
+              >
+                <mat-icon>launch</mat-icon>
+              </button>
+            </div>
+
+            <mat-menu #menu="matMenu" class="actions-menu" yPosition="above">
+              <div
+                class="viewSection"
+                mat-menu-item
+                (click)="viewDocument($event)"
+              >
+                <mat-icon (click)="viewDocument()">remove_red_eye</mat-icon>
+                <label class="label-menu">View document</label>
+              </div>
+              <div
+                class="downloadSection"
+                mat-menu-item
+                (click)="downloadDocument($event)"
+              >
+                <mat-icon>download</mat-icon>
+                <label class="label-menu">Download document</label>
+              </div>
+            </mat-menu>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="group-tasks" *ngIf="this.urlType === 'intern'">
+      <div class="spinner" *ngIf="this.load">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <div class="task-section" *ngFor="let assignment of assignments">
+        <mat-card
+          class="individual-task"
+          *ngIf="activeFilters.includes(assignment.task_status) && !this.load"
+        >
+          <div class="image-section">
+            <img
+              src="{{
+                this.helperMethodService.getImageUrl(assignment.task.task_type)
+              }}"
+              alt=""
+            />
+          </div>
+
+          <div class="task-info-section">
+            <div class="title">{{ assignment.task.title }}</div>
+            <div class="text">{{ assignment.task.text }}</div>
+
+            <div class="actions" [matMenuTriggerFor]="menu">
+              <button
+                mat-fab
+                class="launch-button"
+                matTooltip="Actions"
+                matTooltipPosition="above"
+              >
+                <mat-icon>launch</mat-icon>
+              </button>
+            </div>
+
+            <mat-menu #menu="matMenu" class="actions-menu" yPosition="above">
+              <div
+                class="viewSection"
+                mat-menu-item
+                (click)="viewDocument($event)"
+              >
+                <mat-icon (click)="viewDocument()">remove_red_eye</mat-icon>
+                <label class="label-menu">View document</label>
+              </div>
+              <div
+                class="downloadSection"
+                mat-menu-item
+                (click)="downloadDocument($event)"
+              >
+                <mat-icon>download</mat-icon>
+                <label class="label-menu">Download document</label>
+              </div>
+            </mat-menu>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </div>

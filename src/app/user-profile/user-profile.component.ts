@@ -39,9 +39,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userType = this.helperMethodService.getDataFromAccesToken().type;
-    console.log(this.userType);
     // this.userType = this.helperMethodService.getDataFromAccesToken().type;
-
     if (this.userType === 'intern'){
      let {email,id} = this.helperMethodService.getDataFromAccesToken();
      this.intern = {email,full_name: '',id};
@@ -53,24 +51,27 @@ export class UserProfileComponent implements OnInit {
       this.intern = JSON.parse(localStorage.getItem("intern"));
     }
 
-    this.dataFromServerService.getInternAssignments(this.intern).subscribe(response => {
-      this.assignments=response.payload;
-    // console.log(this.assignments)
+    if(this.urlType==='intern'){
+      this.dataFromServerService.getInternAssignments(this.intern).subscribe(response => {
+        this.assignments=response.payload;
+      // console.log(this.assignments)
 
-    }, error => console.log(error))
+      }, error => console.log(error))
+    }
+
 
     if(this.userType === 'mentor'){
       this.dataFromServerService.getMentorAssignments(this.mentor).subscribe(response => {
         this.allAssignments=response.payload;
         console.log(this.allAssignments)
-      }, error => console.log(error)) 
+      }, error => console.log(error))
     }
-    
+
 
     if(this.userType === 'intern'){
       this.activeFilters = ["Completed"];
     } else if (this.userType === 'mentor'){
-      
+
       this.activeFilters = ["Active"];
     }
 
@@ -79,10 +80,10 @@ export class UserProfileComponent implements OnInit {
     }, error =>{
       console.log(error);
     })
-  } 
+  }
 
-    
-  
+
+
 
   editStatus(){
     this.edit = !this.edit;
