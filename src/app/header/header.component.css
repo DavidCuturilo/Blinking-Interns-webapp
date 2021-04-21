@@ -259,9 +259,6 @@
         -ms-flex-align: center;
             align-items: center;
   }
-  .toolbar .home-link {
-    display: none;
-  }
   .toolbar .nav-bar-links {
     display: none;
   }

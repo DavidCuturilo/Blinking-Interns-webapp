@@ -21,7 +21,8 @@ mat-dialog-container {
   background-color: var(--blinking-background);
 }
 .mat-form-field-infix {
-  width: 300px !important;
+  // width: 300px !important;
+  width: 100% !important;
   font-size: 20px;
 }
 

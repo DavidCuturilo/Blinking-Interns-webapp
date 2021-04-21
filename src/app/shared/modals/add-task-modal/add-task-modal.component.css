@@ -78,7 +78,42 @@
   font-size: 0.75em;
 }
 
-.dialog-container [mat-dialog-content] form .upload {
+.dialog-container [mat-dialog-content] form .btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.dialog-container [mat-dialog-content] form .btns .upload-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30%;
+}
+
+.dialog-container [mat-dialog-content] form .btns .upload-info label {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.dialog-container [mat-dialog-content] form .btns .upload-info .upload {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -89,17 +124,37 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+  height: 75px;
+  width: 70%;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.66);
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.66);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.66);
+  margin-bottom: 10px;
 }
 
-.dialog-container [mat-dialog-content] form .upload .file-input {
-  background-color: green;
+.dialog-container [mat-dialog-content] form .btns .upload-info .upload label {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  cursor: pointer;
+}
+
+.dialog-container [mat-dialog-content] form .btns .upload-info .upload .file-input {
+  display: none;
 }
 
 .dialog-container [mat-dialog-content] form button {
   padding: 20px 5px;
   width: 20%;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.66);
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.66);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.66);
 }
 /*# sourceMappingURL=add-task-modal.component.css.map */

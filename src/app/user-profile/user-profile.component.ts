@@ -89,4 +89,15 @@ export class UserProfileComponent implements OnInit {
     },300);
 
   }
+
+  viewDocument(event: Event) {
+    event.stopPropagation();
+
+  }
+
+
+  downloadDocument(event: Event){
+    event.stopPropagation();
+
+  }
 }
