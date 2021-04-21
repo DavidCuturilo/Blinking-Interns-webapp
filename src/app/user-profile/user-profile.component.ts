@@ -59,11 +59,13 @@ export class UserProfileComponent implements OnInit {
 
     }, error => console.log(error))
 
-
-    this.dataFromServerService.getMentorAssignments(this.mentor).subscribe(response => {
-      this.allAssignments=response.payload;
-      console.log(this.allAssignments)
-    }, error => console.log(error)) 
+    if(this.userType === 'mentor'){
+      this.dataFromServerService.getMentorAssignments(this.mentor).subscribe(response => {
+        this.allAssignments=response.payload;
+        console.log(this.allAssignments)
+      }, error => console.log(error)) 
+    }
+    
 
     if(this.userType === 'intern'){
       this.activeFilters = ["Completed"];
@@ -71,7 +73,7 @@ export class UserProfileComponent implements OnInit {
       
       this.activeFilters = ["Active"];
     }
-    
+
     this.route.params.subscribe((params: Params) => {
       this.urlType = params['type'];
     }, error =>{
