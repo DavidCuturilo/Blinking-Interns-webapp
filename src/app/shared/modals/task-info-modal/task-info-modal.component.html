@@ -32,19 +32,27 @@
                 </div>
 
                 <div class="document">
-                    <div class="view-document">
-                        <mat-icon matTooltip="View"
-                                  matTooltipPosition = 'above'>remove_red_eye</mat-icon>
+                    <div>
+                      <button mat-fab
+                                matTooltip="View"
+                                matTooltipPosition = 'above'
+                                class="document-button"
+                                (click)='viewFile()'>
+                        <mat-icon>remove_red_eye</mat-icon>
+                      </button>
                     </div>
-                    <div class="download">
-                        <button mat-fab
+
+                    <div>
+                      <a href="http://localhost:8080/task/file/1" download>
+                      <button mat-fab
                                 matTooltip="Download"
                                 matTooltipPosition = 'above'
-    
-                                class="download-button">
+                                class="download-button document-button"
+                                (click)='downloadFile()'>
                         <mat-icon>download</mat-icon>
-                        </button>
-                    </div>
+                      </button>
+                      </a>
+                </div>
                 </div>
 
             </div>

@@ -90,38 +90,20 @@
               justify-content: center;
               align-items: center;
 
-              .view-document {
-                mat-icon {
-                  font-size: 30px;
-                  height: 30px;
-                  width: 30px;
-                  cursor: pointer;
-                  color: var(--blinking-background);
-                }
-              }
+              &>div{
+                margin-right: 10px;
+                margin-bottom: 10px;
+                width: 80px;
+                height: 80px;
+                button{
+                  background-color: var(--blinking-background);
+                  width: 100%;
+                  height: 100%;
 
-              .download {
-                margin: 20px;
-  
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                justify-content: center;
-  
-                  .download-button {
-                      outline: none;
-                      border-style: none;
-                      background-color: var(--blinking-background);
-                      width: 70px;
-                      height: 70px;
-  
-                      mat-icon {
-                        height: 30px;
-                        width: 30px;
-                        font-size: 30px;
-                      }
-  
+                  mat-icon{
+                    font-size: 1.6rem;
                   }
+                }
               }
             }
           }

@@ -114,4 +114,9 @@ export class DataFromServerService {
     let url = `http://${this.host}:${this.port}/notification/seen`;
     return this.http.post<any>(url,payload);
   }
+
+  getFile(taskId:number){
+    let url = `http://${this.host}:${this.port}/task/file/${taskId}`;
+    return this.http.get<any>(url);
+  }
 }
