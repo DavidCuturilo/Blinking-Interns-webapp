@@ -55,7 +55,7 @@ export class UserProfileComponent implements OnInit {
 
     this.dataFromServerService.getInternAssignments(this.intern).subscribe(response => {
       this.assignments=response.payload;
-    // console.log(this.assignments)
+    console.log(this.assignments)
 
     }, error => console.log(error))
 
