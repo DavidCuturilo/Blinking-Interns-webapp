@@ -263,6 +263,99 @@
             }
         }
 
+        .allAssignedAssignments {
+            margin: 20px 10px;
+            padding: 0;
+            outline: none;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+          
+
+            .spinner {
+                margin: 30px;
+            }
+
+            .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+                stroke: var(--blinking-background);
+            }
+
+            .task-section {
+                margin: 20px;
+                margin-bottom: 30px;
+                padding: 0;
+                height: 100%;
+                width: 95%;
+                display: flex;
+                justify-content: center;
+               
+                .individual-task {
+                    margin: 0;
+                    padding: 5px;
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.66);
+
+
+                    .image-section {
+                        width: 34%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+        
+                        img {
+                            height: 300px;
+                            width: 85%;
+                            border-radius: 10px;
+                            // margin-left: 10px;
+                            // justify-self: center;
+                        }
+        
+                    }
+
+                    .task-info-section {
+                        height: 100%;
+                        width: 66%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        position: relative;
+                        // justify-content: space-between;
+        
+                        .title {
+                            align-self: center;
+                            margin: 10px;
+                            font-size: 35px;
+                        }
+        
+                        .text {
+                            font-size: 20px;
+                            margin: 20px 0 20px 10px;
+                            
+                        }
+
+                        .actions {
+                            cursor: pointer;
+                            position: absolute;
+                            right: 30px;
+                            bottom: 20px;
+                        
+                            .launch-button {
+                                margin-top: 5px;
+                                background-color: var(--blinking-background);
+
+                            }
+                        }
+        
+                    }
+                }
+            }
+        }
+
         .group-tasks {
             margin: 20px 10px;
             padding: 0;
@@ -352,40 +445,6 @@
                         }
         
                     }
-                    
-
-                    // .download-section {
-                    //     height: 100%;
-                    //     width: 33%;
-                    //     display: flex;
-                    //     justify-content: center;
-                    //     align-items: center;
-    
-                    //     .view-document {
-                    //         mat-icon {
-                    //             font-size: 34px;
-                    //             height: 34px;
-                    //             width: 34px;
-                    //             cursor: pointer;
-                    //             margin-right: 10px;
-                    //             color: var(--blinking-background);
-                    //         }
-                    //     }
-
-                    //     .button-download {
-                    //         width: 80px;
-                    //         height: 80px;
-                    //         display: flex;
-                    //         justify-items: center;
-                    //         align-items: center;
-    
-                    //         mat-icon {
-                    //             width: 80px;
-                    //             height: 30px;
-                    //             font-size: 30px;
-                    //         }
-                    //     }
-                    // }
                 }
             }
         }

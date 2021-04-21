@@ -78,7 +78,7 @@ export class DataFromServerService {
   }
 
   getMentorAssignments(mentor: Mentor){
-    let url = `http://${this.host}:${this.port}/assigned/${mentor.id}`; 
+    let url = `http://${this.host}:${this.port}/mentor/assigned`;
     return this.http.get<any>(url);
   }
 
