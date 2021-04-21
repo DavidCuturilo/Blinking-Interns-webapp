@@ -49,7 +49,7 @@ export class UserProfileComponent implements OnInit {
 
       let {email,id} = this.helperMethodService.getDataFromAccesToken();
       this.mentor = {email,id,full_name:'',password:''};
-      console.log(this.mentor.email)
+      // console.log(this.mentor.email)
       this.intern = JSON.parse(localStorage.getItem("intern"));
     }
 
@@ -71,18 +71,16 @@ export class UserProfileComponent implements OnInit {
       
       this.activeFilters = ["Active"];
     }
-    // console.log(this.activeFilters)
-
     
-
     this.route.params.subscribe((params: Params) => {
       this.urlType = params['type'];
     }, error =>{
       console.log(error);
     })
+  } 
 
-    console.log(this.urlType);
-  }
+    
+  
 
   editStatus(){
     this.edit = !this.edit;
