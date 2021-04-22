@@ -1,64 +1,66 @@
 <div class="modal">
-    <div class="modal-inner">
+  <div class="modal-inner">
+    <div class="task-title">
+      <h1 mat-dialog-title>
+        {{ this.data.task.title }}
+      </h1>
+    </div>
 
-        <div class="task-title">
-          <h1 mat-dialog-title>
-            {{this.data.task.title}}
-          </h1>
+    <div class="position">
+      <div class="task-text">
+        <img
+          src="{{
+            this.helperMethodService.getImageUrl(this.data.task.task_type)
+          }}"
+          alt=""
+        />
+        <div class="text">
+          {{ this.data.task.text }}
+        </div>
+      </div>
+
+      <div class="inside-container">
+        <div class="status-progress">
+          <div class="task-status {{ statusColor }}">
+            <label for="task-status">{{ this.data.task_status }}</label>
+          </div>
+
+          <div class="task-progress">
+            <label for="task-progress">Progress: </label>
+            {{ this.data.progress }}%
+          </div>
         </div>
 
+        <div class="document">
+          <div>
+            <button
+              mat-fab
+              matTooltip="View"
+              matTooltipPosition="above"
+              class="document-button"
+              (click)="viewFile()"
+            >
+              <mat-icon>remove_red_eye</mat-icon>
+            </button>
+          </div>
 
-        <div class="position">
-
-            <div class="task-text">
-                <img src="{{ this.helperMethodService.getImageUrl(this.data.task.task_type) }}" alt="">
-                <div class="text">
-                    {{this.data.task.text}}
-                </div>
-
-            </div>
-
-            <div class="inside-container">
-
-                <div class="status-progress">
-                    <div class="task-status {{statusColor}}" >
-                        <label for="task-status">{{this.data.task_status}}</label>
-                    </div>
-
-                    <div class="task-progress">
-                        <label for="task-progress">Progress: </label>
-                        {{this.data.progress}}%
-                    </div>
-                </div>
-
-                <div class="document">
-                    <div>
-                      <button mat-fab
-                                matTooltip="View"
-                                matTooltipPosition = 'above'
-                                class="document-button"
-                                (click)='viewFile()'>
-                        <mat-icon>remove_red_eye</mat-icon>
-                      </button>
-                    </div>
-
-                    <div>
-                      <a href="http://localhost:8080/task/file/1" download>
-                      <button mat-fab
-                                matTooltip="Download"
-                                matTooltipPosition = 'above'
-                                class="download-button document-button"
-                                (click)='downloadFile()'>
-                        <mat-icon>download</mat-icon>
-                      </button>
-                      </a>
-                </div>
-                </div>
-
-            </div>
-
+          <div>
+            <button
+              mat-fab
+              matTooltip="Download"
+              matTooltipPosition="above"
+              class="download-button document-button"
+              (click)="downloadFile()"
+            >
+              <mat-icon>download</mat-icon>
+            </button>
+          </div>
         </div>
-
-        <div class="close-modal" (click)="closeModal()">X</div>
+      </div>
+    </div>
+    <div class="file-preview-container" *ngIf="filePreview">
+      <iframe class="iframe" [src]="newBase64" height="100%" width="100%"></iframe>
     </div>
   </div>
+  <div class="close-modal" (click)="closeModal()">X</div>
+</div>

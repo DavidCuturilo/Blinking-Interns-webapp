@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Intern } from '../shared/models/intern.model';
 import { TaskStatus, TaskType } from '../shared/models/task.model';
 import { Mentor } from '../shared/models/mentor.model';
-
+import { from } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -89,7 +89,7 @@ export class DataFromServerService {
 
   addNewTask(taskData){
     let url = `http://${this.host}:${this.port}/task`
-    return this.http.post<any>(url,taskData)
+    return this.http.post<any>(url,taskData);
   }
 
   getNotificationsPeriodically(){
@@ -123,6 +123,6 @@ export class DataFromServerService {
 
   getFile(taskId:number){
     let url = `http://${this.host}:${this.port}/task/file/${taskId}`;
-    return this.http.get(url, {responseType:'arraybuffer'} );
+    return this.http.get<any>(url);
   }
 }

@@ -1,3 +1,4 @@
+import { Mentor } from './../../models/mentor.model';
 import { DataFromServerService } from './../../../services/data-from-server.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -30,11 +31,14 @@ export class AddTaskModalComponent implements OnInit {
       text: new FormControl(null, [Validators.required]),
       task_type:new FormControl(null, [Validators.required]),
       deadline: new FormControl(null, [Validators.required, this.dateValidator.bind(this)]),
-      interns: new FormControl(null)
+      interns: new FormControl(null),
+      taskFile: new FormControl(null, [this.fileValidator.bind(this)])
     });
 
-    
+
   }
+
+  allowedFileTypes = ['txt','jpg','pdf']
 
   uploadDocs(ref: HTMLInputElement){
    this.fileName = ref.files[0].name;
@@ -42,6 +46,15 @@ export class AddTaskModalComponent implements OnInit {
 
   closeDialog(){
     this.dialogRef.close()
+  }
+
+  fileValidator(control: FormControl):{[s:string]: boolean }{
+    if(control.value){
+      const fileName = control.value.split('\\').pop();
+      const fileExtension = fileName.split('.').pop();
+
+      if(!this.allowedFileTypes.includes(fileExtension)) return {'invalidFileType':true}
+    }
   }
 
   //custom validator for date
@@ -56,21 +69,42 @@ export class AddTaskModalComponent implements OnInit {
     return null;
   }
 
-  submitNewTask(){
+  submitNewTask(fileInput: HTMLInputElement){
     const taskData = this.taskForm.value;
     if(this.taskForm.invalid) return;
 
-    this.dataFromServerService.addNewTask(taskData).subscribe(data=>{
-      this.dialogRef.close()
-      alert("Task was assigned successfully")
-    },error=>{
-      alert("Error on assigning task...")
-    });
+
+    this.toBase64(fileInput.files[0])
+    .then(encodedData=>{
+      taskData.taskFile = encodedData;
+      console.log(taskData);
+
+      //Send data to server
+      this.dataFromServerService.addNewTask(taskData).subscribe(data=>{
+        this.dialogRef.close()
+        alert("Task was assigned successfully")
+      }, error=>{
+        alert("Error on assigning task...")
+      })
+
+    }).catch(error => {
+      alert("Error while encoding file")
+    });;
+
+
   }
+
+  toBase64(file:File) {
+    return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  })};
 
   logValue(){
     console.log(this.taskForm.get('interns').value)
   }
 
- 
+
 }
