@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="nav-links" routerLink='/user-profile' routerLinkActive='nav-link-active'
-        *ngIf="this.authService.loggedIn && this.helperMethodService.getDataFromAccesToken().type === 'intern'"
+        *ngIf="this.authService.loggedIn"
         matTooltip="Profile">
         <div class="person-icon">
           <mat-icon>person</mat-icon>
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="nav-links" *ngIf="this.authService.loggedIn" [matMenuTriggerFor]="menu"
-        (click)="removeAnimationNotification(menu)" matTooltip="Notifications">
+        (click)="removeAnimationNotification(menu)">
         <div class="notification-icon">
           <mat-icon class="notifications-icon" [matBadgeHidden]='dataFromServerService.numberOfUnreadNotifications === 0'
             matBadge="{{dataFromServerService.numberOfUnreadNotifications}}" matBadgeColor="warn">notifications</mat-icon>

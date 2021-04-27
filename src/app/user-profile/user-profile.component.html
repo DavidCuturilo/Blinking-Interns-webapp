@@ -1,36 +1,39 @@
 <div class="container">
   <div class="personal-info-container">
+
     <div class="image">
       <div class="image-user">User</div>
       <div class="image-frame">
         <img src="../../assets/pictures/user-image.png" alt="" />
       </div>
     </div>
+
     <div class="vertical-line"></div>
+
     <div class="user-info">
       <div class="header">Personal Information</div>
 
       <div class="window-information">
-        <div class="information" *ngIf="this.userType === 'intern'">
+        <div class="information" *ngIf="isIntern()">
           <div class="email">
             <label for="email">Email: </label>
-            {{ intern.email }}
+            {{ this.intern.email }}
           </div>
           <mat-divider></mat-divider>
-          <div class="password">
-            <label *ngIf="intern.full_name !== ''"
-              >Full name: {{ intern.full_name }}</label
-            >
-            <label *ngIf="intern.full_name === ''">Full name: /</label>
+          <div class="fullName">
+            <label *ngIf="this.intern.full_name !== ''"
+              >Full name: {{ this.intern.full_name }}</label>
+
+            <label *ngIf="this.intern.full_name === ''">Full name: /</label>
           </div>
         </div>
-        <div class="information" *ngIf="this.userType === 'mentor'">
+        <div class="information" *ngIf="isMentor()">
           <div class="email">
             <label for="email">Email: </label>
             {{ mentor.email }}
           </div>
           <mat-divider></mat-divider>
-          <div class="password">
+          <div class="fullName">
             <label *ngIf="mentor.full_name !== ''"
               >Full name: {{ mentor.full_name }}</label
             >
@@ -51,6 +54,15 @@
             mat-raised-button
             class="change-password"
             (click)="changePassword(this.intern)"
+            *ngIf="this.userType === 'intern'"
+          >
+            Change Password
+          </button>
+          <button
+            mat-raised-button
+            class="change-password"
+            (click)="changePassword(this.mentor)"
+            *ngIf="isMentor()"
           >
             Change Password
           </button>
@@ -76,8 +88,10 @@
         </div>
       </div>
     </div>
+
   </div>
   <hr />
+  
   <div class="tasks-container">
     <div class="filters">
       <div class="completed">
@@ -109,7 +123,7 @@
       </div>
     </div>
 
-    <div class="allAssignedAssignments" *ngIf="!this.urlType">
+    <div class="allAssignedAssignments" *ngIf="isMentor()">
       <div class="spinner" *ngIf="this.load">
         <mat-spinner></mat-spinner>
       </div>
@@ -132,12 +146,13 @@
             <div class="title">{{ assignment.title }}</div>
             <div class="text">{{ assignment.text }}</div>
 
-            <div class="actions" [matMenuTriggerFor]="menu">
+            <div class="actions">
               <button
                 mat-fab
                 class="launch-button"
                 matTooltip="Actions"
                 matTooltipPosition="above"
+                [matMenuTriggerFor]="menu"
               >
                 <mat-icon>launch</mat-icon>
               </button>
@@ -165,10 +180,11 @@
         </mat-card>
       </div>
     </div>
-    <div class="group-tasks" *ngIf="this.urlType === 'intern'">
-      <div class="spinner" *ngIf="this.load">
-        <mat-spinner></mat-spinner>
-      </div>
+
+    <div class="spinner" *ngIf="this.load">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="group-tasks" *ngIf="isIntern()">
 
       <div class="task-section" *ngFor="let assignment of assignments">
         <mat-card
@@ -188,22 +204,23 @@
             <div class="title">{{ assignment.task.title }}</div>
             <div class="text">{{ assignment.task.text }}</div>
 
-            <div class="actions" [matMenuTriggerFor]="menu">
+            <div class="actions"*ngIf="isIntern()">
               <button
                 mat-fab
                 class="launch-button"
                 matTooltip="Actions"
                 matTooltipPosition="above"
+                [matMenuTriggerFor]="menu" 
               >
                 <mat-icon>launch</mat-icon>
               </button>
             </div>
 
-            <mat-menu #menu="matMenu" class="actions-menu" yPosition="above">
+            <mat-menu #menu="matMenu" class="actions-menu" yPosition="above" >
               <div
                 class="viewSection"
                 mat-menu-item
-                (click)="viewDocument($event)"
+                (click)="viewDocument($event,assignment)"
               >
                 <mat-icon (click)="viewDocument()">remove_red_eye</mat-icon>
                 <label class="label-menu">View document</label>
@@ -211,7 +228,7 @@
               <div
                 class="downloadSection"
                 mat-menu-item
-                (click)="downloadDocument($event)"
+                (click)="downloadFile($event,assignment)" 
               >
                 <mat-icon>download</mat-icon>
                 <label class="label-menu">Download document</label>
@@ -221,5 +238,9 @@
         </mat-card>
       </div>
     </div>
+  </div>
+  <div class="file-preview-container" *ngIf="filePreview" [ngClass]="{'closeDiv': this.isClosed}">
+    <div class="close" (click)='close()' >X</div>
+    <iframe class="iframe" [src]="newBase64" height="100%" width="100%"></iframe>
   </div>
 </div>

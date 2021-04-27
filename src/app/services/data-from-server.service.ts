@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { Intern } from '../shared/models/intern.model';
 import { TaskStatus, TaskType } from '../shared/models/task.model';
 import { Mentor } from '../shared/models/mentor.model';
-import { from } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -39,7 +38,7 @@ export class DataFromServerService {
 
   interns = []
 
-  private port:number = 8080;//port for data server
+  private port:number = 8082;//port for data server
 
   private numberOfTries = 0;
 
@@ -51,15 +50,15 @@ export class DataFromServerService {
       this.assignments = data.payload;
 
       this.numberOfTries=0;
-      console.log(this.assignments)
+      // console.log(this.assignments)
 
-      return this.assignments;
+      return this.assignments.reverse();
     }, err => {
       if(err.status===401 && this.numberOfTries<3){
         this.numberOfTries++;
         this.getAssignments();
       }
-      return this.assignments
+      return this.assignments.reverse();
     })
   }
 

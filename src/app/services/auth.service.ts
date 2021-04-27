@@ -11,7 +11,7 @@ export class AuthService {
   private host:string = "10.241.107.138";
   private portAuth:number = 8081;//port for auth server
 
-  private portData:number = 8080;
+  private portData:number = 8082;
 
   constructor(private http:HttpClient) { }
 

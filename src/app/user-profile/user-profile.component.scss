@@ -1,10 +1,11 @@
 .container {
-    margin: auto;
+    // margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
 
 
     .personal-info-container {
@@ -51,14 +52,14 @@
         .vertical-line {
             margin-top: 20px;
             height: 80%;
-            width: 2px;
+            width: 0.1%;
             
             background-color: silver;
         }
 
         .user-info {
             height: 80%;
-            width: 60%;
+            width: 59.9%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -77,8 +78,8 @@
                 width: 90%;
                 display: flex;
                 justify-content: flex-start;
-                align-items: center;
-                margin-left: 40px;
+                align-items: flex-start;
+                margin-left: 10%;
 
                 .information {
                     font-family: 'Courier New', Courier, monospace;
@@ -92,7 +93,9 @@
                     padding-left: 10px;
 
                     .email {
+                        width: 80%;
                         margin: 10px;
+                        word-wrap: break-word;
                     }
     
                     mat-divider {
@@ -104,7 +107,7 @@
                         width: 85%;
                     }
     
-                    .password {
+                    .fullName {
                         margin: 10px;
                     }
                 }
@@ -114,8 +117,10 @@
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    height: 100px;
+                    height: 80%;
+                    width: 30%;
                     margin-left: 20px;
+                    margin-right: 10px;
 
                     .settings-icon {
                         display: flex;
@@ -137,10 +142,10 @@
             }
 
             .user-status {
-                margin-left: 40px;
+                margin-left: 10%;
                 padding-left: 10px;
 
-                height: 100px;
+                height: 30%;
                 width: 80%;
 
                 .edit-icon{
@@ -153,11 +158,11 @@
                 }
                 
                 .status {
-                    width: 400px;
+                    width: 80%;
 
                     .status-input {
                         margin: 10px;
-                        width: 300px;
+                        width: 80%;
                         height: 40px;
                     }
 
@@ -263,25 +268,26 @@
             }
         }
 
+        .spinner {
+            margin: 30px;
+            margin-top: 50px;
+        }
+
+        .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+            stroke: var(--blinking-background);
+        } 
+
         .allAssignedAssignments {
             margin: 20px 10px;
             padding: 0;
             outline: none;
+            // height: 80%;
             width: 80%;
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
             justify-items: center;
             align-items: center;
           
-
-            .spinner {
-                margin: 30px;
-            }
-
-            .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
-                stroke: var(--blinking-background);
-            }
-
             .task-section {
                 margin: 20px;
                 margin-bottom: 30px;
@@ -324,7 +330,6 @@
                         flex-direction: column;
                         align-items: flex-start;
                         position: relative;
-                        // justify-content: space-between;
         
                         .title {
                             align-self: center;
@@ -360,20 +365,12 @@
             margin: 20px 10px;
             padding: 0;
             outline: none;
+            // height: 80%;
             width: 80%;
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
             justify-items: center;
             align-items: center;
-          
-
-            .spinner {
-                margin: 30px;
-            }
-
-            .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
-                stroke: var(--blinking-background);
-            }
 
             .task-section {
                 margin: 20px;
@@ -432,12 +429,12 @@
                         }
 
                         .actions {
-                            cursor: pointer;
                             position: absolute;
                             right: 30px;
                             bottom: 20px;
                         
                             .launch-button {
+                                cursor: pointer;
                                 margin-top: 5px;
                                 background-color: var(--blinking-background);
 
@@ -468,9 +465,206 @@
     cursor: pointer;
 }
 
+.file-preview-container{
+    position: fixed;
+    margin:auto;
+    width: 80vw;
+    height: 80vh;
+    background-color: gray;
+
+    .iframe {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+      border: none;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+    }
+
+    
+}
+.closeDiv {
+    display: none;
+}
+
 /*MEDIA Query*/
 @media screen and (max-width: 600px){
-  
+    .container {
+        height: 100%;
+        width: 100%;
+
+
+        .personal-info-container {
+            position: relative;
+            padding-top: 125px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .image {
+                width: 60%;
+
+                .image-user {
+                    display: none;
+                    font-size: 20px;
+                }
+            }
+
+            .user-info {
+                width: 85%;
+                align-self: center;
+                justify-content: flex-start;
+                align-items: flex-start;
+
+                .window-information {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
+                    font-size: 14px;
+                    margin-left: 0;
+                    width: 100%;
+
+                    .information {
+                        padding: 0;
+                        width: 100%;
+                        flex-direction: row;
+                        align-items: center;
+                    } 
+
+                    mat-divider {
+                        display: none;
+                    }
+
+
+                    .settings { 
+                        width: 2%;
+                        margin-right: 0;
+                        word-wrap: break-word;
+                        margin-left: 0;
+
+                        .settings-icon {
+                            display: none;
+                        }
+
+                        .change-password {
+                            padding: 0;
+                            border-radius: 5px;
+                            font-size: 10px;
+                            width: 25%;
+                            position: absolute;
+                            bottom: 10px;
+                            right: 40px;
+                            font-weight: 500;
+                        } 
+                    }
+                }
+
+                .header {
+                    font-size: 20px;
+                    margin: 0;
+                    margin-top: 5px;
+                }
+
+                .user-status {
+                    margin-left: 0;
+                    padding: 0;
+                    display: flex;
+                    font-size: 14px;
+                    align-items: center;
+                    justify-content: flex-start;
+                    margin-bottom: 5px;
+
+
+                    .edit-icon {
+                        height: 16px;
+                        width: 16px;
+                        font-size: 16px;
+                    }
+
+                    .status {
+                        width: 40%;
+
+
+                        .status-input {
+                            height: 10px;
+                        }
+                    }
+                }
+            }
+
+            .vertical-line {
+                display: none;
+            }
+        }
+
+        hr {
+            margin-top: 5px;
+        }
+
+        .tasks-container {
+            .filters {
+                font-size: 16px;
+                width: 80%;
+            }
+
+            
+            .individual-task {
+                position: relative !important; 
+                flex-direction: column;
+                align-items: center;
+                max-height: 350px;
+
+
+                .image-section {
+                    width: 100% !important;
+                    height: 150px !important;
+
+                    img {
+                        height: 150px !important;
+                        width: 100% !important;
+                        border-radius: 5px !important;
+                    }
+                }
+
+                
+
+                .task-info-section {
+                    position: unset !important;
+                    width: 90% !important;
+                    word-wrap: break-word;
+                    overflow: scroll;
+                    max-height: 150px;
+                    .title {
+                        font-size: 22px !important;
+                    }
+
+                    .text {
+                        font-size: 16px;
+                    }
+                    
+                    .actions {
+                        position: absolute !important;
+                        top: 5px !important;
+                        right: 8px  !important;
+
+                        .launch-button {
+                           
+                            background-color: white !important;
+                        }
+
+                        mat-icon {
+                            color: var(--blinking-background);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
   
 

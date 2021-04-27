@@ -2,11 +2,14 @@ import { DataFromServerService } from './../services/data-from-server.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
-import { HelperMethodService } from '../services/helper-method.service';
+import { HelperMethodService  } from '../services/helper-method.service';
 import { ChangePasswordModalComponent } from '../shared/modals/change-password-modal/change-password-modal.component';
 import { Intern } from '../shared/models/intern.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Mentor } from '../shared/models/mentor.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer } from '@angular/platform-browser';
+import { TaskInfoModalComponent } from '../shared/modals/task-info-modal/task-info-modal.component'
 
 
 @Component({
@@ -20,6 +23,7 @@ export class UserProfileComponent implements OnInit {
 
   userType: string;
 
+  isClosed=false;
   intern:Intern;
   mentor: Mentor;
   assignments;
@@ -28,26 +32,33 @@ export class UserProfileComponent implements OnInit {
   load: boolean =  false;
 
   edit = false;
-  constructor(public dialog: MatDialog,
+  constructor(
+              public dialog: MatDialog,
               public helperMethodService: HelperMethodService,
               public dataFromServerService: DataFromServerService,
-              public route: ActivatedRoute) { }
+              public route: ActivatedRoute,
+              private snackBar: MatSnackBar,
+              private sanitizer: DomSanitizer
+              ) { }
 
-  // public modalData: Intern;
   urlType: string;
+  filePreview=false;
+  newBase64;
 
 
   ngOnInit(): void {
     this.userType = this.helperMethodService.getDataFromAccesToken().type;
-    // this.userType = this.helperMethodService.getDataFromAccesToken().type;
+
     if (this.userType === 'intern'){
+      //Podaci interna iz tokena
      let {email,id} = this.helperMethodService.getDataFromAccesToken();
      this.intern = {email,full_name: '',id};
     } else {
-
+      //Podaci mentora iz tokena
       let {email,id} = this.helperMethodService.getDataFromAccesToken();
       this.mentor = {email,id,full_name:'',password:''};
-      // console.log(this.mentor.email)
+
+      //Podaci interna iz local storage-a
       this.intern = JSON.parse(localStorage.getItem("intern"));
     }
 
@@ -57,15 +68,14 @@ export class UserProfileComponent implements OnInit {
       console.log(error);
     })
 
-    if(this.urlType==='intern'){
-      console.log("OVDE")
+    //Preuzimanje assignemnt-a za odredjenog interna
+    if(this.userType === 'intern' || this.urlType==='intern'){
       this.dataFromServerService.getInternAssignments(this.intern).subscribe(response => {
         this.assignments=response.payload;
-      // console.log(this.assignments)
-
       }, error => console.log(error))
     }
 
+    //Filter za interne
     if(this.userType === 'intern'){
       this.activeFilters = ["Completed"];
     } else if (this.userType === 'mentor'){
@@ -73,14 +83,14 @@ export class UserProfileComponent implements OnInit {
       this.activeFilters = ["Active"];
     }
 
-    
-
+    //Prikazivanje svih kreiranih taskova
     if(this.userType === 'mentor'){
       this.dataFromServerService.getMentorAssignments(this.mentor).subscribe(response => {
         this.allAssignments=response.payload;
-        console.log(this.allAssignments)
       }, error => console.log(error))
     }
+
+    console.log(this.intern)
   }
 
   editStatus(){
@@ -92,9 +102,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   statusActive(filter: string){
-
     this.load= !this.load;
-
     setTimeout(() => {
       this.load= !this.load;
       if(this.activeFilters.includes(filter)){
@@ -104,17 +112,84 @@ export class UserProfileComponent implements OnInit {
         this.activeFilters.push(filter);
       }
     },300);
-
   }
 
-  viewDocument(event: Event) {
-    event.stopPropagation();
+  
+  isMentor(){
+    if(!this.urlType && this.userType==='mentor'){
+      return true;
+    }
+    return false;
+  }
 
+  isIntern(){
+    if(this.urlType === 'intern' || this.userType==='intern'){
+      return true;
+    }
+    return false;
+  }
+
+  viewDocument(event: Event,assignemnt) {
+    this.isClosed=false;
+
+    this.loadFileFromServer(assignemnt)
+    .then(res => {
+      const base64string = res.payload;
+      if(base64string){
+        this.filePreview=true
+       return this.newBase64 = this.sanitizer.bypassSecurityTrustResourceUrl(base64string);
+      };
+      return this.snackBar.open("No file for this task", '',{duration:2000});;
+    })
+    .catch(console.log);
   }
 
 
-  downloadDocument(event: Event){
-    event.stopPropagation();
+  downloadFile(event: Event,assignemnt) {
 
+    this.loadFileFromServer(assignemnt)
+    .then(res => {
+      const base64string = res.payload;
+      if(base64string) return this.decodeFile(res.payload);
+      return null;
+    })
+    .then(blob => {
+      if(blob)return this.download(blob,assignemnt);
+      let snackBarRef = this.snackBar.open("No file for this task", '',{duration:3000});
+      return null;
+    })
+    .catch(console.log);
   }
+
+
+   //loads base64 encoded FILE from server (by task id)
+   async loadFileFromServer(assignemnt){
+    return this.dataFromServerService.getFile(assignemnt.task.task_id).toPromise();
+  }
+
+  //Converts base64 string to BLOB object
+  async decodeFile(base64String){
+    console.log(base64String)
+    const res = await fetch(base64String);
+    const blob = await res.blob();
+    return blob;
+  }
+
+  //Popups download dialog with file
+  download(data: Blob,assignemnt) {
+    console.log(data)
+    const a = document.createElement('a');
+    document.body.appendChild(a);
+    const url = window.URL.createObjectURL(data);
+    a.href = url;
+    a.download = assignemnt.task.title;
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }
+
+  close(){
+    this.isClosed=true;
+  }
+ 
 }

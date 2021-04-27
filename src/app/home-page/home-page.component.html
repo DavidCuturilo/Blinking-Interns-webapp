@@ -7,8 +7,10 @@
                     <img mat-card-image class='image' src='{{ this.helperMethodService.getImageUrl(assignment.task.task_type)}}' alt="">
                     <h3>{{ assignment.task.title }}</h3>
                     <mat-progress-bar mode="determinate" value="{{ assignment.progress }}"></mat-progress-bar>
-                    <label for="">{{ assignment.progress }}% Complete</label>
-                    <button class="button-details" (click)='showDetails(assignment)'>More details</button>
+                    <div class="details">
+                        <label class="assignmentProgress">{{ assignment.progress }}% Complete</label>
+                        <button class="button-details" (click)='showDetails(assignment)'>More details</button>
+                    </div>
                 </mat-card>
             </div>
         </div>

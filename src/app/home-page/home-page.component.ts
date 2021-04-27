@@ -17,6 +17,8 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
+  assignments;
+
   constructor(public dialog: MatDialog,
               public helperMethodService: HelperMethodService,
               public dataFromServer: DataFromServerService,
@@ -34,6 +36,8 @@ export class HomePageComponent implements OnInit {
       this.dataFromServer.getInternsById();
     }
     this.modalActive=false;
+
+
   }
 
   public modalData: Task;
