@@ -1,0 +1,150 @@
+.container {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    .notifications-container {
+        padding-top: 60px;
+        padding-bottom: 140px;
+        height: 80%;
+        width: 100%;
+
+        .markAllAsRead {
+            display: flex;
+            justify-content: center;
+
+            .markAllAsReadbtn {
+                width: 100%;
+                padding: 10px 10px;
+                line-height: initial;
+                background-color: var(--blinking-background);
+                color:white;
+                font-weight: bolder;
+                display: flex;
+                // justify-content: flex-start;
+                align-items: center;
+
+                .markAllAsReadIcon {
+                    color: rgb(173, 173, 218);
+                }
+            }
+
+            
+            span{
+                margin-right: 5px;
+            }
+        }
+
+        .accordion {
+
+            .notification {
+                width: 100%;
+                justify-content: center;
+
+
+                .notification-container {
+                    width: 95%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 6px 5px;
+                    white-space: initial;
+                
+                    &.animate-notification{
+                      animation:  notification-animation 2s forwards;
+                    }
+                    @keyframes notification-animation {
+                      from{background-color: rgb(0, 214, 64);}
+                      to{background-color: white;}
+                    }
+
+                    .expansionPanel {
+                        width: 100%;
+
+                        .panelHeader {
+                            height: 55px;
+
+
+                            .panelTitle {
+
+                                .notification-image{
+                                    flex:2;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-self: flex-start;
+                                    img{
+                                      height: 32px;
+                                      width: auto;
+                                    }
+                                  }
+                            }
+
+                            .panelDescription {
+
+                                .notification-data{
+                                    height: 100%;
+                                    flex:6;
+                                    .notification-title{
+                                      color:rgb(54, 54, 54);
+                                      font-size: 0.9rem;
+                                    }
+                              
+                                    .notification-sender{
+                                      font-size: 0.7rem;
+                                    }
+                              
+                                    
+                                }
+
+                                .notification-seen{
+                                    flex:2;
+                                    margin: 0;
+                                    display: flex;
+                                    justify-content: center;
+                                }
+                            }
+                        }
+
+                        .notification-text{
+                            padding: 5px 0;
+                            hyphens: auto;
+                        }
+
+                        & > div{
+                            line-height: initial;
+                          }
+                      
+                          &.newNotification{
+                            background-color: rgb(125, 155, 214);
+                            margin:0;
+                            color:rgb(255, 255, 255);
+                            cursor: pointer;
+                            &:hover{
+                              background-color: rgb(106, 140, 209);
+                      
+                            }
+                      
+                            mat-icon{
+                              color: rgb(194, 51, 51);
+                            }
+                      
+                            .notification-container{
+                                  .notification-data{
+                                      .notification-title{
+                                          color:rgb(58, 58, 58);
+                                          font-size: 0.7rem;
+                              
+                                      }
+                                  }
+                            }
+                          }
+                    }
+                
+                    
+                }
+            }
+        }
+    }
+}

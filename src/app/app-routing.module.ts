@@ -6,12 +6,14 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
   // { path: '', children: [] },
   { path: 'home', canActivate: [AuthGuard], component: HomePageComponent },
   { path: 'login',  canActivate: [AuthGuard], component: LoginComponent },
   { path: 'register', canActivate: [AuthGuard],  component: RegisterComponent },
+  { path: 'notifications', canActivate: [AuthGuard],  component: NotificationsComponent },
 
   { path: 'not-found', component: PageNotFoundComponent },
   { path: 'user-profile', canActivate: [AuthGuard], component: UserProfileComponent},

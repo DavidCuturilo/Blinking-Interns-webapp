@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="notifications-container">
+
+        <div class="markAllAsRead">
+            <button mat-menu-item class="markAllAsReadbtn" (click)='markAllAsRead()'>
+                <span>Mark all as read</span>
+                <div class="markAllAsReadIcon">
+                    <mat-icon class="mat-18 checkboxIcon">check_box</mat-icon>
+                </div>
+            </button>
+        </div>
+
+        <mat-accordion class="accordion">
+
+            <div class="notification" *ngFor="let notification of dataFromServerService.notifications">
+                    <div #notificationContainer (click)="markAsRead($event, notificationContainer, notification)"
+                    class="notification-container" >
+                    <mat-expansion-panel class="expansionPanel"  [ngClass]="{'newNotification':notification.seen===false}"
+                                         (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header class="panelHeader">
+                            <mat-panel-title class="panelTitle">
+                                <div class="notification-image"><img src="../../assets/pictures/task.png"></div>
+                            </mat-panel-title>
+                            <mat-panel-description class="panelDescription"> 
+                                <div class="notification-data">
+                                    <div class="notification-title">
+                                        <!-- {{ notification.notificationData.title }}  -->
+                                        Notification title
+                                    </div>
+                                    
+                                        <div class="notification-sender">From:{{notification.sender.email}}</div>
+                                </div>
+                                <div class="notification-seen" matTooltip="Mark as read" matTooltipPosition="above"
+                                        [matTooltipDisabled]='notification.seen===true'>
+                                        <mat-icon class="mat-18">check_circle</mat-icon>
+                                </div>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p class="notification-text">
+                            <!-- {{notification.notificationData.text}} -->
+                            {{ notification.text }}
+                        </p>
+                    </mat-expansion-panel>
+                   
+                </div>
+            </div>
+
+       </mat-accordion>
+
+    </div>
+</div>

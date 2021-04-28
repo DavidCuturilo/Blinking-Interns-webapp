@@ -1,5 +1,5 @@
 <div class="main-container">
-    <div class="card-container" *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'intern'">
+    <div class="card-container" *ngIf="this.userType === 'intern'">
         <h1 class="intern-h1">All tasks</h1>
         <div class="task-container">
             <div class="task" *ngFor="let assignment of dataFromServer.assignments">
@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div  class="mentor-container"  *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'mentor'">
+    <div  class="mentor-container"  *ngIf="this.userType === 'mentor'">
         <h1 class="mentor-h1">All interns</h1>
         <div class='interns-container'>
             <mat-card class="interns" *ngFor="let intern of dataFromServer.interns">
@@ -40,7 +40,7 @@
     </div>
 </div>
 
-<div *ngIf="this.helperMethodService.getDataFromAccesToken().type === 'mentor'">
+<div *ngIf="this.userType === 'mentor'">
   <span class="add-task-btn">
     <svg (click) = "addTaskModal(dataFromServer.interns)"
     matTooltip="Add new task"

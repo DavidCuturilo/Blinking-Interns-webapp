@@ -58,3 +58,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ::ng-deep.mat-menu-panel {
   max-width: none !important;
 }
+
+.mat-tooltip {
+  font-size: 14px !important;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 62px;
+}
+.mat-menu-item .mat-icon-no-color, .mat-menu-item-submenu-trigger::after {
+  color: rgba(255, 244, 244, 0.54);
+}

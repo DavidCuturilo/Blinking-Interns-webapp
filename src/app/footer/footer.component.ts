@@ -22,6 +22,8 @@ export class FooterComponent implements OnInit {
     public dataFromServerService: DataFromServerService,
     public dialog: MatDialog) { }
 
+
+  panelOpenState = false;
   notifications:any[];
   numberOfUnreadNotifications:number;
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;

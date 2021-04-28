@@ -18,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -43,6 +44,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     BrowserAnimationsModule,
     MatSelectModule,
     MatBadgeModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule { }

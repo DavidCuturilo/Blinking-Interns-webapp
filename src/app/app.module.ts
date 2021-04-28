@@ -20,6 +20,7 @@ import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 
@@ -34,6 +35,7 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     RegisterComponent,
     FooterComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,

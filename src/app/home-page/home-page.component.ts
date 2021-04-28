@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 export class HomePageComponent implements OnInit {
 
   assignments;
+  userType;
 
   constructor(public dialog: MatDialog,
               public helperMethodService: HelperMethodService,
@@ -27,8 +28,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     const { type } = this.helperMethodService.getDataFromAccesToken();
-
-    // console.log(type)
+    this.userType = this.helperMethodService.getDataFromAccesToken().type;
 
     if(type === "intern"){
       this.dataFromServer.getAssignments();

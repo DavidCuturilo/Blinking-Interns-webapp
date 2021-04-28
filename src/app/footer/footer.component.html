@@ -21,7 +21,8 @@
           <mat-label>Profile</mat-label>
         </div>
       </div>
-      <div class="nav-links" *ngIf="this.authService.loggedIn" [matMenuTriggerFor]="menu"
+
+      <div class="nav-links" *ngIf="this.authService.loggedIn" routerLink='/notifications' routerLinkActive='nav-link-active'
         (click)="removeAnimationNotification(menu)">
         <div class="notification-icon">
           <mat-icon class="notifications-icon" [matBadgeHidden]='dataFromServerService.numberOfUnreadNotifications === 0'
@@ -29,6 +30,7 @@
           <mat-label>Notifications</mat-label>
         </div>
       </div>
+
       <mat-menu #menu="matMenu" class="notifications-menu">
         <button mat-menu-item class="markAllAsRead" (click)='markAllAsRead()'>
           <span>Mark all as read</span>
@@ -52,6 +54,7 @@
           </div>
         </div>
       </mat-menu>
+
       <div class="nav-links logout" routerLink='/login' routerLinkActive='nav-link-active'
         *ngIf="this.authService.loggedIn" (click)='logOut()' matTooltip="Log out">
         <div class="logout-icon">

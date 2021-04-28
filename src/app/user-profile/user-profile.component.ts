@@ -72,6 +72,7 @@ export class UserProfileComponent implements OnInit {
     if(this.userType === 'intern' || this.urlType==='intern'){
       this.dataFromServerService.getInternAssignments(this.intern).subscribe(response => {
         this.assignments=response.payload;
+        this.assignments.reverse();
       }, error => console.log(error))
     }
 
@@ -87,6 +88,7 @@ export class UserProfileComponent implements OnInit {
     if(this.userType === 'mentor'){
       this.dataFromServerService.getMentorAssignments(this.mentor).subscribe(response => {
         this.allAssignments=response.payload;
+        this.allAssignments.reverse();
       }, error => console.log(error))
     }
 
