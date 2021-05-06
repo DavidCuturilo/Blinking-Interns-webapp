@@ -56,12 +56,31 @@
             </button>
           </div>
         </div>
+        <!-- Media Querie -->
+        <div class="actions">
+          <button mat-raised-button class="launch-button" matTooltip="Actions" matTooltipPosition="above"
+            [matMenuTriggerFor]="menu">
+            <mat-icon>launch</mat-icon>
+          </button>
+        </div>
+
+        <mat-menu #menu="matMenu" class="actions-menu" yPosition="above">
+          <div class="viewSection" mat-menu-item (click)="viewFile()">
+            <mat-icon (click)="viewFile()">remove_red_eye</mat-icon>
+            <label class="label-menu">View document</label>
+          </div>
+          <div class="downloadSection" mat-menu-item (click)="downloadFile()">
+            <mat-icon>download</mat-icon>
+            <label class="label-menu">Download document</label>
+          </div>
+        </mat-menu>
+        
       </div>
     </div>
 
-    <div class="file-preview-container" *ngIf="filePreview">
+    <div class="file-preview-container" *ngIf="filePreview" [ngClass]="{'closeDiv': this.isClosed}">
+      <button mat-raised-button class="close" (click)='close()'>Close</button>
       <iframe class="iframe" [src]="newBase64" height="100%" width="100%"></iframe>
     </div>
   </div>
-  <div class="close-modal" (click)="closeModal()">X</div>
 </div>

@@ -1,8 +1,8 @@
 .dialog-container{
   width: 80vw;
   height: 90vh;
-  min-width: 300px;
-  min-height: 400px;
+  // min-width: 300px;
+  // min-height: 400px;
   overflow-y: hidden;
 
   overflow-x: hidden;
@@ -106,12 +106,7 @@
             }
           }
         }
-
-
-
       }
-
-
 
       button{
         padding: 20px 5px;
@@ -123,4 +118,64 @@
       }
     }
   }
+}
+
+// MEDIA QUERIES 
+
+
+@media screen and (max-width: 600px) { 
+  
+  .dialog-container {
+    width: 80vw;
+    height: 80vh;
+
+
+    [mat-dialog-title] {
+      font-size: 1.6rem;
+    }
+
+    [mat-dialog-content] {
+      form {
+        .form-group {
+          mat-label{
+            font-size: 1.2rem;
+          }
+        }
+
+        .example-additional-selection{
+          opacity: 0.75;
+          font-size: 0.5em;
+        }
+
+        .btns {
+
+          button{
+            font-size: 0.8em;
+          }
+
+          .upload-info {
+            .upload {
+
+              height: 40px;
+              width: 70%;
+
+              label {
+                font-size: 0.8em;
+              }
+            }
+
+          }
+
+        }
+      }
+
+    }
+  }
+
+  // .mat-form-field-flex {
+  //   width: 75% !important;
+  // }
+  // .mat-form-field-underline {
+  //   width: 75% !important;
+  // }
 }

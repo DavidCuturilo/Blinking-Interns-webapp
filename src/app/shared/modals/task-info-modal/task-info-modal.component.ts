@@ -26,6 +26,7 @@ export class TaskInfoModalComponent implements OnInit {
     else this.statusColor="red"
   }
 
+  isClosed=false;
   filePreview=false;
   newBase64;
 
@@ -88,4 +89,7 @@ export class TaskInfoModalComponent implements OnInit {
     window.URL.revokeObjectURL(url);
   }
 
+  close(){
+    this.isClosed=true;
+  }
 }

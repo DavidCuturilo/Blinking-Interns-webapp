@@ -60,8 +60,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
-
+            position: relative;
 
             .task-status {
               margin-left: 15px;
@@ -90,6 +89,9 @@
               display: flex;
               justify-content: center;
               align-items: center;
+              position: absolute;
+              right: 15px;
+              bottom: 10px;
 
               &>div{
                 margin-right: 10px;
@@ -106,6 +108,14 @@
                   }
                 }
               }
+            }
+
+            .actions {
+              visibility: hidden;
+            }
+
+            .actions-menu {
+              visibility: hidden;
             }
           }
     }
@@ -129,7 +139,7 @@
       position: fixed;
       margin:auto;
       width: 80vw;
-      height: 90vh;
+      height: 80vh;
       background-color: gray;
 
       .iframe {
@@ -138,7 +148,17 @@
         overflow: auto;
         border: none;
       }
+
+      .close {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        cursor: pointer;
     }
+    }
+    .closeDiv {
+      display: none;
+  }
 }
 
 
@@ -153,14 +173,23 @@
 
       .modal-inner {
 
+        .task-title {
+          margin-top: 15px;
+
+          h1 {
+            font-size: 32px;
+          }
+        }
+
         .position {
 
           .task-text {
-
+              margin: 10px;
 
             img {
               width: 300px;
               height: 220px;
+              margin-bottom: 10px;
             }
           }
 
@@ -171,29 +200,78 @@
             }
 
             .task-progress  {
+              margin-top: 5px;
               font-size: 15px;
             }
 
             .document {
-
+              visibility: hidden;
+              position: initial;
 
               &>div{
-                width: 60px;
-                height: 60px;
+                visibility: hidden;
+                width: 50px;
+                height: 50px;
                 button {
                   background-color: var(--blinking-background);
                   width: 100%;
                   height: 100%;
 
                   mat-icon{
-                    font-size: 1.4rem;
+                    font-size: 1.3rem;
+                    height: 25px;
                   }
                 }
               }
             }
+            .actions {
+              visibility: visible;
+              
+              .launch-button {
+                margin-right: 15px;
+                margin-bottom: 15px;
+                background-color: white;
+                color: var(--blinking-background);
+                margin-top: 3px;
+
+              }
+            }
+
+            .actions-menu {
+              visibility: visible;
+
+            }
           }
         }
       } 
+      
+      .mat-fab .mat-button-wrapper {
+        padding: 15px 0 !important;
+     }
     }
+      .viewSection {
+        padding-left: 8px !important;
+
+        mat-icon {
+            color: black;
+            margin-right: 5px !important;
+        }
+        &:hover {
+            background-color: rgb(226, 226, 226);
+        }
+    } 
+  
+    .downloadSection {
+      padding-left: 8px !important;
+
+      mat-icon {
+          color: black;
+          margin-right: 5px !important;
+      }
+      &:hover {
+          background-color: rgb(226, 226, 226);
+      }
+    }
+    
 
 }
