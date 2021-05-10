@@ -1,6 +1,6 @@
 .dialog-container{
-  width: 80vw;
-  height: 90vh;
+  width: 45vw;
+  height: 70vh;
   // min-width: 300px;
   // min-height: 400px;
   overflow-y: hidden;
@@ -56,6 +56,7 @@
       }
 
       .btns {
+        padding-top: 10px;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -131,14 +132,24 @@
 
 
     [mat-dialog-title] {
-      font-size: 1.6rem;
+      padding: 10px 0;
+      font-size: 1.2rem;
     }
 
     [mat-dialog-content] {
+      overflow: auto;
       form {
+        align-items: center;
         .form-group {
+          // flex-direction: column !important;
+          justify-content: center !important;
+          padding: 0 14px;
+
+          .date {
+            margin-right: 10px;
+          }
           mat-label{
-            font-size: 1.2rem;
+            font-size: 1rem;
           }
         }
 
@@ -148,15 +159,21 @@
         }
 
         .btns {
-
+          width: 84%;
+          padding: 0;
+          margin-top: 10px;
+          
           button{
+            width: 45%;
+            padding: 0;
             font-size: 0.8em;
           }
 
           .upload-info {
+            width: 50%;
             .upload {
 
-              height: 40px;
+              height: 36px;
               width: 70%;
 
               label {
@@ -168,14 +185,13 @@
 
         }
       }
+    }
+    mat-form-field {
+      width: 85%;
+    }
 
+    .assign_to {
+      font-size: 16px !important;
     }
   }
-
-  // .mat-form-field-flex {
-  //   width: 75% !important;
-  // }
-  // .mat-form-field-underline {
-  //   width: 75% !important;bi
-  // }
 }

@@ -12,7 +12,7 @@
         <textarea
           matInput
           cols="30"
-          rows="5"
+          rows="2"
           required
           formControlName="text"
           placeholder="Task description"
@@ -20,7 +20,7 @@
       </mat-form-field>
 
       <div class="form-group deadline-taskType">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="date">
           <mat-label>Set deadline</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="deadline" />
           <mat-datepicker-toggle
@@ -44,7 +44,7 @@
       </div>
 
       <mat-form-field appearance="fill">
-        <mat-label>Assign to</mat-label>
+        <mat-label class="assign_to">Assign to</mat-label>
         <mat-select formControlName="interns" multiple>
           <mat-select-trigger>
             {{
@@ -97,7 +97,7 @@
             <b *ngFor="let type of allowedFileTypes">{{type }} <span>  </span></b>
           </mat-error>
         </div>
-        <button mat-raised-button type="submit">Submit new Task</button>
+        <button mat-raised-button type="submit" class="submit">Submit new Task</button>
       </div>
     </form>
   </div>
