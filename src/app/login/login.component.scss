@@ -107,12 +107,31 @@
         min-width: 100%;
 
         .login-form  {
+            align-items: center;
             min-width: 70%;
 
+            .header {
+                margin-bottom: 15px;
+                font-size: 25px;
+            }
 
             .login-button {
-
+                font-size: 18px;
+                padding: 2px 20px;
             } 
+            .user-information {
+                .email-container {
+                    padding-left: 15px;
+                    .email-form {
+                        .email {
+                        }
+                    }
+                }
+                .password-container {
+                    padding-left: 15px;
+                }
+
+            }
         }
     }
 }
