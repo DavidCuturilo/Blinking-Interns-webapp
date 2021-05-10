@@ -120,18 +120,27 @@
                 padding: 2px 20px;
             } 
             .user-information {
+                width: 90%;
                 .email-container {
                     padding-left: 15px;
-                    .email-form {
-                        .email {
-                        }
+
+                    .remove-button {
+                        padding-top: 10px;
                     }
                 }
                 .password-container {
                     padding-left: 15px;
+
+                    .remove-button {
+                        padding-top: 10px;
+                    }
                 }
 
             }
+        }
+
+        input.mat-input-element {
+            font-size: 16px;
         }
     }
 }
